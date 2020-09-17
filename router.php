@@ -21,6 +21,11 @@ switch ($params[0]) {
         $controller = new ProductController();
         $controller->showHome();
         break;
+    case 'filtrar':
+        $controller = new ProductController();
+        $id = $params[1];
+        $controller->showByCat($id); //se refiere a la ID de la categoria
+        break;
     case 'insertar':
         $controller = new ProductController();
         $controller->addProduct();
@@ -32,7 +37,8 @@ switch ($params[0]) {
         break;
     case 'update':
         $controller = new ProductController();
-        $controller->updateProduct();
+        $id = $params[1];
+        $controller->updateProduct($id);
         break;
     default:
         header("HTTP/1.0 404 Not Found");
