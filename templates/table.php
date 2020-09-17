@@ -3,13 +3,14 @@
 
 function showProducts() {
    
- $products=getproducts();
+ $products=getProducts();
  echo "<table class=table table-striped>";
  echo"<thead>";
  echo"<td>ID</td>";
  echo"<td>NOMBRE</td>";
  echo"<td>DESCRIPCION</td>";
  echo"<td>PRECIO</td>";
+ echo"<td>OFERTA</td>";
  echo"<td>CATEGORIA</td>";
  
  foreach($products as $product){
