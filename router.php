@@ -1,5 +1,5 @@
 <?php
-include_once 'app/controllers/task.controller.php';
+include_once 'app/controllers/product.controller.php';
 
 
 // defino la base url para la construccion de links con urls semánticas
@@ -18,20 +18,20 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home':
-        $controller = new TaskController();
+        $controller = new ProductController();
         $controller->showHome();
         break;
     case 'insertar':
-        $controller = new TaskController();
+        $controller = new ProductController();
         $controller->addProduct();
         break;
     case 'eliminar':
-        $controller = new TaskController();
+        $controller = new ProductController();
         $id = $params[1];
         $controller->deleteProduct($id);
         break;
     case 'update':
-        $controller = new TaskController();
+        $controller = new ProductController();
         $controller->updateProduct();
         break;
     default:

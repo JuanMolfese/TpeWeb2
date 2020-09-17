@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2020 a las 00:21:26
+-- Tiempo de generación: 18-09-2020 a las 00:46:30
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -33,6 +33,15 @@ CREATE TABLE `categoria` (
   `descripcion` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'notebook', 'pc\'s portatiles'),
+(2, 'tablet', 'dispositivo tableta'),
+(3, 'celular', 'smartphones de consumo masivo');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +55,13 @@ CREATE TABLE `producto` (
   `precio` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `id_categoria`) VALUES
+(1, 'Xiaomi MI Pro', 'El portátil ULTRABOOK más potente de Xiaomi! Con u', 165000, 1);
 
 --
 -- Índices para tablas volcadas
@@ -72,13 +88,13 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
