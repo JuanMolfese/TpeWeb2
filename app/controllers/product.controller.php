@@ -56,7 +56,9 @@ class ProductController {
     }
 
 
-
+    function cristianoQuerido($msg){
+        $this->view->showError($msg);
+    }
 
 
 }
