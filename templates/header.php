@@ -13,7 +13,7 @@
 
 <body>
 
-    <header>
+    <header class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                <!-- <a class="navbar-brand" href="#"> <img src="img/logo_nt2.png" alt="Logo New tech"> </a> -->
 
