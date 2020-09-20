@@ -24,10 +24,33 @@ class ProductView{
             echo "<td>$product->id_categoria</td>";
             echo "</table>";
         }
-        include_once 'templates/footer.php';
     }
     
     function showError($msg){
         
+        echo "<h1> ERROR!</h1>";
+        echo "<h2> $msg </h2>";
+
+       /* echo "
+        <div class='modal' tabindex='-1'>
+        <div class='modal-dialog'>
+                <div class='modal-content'>
+                <div class='modal-header'>
+                <h5 class='modal-title'>Error</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+                        </button>
+                        </div>
+                        <div class='modal-body'>
+                            <p>$msg</p>
+                            </div>
+                            <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                        </div>
+                </div>
+                </div>
+                </div>";*/
+                
     }
 }
+include_once 'templates/footer.php';
