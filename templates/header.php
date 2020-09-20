@@ -53,7 +53,7 @@
                         <!-- NUEVO  -->
 
                         <li class="nav-item">
-                            <a class="nav-link" >Celulares</a>
+                            <a class="nav-link" href=>Celulares</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" >Notebooks</a>

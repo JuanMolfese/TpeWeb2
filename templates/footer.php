@@ -11,7 +11,7 @@
 
         <div class="col-md-4 order-2 row align-items-center">
 
-            <h5> Seguinos en redes</h5>
+            <h5>Seguinos en redes</h5>
 
             <ul class="d-flex pl-0 pt-3">
 
