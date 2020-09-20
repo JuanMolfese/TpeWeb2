@@ -30,7 +30,7 @@ class ProductView{
     function showError($msg){
         
         echo "<h1> ERROR!</h1>";
-        echo "<h2> $msg </h2>";
+        echo "<h2> $msg </h2>";git pull
 
         /*echo '
         <div class="modal" tabindex="-1">
