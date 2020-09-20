@@ -1,7 +1,7 @@
 </main>
 
 
-<footer>
+<footer class="container">
 
     <div class="row">
 

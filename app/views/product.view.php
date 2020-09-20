@@ -4,7 +4,6 @@ include_once 'templates/header.php';
 
 class ProductView{
 
-
     function showProducts($products) {
         echo "<table class=table table-striped>";
         echo"<thead>";
@@ -55,5 +54,3 @@ class ProductView{
         */
     }
 }
-    
-    
