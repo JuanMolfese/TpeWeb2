@@ -2,7 +2,7 @@
 <?php
 include_once 'header.php'
 
-echo 
+/*echo 
     '<form>
         <div class="d-flex row">
 
@@ -51,4 +51,4 @@ echo
 
     </form>
 <!-- </div>-->
- ';  
+ ';  */;
