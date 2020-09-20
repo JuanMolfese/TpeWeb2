@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2020 a las 01:43:03
+-- Tiempo de generación: 20-09-2020 a las 20:25:04
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -62,7 +62,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `oferta`, `id_categoria`) VALUES
-(1, 'Xiaomi MI Pro', 'El portátil ULTRABOOK más potente de Xiaomi! Con u', 165000, 0, 1);
+(1, 'Xiaomi MI Pro', 'El portátil ULTRABOOK más potente de Xiaomi!', 165000, 0, 1);
 
 --
 -- Índices para tablas volcadas

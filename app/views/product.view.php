@@ -3,8 +3,13 @@
 
 class ProductView{
 
-    showProducts($product)
-    showError()
+    showProducts($product){
+
+    }
+    
+    showError($msg){
+
+    }
 
 
 }
