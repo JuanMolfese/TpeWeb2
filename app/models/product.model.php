@@ -33,7 +33,7 @@ class ProductModel{
 
         // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
         $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, categoria) VALUES (?,?,?,?,?)');
-        $query->execute([$titulo, $descripcion, $precio, $oferta, $categoria]);
+        $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
 
         // 3. Obtengo y devuelo el ID de la tarea nueva
         //return $this->db->lastInsertId();
