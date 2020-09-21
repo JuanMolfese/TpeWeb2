@@ -27,7 +27,8 @@ class ProductController {
 
     function addProduct(){
        
-        
+        include_once 'templates/form.add.php';
+
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $precio = $_POST['precio'];
