@@ -30,9 +30,9 @@ class ProductModel{
 
     /** Inserta la tarea en la base de datos    */
     function insert($nombre, $descripcion, $precio, $oferta, $categoria) {
-
+        
         // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
-        $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, categoria) VALUES (?,?,?,?,?)');
+        $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria) VALUES (?,?,?,?,?)');
         $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
 
         // 3. Obtengo y devuelo el ID de la tarea nueva

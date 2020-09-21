@@ -27,14 +27,14 @@ class ProductController {
 
     function addProduct(){
        
-        include_once 'templates/form.add.php';
+        $this->view->showAddForm();
 
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $precio = $_POST['precio'];
         $oferta = $_POST['oferta'];
         $categoria = $_POST['categoria'];
-
+        
         // verifico campos obligatorios
         if (empty($nombre) || empty($precio) || empty($categoria)) {
             $this->view->showError('Faltan datos obligatorios');
@@ -45,7 +45,7 @@ class ProductController {
         $id = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
 
         // redirigimos al listado
-        header("Location: " . BASE_URL); 
+        //header("Location: " . BASE_URL); 
     }
 
     function deleteProduct($id){

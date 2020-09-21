@@ -28,7 +28,6 @@ switch ($params[0]) {
         break;
     case 'insertar':
         $controller = new ProductController();
-        var_dump($params);
         $controller->addProduct();
         break;
     case 'eliminar':
@@ -46,3 +45,4 @@ switch ($params[0]) {
        // echo('404 Page not found');
        break;
 }
+?>

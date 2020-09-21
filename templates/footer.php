@@ -1,6 +1,6 @@
 <footer>
     
-    <div class="row bg-light align-items-center">
+    <div class="row bg-light align-items-center mt-4">
         
         <div class="col-md-4 pl-3 text-center">
             <h5><a href="mailto:contacto@newtech.com.ar"> Contacto a nuestro correo electrónico </a> </h5>
