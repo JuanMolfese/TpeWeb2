@@ -3,7 +3,7 @@
 include_once 'header.php';
 
 echo 
-    '<form>
+    '<form id="form-add" action="insertar" method="POST">
         <div class="d-flex row">
 
             <div class="form-group pt-6 col-md-7 p-0">
