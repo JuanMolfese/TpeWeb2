@@ -27,7 +27,8 @@ class ProductController {
 
     function addProduct(){
        
-        
+        include_once 'templates/form.add.php';
+
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $precio = $_POST['precio'];
@@ -48,13 +49,12 @@ class ProductController {
     }
 
     function deleteProduct($id){
-       echo 'el boton anda';
-    /*   $this->model->remove($id);
-       header("Location: " . BASE_URL); */
+       $this->model->remove($id);
+       header("Location: " . BASE_URL); 
     }
 
     function updateProduct($id){
-      
+       
         //UPDATE `producto` SET `id`=[value-1],`nombre`=[value-2],`descripcion`=[value-3],`precio`=[value-4],`oferta`=[value-5],`id_categoria`=[value-6] WHERE 1
     }
 
