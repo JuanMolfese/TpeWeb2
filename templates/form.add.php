@@ -1,8 +1,8 @@
 <!--<div class="container p-5">-->
 <?php
-include_once 'header.php'
+include_once 'header.php';
 
-/*echo 
+echo 
     '<form>
         <div class="d-flex row">
 
@@ -51,4 +51,4 @@ include_once 'header.php'
 
     </form>
 <!-- </div>-->
- ';  */;
+ ';  

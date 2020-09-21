@@ -27,6 +27,7 @@ class ProductView{
             echo "</tr>";
         }
         echo "</table>";
+        include_once 'templates/footer.php';
     }
     
     function showError($msg){
@@ -56,4 +57,3 @@ class ProductView{
                 
     }
 }
-include_once 'templates/footer.php';
