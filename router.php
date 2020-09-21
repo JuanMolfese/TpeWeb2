@@ -28,6 +28,7 @@ switch ($params[0]) {
         break;
     case 'insertar':
         $controller = new ProductController();
+        var_dump($params);
         $controller->addProduct();
         break;
     case 'eliminar':
@@ -43,8 +44,5 @@ switch ($params[0]) {
     default:
        // header("HTTP/1.0 404 Not Found");
        // echo('404 Page not found');
-        $controller = new ProductController();
-        $msg = "malisimo";
-        $controller->cristianoQuerido($msg);
-        break;
+       break;
 }

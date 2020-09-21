@@ -26,11 +26,8 @@ class ProductView{
             echo "<td><a class='btn btn-primary btn-sm' href='update'>EDITAR</a></td>";
             echo "</tr>";
         }
-
-        
         echo "</table>";
         include_once 'templates/footer.php';
-
     }
     
     function showError($msg){
