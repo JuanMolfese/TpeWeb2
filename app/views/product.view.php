@@ -27,9 +27,9 @@ class ProductView{
             echo "</tr>";
         }
 
-        include_once 'templates/footer.php';
-
+        
         echo "</table>";
+        include_once 'templates/footer.php';
 
     }
     
