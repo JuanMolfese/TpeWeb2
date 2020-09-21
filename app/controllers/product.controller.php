@@ -29,23 +29,26 @@ class ProductController {
        
         $this->view->showAddForm();
 
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $precio = $_POST['precio'];
-        $oferta = $_POST['oferta'];
-        $categoria = $_POST['categoria'];
+        if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
+                (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
+                (isset($_REQUEST['precio']) && ($_REQUEST['precio'] != null)) &&
+                (isset($_REQUEST['oferta']) && ($_REQUEST['oferta'] != null)) &&
+                (isset($_REQUEST['categoria']) && ($_REQUEST['categoria'] != null))
+            ) {                     
         
-        // verifico campos obligatorios
-        if (empty($nombre) || empty($precio) || empty($categoria)) {
-            $this->view->showError('Faltan datos obligatorios');
-            die();
+                $nombre = $_POST['nombre'];
+                $descripcion = $_POST['descripcion'];
+                $precio = $_POST['precio'];
+                $oferta = $_POST['oferta'];
+                $categoria = $_POST['categoria'];
+        
+                // inserto la tarea en la DB
+                $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
+        
+        
         }
-
-        // inserto la tarea en la DB
-        $id = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
-
-        // redirigimos al listado
-        //header("Location: " . BASE_URL); 
+            // redirigimos al listado
+            //header("Location: " . BASE_URL); 
     }
 
     function deleteProduct($id){
