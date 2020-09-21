@@ -22,9 +22,15 @@ class ProductView{
             echo "<td>$product->precio</td>";
             echo "<td>$product->oferta</td>";
             echo "<td>$product->id_categoria</td>";
-            echo "</table>";
+            echo "<td><a class='btn btn-danger btn-sm' href='eliminar'>ELIMINAR</a></td>";
+            echo "<td><a class='btn btn-primary btn-sm' href='update'>EDITAR</a></td>";
+            echo "</tr>";
         }
+<<<<<<< HEAD
         include_once 'templates/footer.php';
+=======
+        echo "</table>";
+>>>>>>> d1ec37e5fc965a6a84491b700f6cda12695c2b9b
     }
     
     function showError($msg){
