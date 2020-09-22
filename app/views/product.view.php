@@ -113,39 +113,44 @@ class ProductView{
     }
 
     function showUpdateForm($product){
-        var_dump($product);
+        
         //si esto funciona deberiamos borrar el archivo form.add.php
        // ??  Debo incluir al product.controller para que llegue la info contenida en el post ???
        echo" 
         <h3 class='mb-4'>Actualizar producto</h3>
-        <form id='form-add' action='insertar' method='POST'>
+        <form id='form-add' action='editar' method='POST'>
         <div class='d-flex row'>
 
             <div class='form-group pt-6 col-md-7 p-0'>
                 <label for='input_product_name'>Nombre del producto</label>
-                <input name='nombre' type='text' value='$produc->nombre' class='form-control' id='input_product_name' maxlength='30' required>
+                <input name='nombre' type='text' value='$product->nombre' class='form-control' id='input_product_name' maxlength='30' required>
             </div>
 
             <div class='form-group form-check col-md-5 pl-md-5 p-0'>
                 <label for='input_product_cost'>Precio</label>
-                <input name='precio' type='number' class='form-control' id='input_product_cost' maxlength='11' required>
+                <input name='precio' type='number' value='$product->precio' class='form-control' id='input_product_cost' maxlength='11' required>
             </div>
 
             <div class='form-group col-md-12 p-0'>
                 <label for='input_product_description'>Descripcion</label>
-                <input name='descripcion' type='text' class='form-control' id='input_product_description' maxlength='50'>
+                <input name='descripcion' type='text' value='$product->descripcion' class='form-control' id='input_product_description' maxlength='50'>
             </div>
 
-            <div class='form-group col-md-6 p-0 mt-4'>
+            <div class='form-group col-md-2 p-0'>
+            <label for='input_product_id_cat'>ID Categoria</label>
+            <input type='text' value='$product->id_categoria' class='form-control' id='input_product_description' maxlength='50'>
+             </div>
+
+            <div class='form-group col-md-4 ml-2 p-0'>
+            <label for='input_product_id_cat_select'>Cambiar Categoria</label>
                 <select class='custom-select' name='categoria' id='input_product_id_cat'>
-                    <option selected>Seleccionar categoria</option>
-                    <option value='1'>Notebooks</option>
-                    <option value='2'>Tablet</option>
-                    <option value='3'>Celulares</option>
+                    <option value='1'>1 - Notebooks</option>
+                    <option value='2'>2 - Tablet</option>
+                    <option value='3'>3 - Celulares</option>
                 </select>
             </div>
 
-            <div class='form-group col-md-6 p-0 mt-4 d-flex justify-content-around'>
+            <div class='form-group col-md-5 p-0 mt-4 d-flex justify-content-around'>
                 <label for='input_product_oferta'>Esta en oferta ?</label>
                 <div class='form-check form-check-inline' id='input_product_oferta'>
                     <input class='form-check-input' type='radio' name='oferta' id='inlineRadio1' value='0' checked>
@@ -156,6 +161,7 @@ class ProductView{
                     <label class='form-check-label' for='inlineRadio2'>Si</label>
                 </div>
             </div>
+            <input type='hidden' value='$product->id' name='idProducto'>
 
             <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
                 <button type='submit' id='btn-guardar' class='btn btn-info btn-lg'>Guardar</button>

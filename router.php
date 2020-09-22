@@ -40,6 +40,11 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->updateProduct($id);
         break;
+    case 'editar':
+        $controller = new ProductController();
+        $id = $params[1];
+        $controller->RecordUpdateProduct();
+        break;
     default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');

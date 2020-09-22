@@ -60,9 +60,26 @@ class ProductController {
     function updateProduct($id){
         $selected=$this->model->getSelectedProd($id);
         $this->view->showUpdateForm($selected);
-               
+    }
 
-        //UPDATE `producto` SET `id`=[value-1],`nombre`=[value-2],`descripcion`=[value-3],`precio`=[value-4],`oferta`=[value-5],`id_categoria`=[value-6] WHERE 1
+    function RecordUpdateProduct(){
+        
+        if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
+                (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
+                (isset($_REQUEST['precio']) && ($_REQUEST['precio'] != null)) &&
+                (isset($_REQUEST['oferta']) && ($_REQUEST['oferta'] != null)) &&
+                (isset($_REQUEST['categoria']) && ($_REQUEST['categoria'] != null))
+            ) {                     
+                $id = $_POST['idProducto'];
+                $nombre = $_POST['nombre'];
+                $descripcion = $_POST['descripcion'];
+                $precio = $_POST['precio'];
+                $oferta = $_POST['oferta'];
+                $categoria = $_POST['categoria'];
+                
+                $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
+                header("Location: " . BASE_URL);
+            }
     }
 
 }
