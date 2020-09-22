@@ -21,9 +21,7 @@ class ProductController {
 
     }
 
-    function showByCat($id){
-       
-    }
+    
 
     function addProduct(){
        
@@ -50,7 +48,11 @@ class ProductController {
             // redirigimos al listado
             //header("Location: " . BASE_URL); 
     }
-
+    function showByCat($id){
+        $selected=$this->model->getSelected($id);
+        $this->view->showProducts($selected);
+        }
+        
     function deleteProduct($id){
        $this->model->remove($id);
        header("Location: " . BASE_URL); 

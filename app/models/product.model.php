@@ -23,6 +23,13 @@ class ProductModel{
         $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
         return $products;
     }
+   function getSelected($id) {
+    $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
+    
+    $query->execute([$id]);
+    $category= $query->fetchAll(PDO::FETCH_OBJ);
+    return $category;
+   }
 
 
     function insert($nombre, $descripcion, $precio, $oferta, $categoria) {

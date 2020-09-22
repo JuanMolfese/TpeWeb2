@@ -53,13 +53,13 @@
                     <!-- NUEVO  -->
 
                     <li class="nav-item">
-                        <a class="nav-link" href=>Celulares</a>
+                        <a class="nav-link" name='3' href='filtrar/3'>Celulares</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >Notebooks</a>
+                        <a class="nav-link" name='1' href='filtrar/1'>Notebooks</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Tablets</a>
+                    <li class="nav-item" >
+                        <a class="nav-link" name='2' href='filtrar/2'>Tablets</a>
                     </li>
                     
 
