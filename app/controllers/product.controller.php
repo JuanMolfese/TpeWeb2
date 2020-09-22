@@ -56,6 +56,8 @@ class ProductController {
     function deleteProduct($id){
        $this->model->remove($id);
        header("Location: " . BASE_URL); 
+      
+    
     }
 
     function updateProduct($id){
