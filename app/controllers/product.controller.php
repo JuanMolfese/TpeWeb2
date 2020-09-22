@@ -63,10 +63,4 @@ class ProductController {
         //UPDATE `producto` SET `id`=[value-1],`nombre`=[value-2],`descripcion`=[value-3],`precio`=[value-4],`oferta`=[value-5],`id_categoria`=[value-6] WHERE 1
     }
 
-
-    function cristianoQuerido($msg){
-        $this->view->showError($msg);
-    }
-
-
 }
