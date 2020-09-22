@@ -22,7 +22,7 @@ class ProductView{
             echo "<td>$product->precio</td>";
             echo "<td>$product->oferta</td>";
             echo "<td>$product->id_categoria</td>";
-            echo "<td><a class='btn btn-danger btn-sm' href='eliminar'>ELIMINAR</a></td>";
+            echo "<td><a class='btn btn-danger btn-sm' href='eliminar/$product->id'>ELIMINAR</a></td>";
             echo "<td><a class='btn btn-primary btn-sm' href='update'>EDITAR</a></td>";
             echo "</tr>";
         }
