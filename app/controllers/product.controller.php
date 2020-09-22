@@ -20,8 +20,7 @@ class ProductController {
         $this->view->showProducts($product);
 
     }
-
-    
+  
 
     function addProduct(){
        
@@ -42,14 +41,14 @@ class ProductController {
         
                 // inserto la tarea en la DB
                 $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
-        
-        
+            }
+        else{
+
         }
-            // redirigimos al listado
-            //header("Location: " . BASE_URL); 
     }
+
     function showByCat($id){
-        $selected=$this->model->getSelected($id);
+        $selected=$this->model->getSelectedCat($id);
         $this->view->showProducts($selected);
         }
         
@@ -59,7 +58,10 @@ class ProductController {
     }
 
     function updateProduct($id){
-       
+        $selected=$this->model->getSelectedProd($id);
+        $this->view->showUpdateForm($selected);
+               
+
         //UPDATE `producto` SET `id`=[value-1],`nombre`=[value-2],`descripcion`=[value-3],`precio`=[value-4],`oferta`=[value-5],`id_categoria`=[value-6] WHERE 1
     }
 
