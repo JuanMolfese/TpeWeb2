@@ -52,9 +52,10 @@ class ProductController {
         $this->view->showProducts($selected);
         }
         
-    function deleteProduct($id){
-       $this->model->remove($id);
-       header("Location: " . BASE_URL); 
+    function deleteProduct($id,$action){
+       $category=$this->model->remove($id);
+       var_dump($category);
+       header("Location: " . BASE_URL.'/'.$action.'/'.$category); 
       
     
     }

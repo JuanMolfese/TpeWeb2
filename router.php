@@ -32,8 +32,9 @@ switch ($params[0]) {
         break;
     case 'eliminar':
         $controller = new ProductController();
+        $action = $params[0];
         $id = $params[1];
-        $controller->deleteProduct($id);
+        $controller->deleteProduct($action,$id);
         break;
     case 'update':
         $controller = new ProductController();
