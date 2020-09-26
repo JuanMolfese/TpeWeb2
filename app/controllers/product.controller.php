@@ -52,8 +52,9 @@ class ProductController {
         }
         
     function deleteProduct($id){
-       $this->model->remove($id);
-       header("Location: " . BASE_URL); 
+        $catDeletedProd = $this->model->getSelectedProd($id);
+        $this->model->remove($id);
+        header("Location: " . BASE_URL ."filtrar/$catDeletedProd->id_categoria");
        
     }
 
