@@ -52,6 +52,9 @@ class ProductModel{
   
         $query = $this->db->prepare('DELETE FROM producto WHERE id = ?');
         $query->execute([$id]);
+        $cat=$this->getSelectedCat($id);
+        var_dump($cat);
+       
     }
     function RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria){
         
