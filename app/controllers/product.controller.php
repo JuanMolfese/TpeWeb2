@@ -39,12 +39,11 @@ class ProductController {
                 $oferta = $_POST['oferta'];
                 $categoria = $_POST['categoria'];
         
-                // inserto la tarea en la DB
+                // inserto la tarea en la DB y cargo en success el resultado si se pudo insertar o no
                 $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
+                             
             }
-        else{
-
-        }
+        
     }
 
     function showByCat($id){
@@ -55,8 +54,7 @@ class ProductController {
     function deleteProduct($id){
        $this->model->remove($id);
        header("Location: " . BASE_URL); 
-      
-    
+       
     }
 
     function updateProduct($id){
