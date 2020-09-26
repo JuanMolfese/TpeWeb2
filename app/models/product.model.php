@@ -27,8 +27,7 @@ class ProductModel{
 
         $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
         $query->execute([$id]);
-    
-        return $category= $query->fetchAll(PDO::FETCH_OBJ);    
+        $query->fetchAll(PDO::FETCH_OBJ);    
    }
 
    function getSelectedProd($id) {
@@ -49,11 +48,10 @@ class ProductModel{
     }
 
     function remove($id) {  
-  
+        
         $query = $this->db->prepare('DELETE FROM producto WHERE id = ?');
         $query->execute([$id]);
-        $cat=$this->getSelectedCat($id);
-        var_dump($cat);
+       
        
     }
     function RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria){
