@@ -9,47 +9,41 @@ class ProductController {
     private $view;
 
     function __construct() {
+
         $this->model = new ProductModel();
         $this->view = new ProductView();
-
     }
 
     function showHome(){
         
         $product = $this->model->getAll();
         $this->view->showProducts($product);
-
     }
   
-
     function addProduct(){
        
         $this->view->showAddForm();
-
         if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
                 (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
                 (isset($_REQUEST['precio']) && ($_REQUEST['precio'] != null)) &&
                 (isset($_REQUEST['oferta']) && ($_REQUEST['oferta'] != null)) &&
                 (isset($_REQUEST['categoria']) && ($_REQUEST['categoria'] != null))
-            ) {                     
-        
+            ) {                             
                 $nombre = $_POST['nombre'];
                 $descripcion = $_POST['descripcion'];
                 $precio = $_POST['precio'];
                 $oferta = $_POST['oferta'];
-                $categoria = $_POST['categoria'];
-        
-                // inserto la tarea en la DB y cargo en success el resultado si se pudo insertar o no
+                $categoria = $_POST['categoria'];        
+                // inserto la tarea en la DB
                 $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
-                             
-            }
-        
+            }    
     }
 
     function showByCat($id){
+        
         $selected=$this->model->getSelectedCat($id);
         $this->view->showProducts($selected);
-        }
+    }
         
     function deleteProduct($id){
         
@@ -82,5 +76,4 @@ class ProductController {
                 header("Location: " . BASE_URL);
             }
     }
-
 }

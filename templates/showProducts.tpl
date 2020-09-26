@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    {include 'header.tpl'}
+        {include 'header.tpl'}
 
     <main class="container">
 
@@ -36,7 +36,9 @@
                 </tr>
             {/foreach}
         </table>
+
         {include 'footer.tpl'}
+
     </main>
 </body>
 </html>

@@ -2,7 +2,6 @@
 
 require_once 'libs/smarty/libs/Smarty.class.php';
 
-
 class ProductView{
 
     function showProducts($products) {

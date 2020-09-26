@@ -18,46 +18,39 @@ class ProductModel{
     function getAll() {
 
         $query = $this->db->prepare('SELECT * FROM producto');
-        $query->execute();
-    
+        $query->execute();    
         return $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
     }
 
    function getSelectedCat($id) {
-
-        $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
-        $query->execute([$id]);
-        $query->fetchAll(PDO::FETCH_OBJ);    
-   }
+       $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
+       $query->execute([$id]);
+       return $query->fetchAll(PDO::FETCH_OBJ);    
+    }
 
    function getSelectedProd($id) {
         
         $query = $this->db-> prepare ('SELECT * FROM producto WHERE id=?');    
         $query->execute([$id]);
-
         return $product= $query->fetch(PDO::FETCH_OBJ);    
    }
 
     function insert($nombre, $descripcion, $precio, $oferta, $categoria) {
 
-        $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria) VALUES (?,?,?,?,?)');
- 
+        $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria) VALUES (?,?,?,?,?)'); 
         $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
-
         //return $query->lastInsertId();
     }
 
     function remove($id) {  
         
         $query = $this->db->prepare('DELETE FROM producto WHERE id = ?');
-        $query->execute([$id]);
-       
-       
+        $query->execute([$id]);      
     }
+
     function RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria){
         
         $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=? WHERE id='.$id.' ');
         $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
     }
-
 }

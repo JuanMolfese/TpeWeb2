@@ -45,10 +45,10 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->RecordUpdateProduct();
         break;
-        case 'verCategorias':
-            $controller = new CategoryController();
-            $controller->showAllcats();
-            break;
+    case 'verCategorias':
+        $controller = new CategoryController();
+        $controller->showAllcats();
+        break;
     default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');
