@@ -4,6 +4,7 @@
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 include_once 'app/controllers/product.controller.php';
+include_once 'app/controllers/category.controller.php';
 
 // lee la acción
 if (!empty($_GET['action'])) {

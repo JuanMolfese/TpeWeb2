@@ -15,5 +15,7 @@ class CategoryController {
     }
 
     function showAllcats () {
-        
+        $category = $this->model->getAllcategorys();
+        $this->view->showCategorys($category);
     }
+}
