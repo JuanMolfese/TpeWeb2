@@ -11,38 +11,41 @@ class ProductModel{
 
     // Abre conexión a la base de datos
     private function connect() {
-        $db = new PDO('mysql:host=localhost;'.'dbname=db_venta_tec;charset=utf8', 'root', '');
-        return $db;
+    
+        return $db = new PDO('mysql:host=localhost;'.'dbname=db_venta_tec;charset=utf8', 'root', '');        
     }
 
-   
     function getAll() {
 
         $query = $this->db->prepare('SELECT * FROM producto');
         $query->execute();
-        $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
-        return $products;
-    }
-   function getSelectedCat($id) {
-    $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
     
-    $query->execute([$id]);
-    $category= $query->fetchAll(PDO::FETCH_OBJ);
-    return $category;
+        return $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
+    }
+
+   function getSelectedCat($id) {
+
+        $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
+        $query->execute([$id]);
+    
+        return $category= $query->fetchAll(PDO::FETCH_OBJ);    
    }
 
    function getSelectedProd($id) {
-    $query = $this->db-> prepare ('SELECT * FROM producto WHERE id=?');
-    
-    $query->execute([$id]);
-    $product= $query->fetch(PDO::FETCH_OBJ);
-    return $product;
+        
+        $query = $this->db-> prepare ('SELECT * FROM producto WHERE id=?');    
+        $query->execute([$id]);
+
+        return $product= $query->fetch(PDO::FETCH_OBJ);    
    }
 
     function insert($nombre, $descripcion, $precio, $oferta, $categoria) {
 
         $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria) VALUES (?,?,?,?,?)');
+ 
         $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
+
+        //return $query->lastInsertId();
     }
 
     function remove($id) {  
