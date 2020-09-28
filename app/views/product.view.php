@@ -24,10 +24,11 @@ class ProductView{
         $smarty->display('templates/showAddForm.tpl');      
     }
 
-    function showUpdateForm($product){
+    function showUpdateForm($product, $categorys){
 
         $smarty = new Smarty();        
-        $smarty->assign('product', $product);    
+        $smarty->assign('product', $product);
+        $smarty->assign('categorys', $categorys);
         $smarty->display('templates/showUpdateForm.tpl');    
     }
 }

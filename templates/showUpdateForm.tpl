@@ -34,22 +34,23 @@
                     <input name='descripcion' type='text' value="{$product->descripcion}" class='form-control' id='input_product_description' maxlength='50'>
                 </div>
 
-                <div class='form-group col-md-2 p-0'>
-                <label for='input_product_id_cat'>ID Categoria</label>
-                <input type='text' value="{$product->id_categoria}" class='form-control' id='input_product_categoria'>
-                </div>
-
-                <div class='form-group col-md-4 ml-2 p-0'>
+                <div class='form-group col-md-4 p-0'>
                 <label for='input_product_id_cat_select'>Cambiar Categoria</label>
                     <select class='custom-select' name='categoria' id='input_product_id_cat'>
-                        <option value='1'>1 - Notebooks</option>
-                        <option value='2'>2 - Tablet</option>
-                        <option value='3'>3 - Celulares</option>
+                       
+                    {foreach from=$categorys item=category}
+                             <option value='{$category->id}' 
+                                {if ($product->id_categoria == $category->id)}
+                                    {'selected'}
+                                {/if}                             
+                             >{$category->nombre}</option>
+                    {/foreach}
+                       
                     </select>
                 </div>
 
-                <div class='form-group col-md-5 p-0 mt-4 d-flex justify-content-around'>
-                    <label for='input_product_oferta'>Esta en oferta ?</label>
+                <div class='form-group col-md-3 p-0 mt-4 ml-5 d-flex justify-content-around'>
+                    <label class='d-flex align-items-center mb-0' for='input_product_oferta'>Esta en oferta ?</label>
                     <div class='form-check form-check-inline' id='input_product_oferta'>
                         <input class='form-check-input' type='radio' name='oferta' id='inlineRadio1' value='0' checked>
                         <label class='form-check-label' for='inlineRadio1'>No</label>

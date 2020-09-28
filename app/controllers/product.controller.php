@@ -55,8 +55,10 @@ class ProductController {
     }
 
     function updateProduct($id){
+        $getCats = new CategoryModel();
         $selected=$this->model->getSelectedProd($id);
-        $this->view->showUpdateForm($selected);
+        $allCats = $getCats->getAllcategorys();
+        $this->view->showUpdateForm($selected, $allCats);
     }
 
     function RecordUpdateProduct(){
