@@ -31,3 +31,12 @@ class ProductView{
         $smarty->display('templates/showUpdateForm.tpl');    
     }
 }
+class CategoryView{
+
+    function showCategorys($categorys) {
+   
+        $smarty = new Smarty();        
+        $smarty->assign('category', $categorys);   
+        $smarty->display('templates/showCategorys.tpl');
+    }
+}

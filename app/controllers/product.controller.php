@@ -1,6 +1,8 @@
 <?php
 include_once 'app/models/product.model.php';
+include_once 'app/models/category.model.php';
 include_once 'app/views/product.view.php';
+
 
 
 class ProductController {
@@ -75,5 +77,22 @@ class ProductController {
                 $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
                 header("Location: " . BASE_URL);
             }
+    }
+    
+}
+class CategoryController {
+
+    private $model;
+    private $view;
+
+    function __construct() {
+        $this->model = new CategoryModel();
+        $this->view = new CategoryView();
+
+    }
+
+    function showAllcats () {
+        $category = $this->model->getAllcategorys();
+        $this->view->showCategorys($category);
     }
 }
