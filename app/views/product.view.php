@@ -5,17 +5,32 @@ require_once 'libs/smarty/libs/Smarty.class.php';
 class ProductView{
 
     function showProducts($products) {
-   
-        $smarty = new Smarty();        
-        $smarty->assign('products', $products);    
+
+        $smarty = new Smarty();
+        $smarty->assign('products', $products);
         $smarty->display('templates/showProducts.tpl');
     }
+
+    function showError($origin, $msg){
+
+        $smarty = new Smarty();
+        $smarty->assign('origin', $origin);
+        $smarty->assign('msg', $msg);
+        $smarty->display('templates/showError.tpl');
+    }
     
-    function showError($msg){
+    function showConfirm($origin, $msg){
+        
+        $smarty = new Smarty();
+        $smarty->assign('origin', $origin);            
+        $smarty->assign('msg', $msg);    
+        $smarty->display('templates/showConfirm.tpl');                 
+    }
+    
+    function basepage(){
         
         $smarty = new Smarty();        
-        $smarty->assign('msg', $msg);    
-        $smarty->display('templates/showError.tpl');                 
+        $smarty->display('templates/basepage.tpl');                 
     }
 
     function showAddForm(){

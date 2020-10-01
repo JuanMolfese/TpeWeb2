@@ -37,21 +37,38 @@ class ProductController {
                 $oferta = $_POST['oferta'];
                 $categoria = $_POST['categoria'];        
                 // inserto la tarea en la DB
-                $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
+                $success = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
+
+                if($success)
+                    $this->view->showConfirm("add","Se ingreso el producto");    
+                else    
+                    $this->view->showError("add","No se pudo ingresar el producto");
             }    
     }
 
     function showByCat($id){
         
         $selected=$this->model->getSelectedCat($id);
+        if(empty($selected)){
+            $this->view->basepage();
+            $this->view->showError("cat","No hay productos en esta categoria");
+        }
+        else    
         $this->view->showProducts($selected);
     }
         
     function deleteProduct($id){
         
         $catDeletedProd = $this->model->getSelectedProd($id);
-        $this->model->remove($id);
-        header("Location: " . BASE_URL ."filtrar/$catDeletedProd->id_categoria");
+        $success=$this->model->remove($id);
+        if ($success){
+            $this->view->basepage();
+            $this->view->showConfirm("del","Se elimino el producto");}
+        else{    
+            $this->view->basepage();
+            $this->view->showError("del","No se pudo eliminar el producto");
+        }
+       // header("Location: " . BASE_URL ."filtrar/$catDeletedProd->id_categoria");
     }
 
     function updateProduct($id){

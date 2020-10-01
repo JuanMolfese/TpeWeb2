@@ -29,12 +29,11 @@
                 </div>
                 <div class="form-group col-md-12 p-0">
                     <label for="input_product_description">Descripcion</label>
-                    <input name="descripcion" type="text" class="form-control" id="input_product_description" aria-describedby="Ingresar detalles del producto" maxlength="50">
+                    <input name="descripcion" type="text" class="form-control" id="input_product_description" aria-describedby="Ingresar detalles del producto" maxlength="50" required>
                 </div>
                 <div class="form-group col-md-6 p-0 mt-4">
                     <select class="custom-select" name="categoria" id="input_product_id_cat">
-                        <option selected>Seleccionar categoria</option>
-                        <option value="1">Notebooks</option>
+                        <option selected value="1">Notebooks</option>
                         <option value="2">Tablet</option>
                         <option value="3">Celulares</option>
                     </select>
