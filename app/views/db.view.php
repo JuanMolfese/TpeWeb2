@@ -2,7 +2,7 @@
 
 require_once 'libs/smarty/libs/Smarty.class.php';
 
-class ProductView{
+class dbView{
 
     function showProducts($products) {
 
@@ -46,11 +46,8 @@ class ProductView{
         $smarty->assign('categorys', $categorys);
         $smarty->display('templates/showUpdateForm.tpl');    
     }
-}
-class CategoryView{
-
     function showCategorys($categorys) {
-   
+    
         $smarty = new Smarty();        
         $smarty->assign('category', $categorys);   
         $smarty->display('templates/showCategorys.tpl');

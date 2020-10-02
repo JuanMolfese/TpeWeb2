@@ -3,7 +3,7 @@
 
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-include_once 'app/controllers/product.controller.php';
+include_once 'app/controllers/db.controller.php';
 //include_once 'app/controllers/category.controller.php';
 
 // lee la acción
@@ -19,35 +19,35 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home':
-        $controller = new ProductController();
+        $controller = new dbController();
         $controller->showHome();
         break;
     case 'filtrar':
-        $controller = new ProductController();
+        $controller = new dbController();
         $id = $params[1];
         $controller->showByCat($id); //se refiere a la ID de la categoria
         break;
     case 'insertar':
-        $controller = new ProductController();
+        $controller = new dbController();
         $controller->addProduct();
         break;
     case 'eliminar':
-        $controller = new ProductController();
+        $controller = new dbController();
         $id = $params[1];
         $controller->deleteProduct($id);
         break;
     case 'update':
-        $controller = new ProductController();
+        $controller = new dbController();
         $id = $params[1];
         $controller->updateProduct($id);
         break;
     case 'editar':
-        $controller = new ProductController();
+        $controller = new dbController();
         $id = $params[1];
         $controller->RecordUpdateProduct();
         break;
     case 'verCategorias':
-        $controller = new CategoryController();
+        $controller = new dbController();
         $controller->showAllcats();
         break;
     default:

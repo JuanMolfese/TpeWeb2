@@ -1,19 +1,20 @@
 <?php
 include_once 'app/models/product.model.php';
 include_once 'app/models/category.model.php';
-include_once 'app/views/product.view.php';
+include_once 'app/views/db.view.php';
 
 
 
-class ProductController {
-
+class dbController {
+    
     private $model;
     private $view;
-
+    
     function __construct() {
-
-        $this->model = new ProductModel();
-        $this->view = new ProductView();
+        
+        $this->model = new dbModel();
+        $this->view = new dbView();
+        $this->catmodel = new CategoryModel();
     }
 
     function showHome(){
@@ -96,22 +97,10 @@ class ProductController {
                 $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
                 header("Location: " . BASE_URL);
             }
-    }
+        }
+                function showAllcats () {
+                    $category = $this->catmodel->getAllcategorys();
+                    $this->view->showCategorys($category);
+                }
     
-}
-class CategoryController {
-
-    private $model;
-    private $view;
-
-    function __construct() {
-        $this->model = new CategoryModel();
-        $this->view = new CategoryView();
-
-    }
-
-    function showAllcats () {
-        $category = $this->model->getAllcategorys();
-        $this->view->showCategorys($category);
-    }
 }
