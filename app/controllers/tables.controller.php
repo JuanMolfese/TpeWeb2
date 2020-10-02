@@ -1,7 +1,7 @@
 <?php
-include_once 'app/models/db.model.php';
+include_once 'app/models/product.model.php';
 include_once 'app/models/category.model.php';
-include_once 'app/views/db.view.php';
+include_once 'app/views/tables.view.php';
 
 
 
@@ -9,6 +9,8 @@ class dbController {
     
     private $model;
     private $view;
+    private $catmodel;
+    
     
     function __construct() {
         
@@ -48,7 +50,7 @@ class dbController {
     }
 
     function showAllcats () {
-        $cats = $this->model->getAll();
+        $cats = $this->catmodel->getAllcategorys();
         $this->view->showCategorys($cats);
     }
     function showByCat($id){
