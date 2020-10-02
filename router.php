@@ -23,7 +23,7 @@ switch ($params[0]) {
         $controller->showHome();
         break;
     case 'allProd':
-        $controller = new dbController();
+        $controller = new tablesController();
         $controller->showAllProd();
         break;
     case 'filtrar':
