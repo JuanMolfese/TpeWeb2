@@ -97,6 +97,12 @@ class ProductController {
                 header("Location: " . BASE_URL);
             }
     }
+
+    function showProductDetail($id){
+           
+        $selected=$this->model->getSelectedProd($id);
+        $this->view->showDetail($selected);
+    }
     
 }
 class CategoryController {

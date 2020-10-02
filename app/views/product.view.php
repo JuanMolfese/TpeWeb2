@@ -46,7 +46,15 @@ class ProductView{
         $smarty->assign('categorys', $categorys);
         $smarty->display('templates/showUpdateForm.tpl');    
     }
+    
+    function showDetail($product) {
+
+        $smarty = new Smarty();
+        $smarty->assign('product', $product);
+        $smarty->display('templates/showDetail.tpl');
+    }
 }
+
 class CategoryView{
 
     function showCategorys($categorys) {
