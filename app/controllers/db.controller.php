@@ -1,5 +1,5 @@
 <?php
-include_once 'app/models/product.model.php';
+include_once 'app/models/db.model.php';
 include_once 'app/models/category.model.php';
 include_once 'app/views/db.view.php';
 
@@ -47,6 +47,10 @@ class dbController {
             }    
     }
 
+    function showAllcats () {
+        $cats = $this->model->getAll();
+        $this->view->showCategorys($cats);
+    }
     function showByCat($id){
         
         $selected=$this->model->getSelectedCat($id);
@@ -97,10 +101,12 @@ class dbController {
                 $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
                 header("Location: " . BASE_URL);
             }
-        }
-                function showAllcats () {
-                    $category = $this->catmodel->getAllcategorys();
-                    $this->view->showCategorys($category);
-                }
+    }
+
+    function showProductDetail($id){
+           
+        $selected=$this->model->getSelectedProd($id);
+        $this->view->showDetail($selected);
+    }
     
 }

@@ -19,8 +19,9 @@
                 <td>{$product->precio}</td>
                 <td>{$product->oferta}</td>
                 <td>{$product->id_categoria}</td>
-                <td><a class='btn btn-danger btn-sm' href='eliminar/{$product->id}'>ELIMINAR</a></td>
-                <td><a class='btn btn-primary btn-sm' href='update/{$product->id}'>EDITAR</a></td>
+                <td><a class='btn btn-success btn-sm' href='details/{$product->id}'>Detalle</a></td>
+                <td><a class='btn btn-danger btn-sm' href='eliminar/{$product->id}'>Eliminar</a></td>
+                <td><a class='btn btn-primary btn-sm' href='update/{$product->id}'>Editar</a></td>
                 </tr>
             {/foreach}
         </table>

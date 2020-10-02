@@ -31,6 +31,11 @@ switch ($params[0]) {
         $controller = new dbController();
         $controller->addProduct();
         break;
+    case 'details':
+        $controller = new dbController();
+        $id = $params[1];
+        $controller->showProductDetail($id);
+        break;
     case 'eliminar':
         $controller = new dbController();
         $id = $params[1];

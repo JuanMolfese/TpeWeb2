@@ -46,6 +46,13 @@ class dbView{
         $smarty->assign('categorys', $categorys);
         $smarty->display('templates/showUpdateForm.tpl');    
     }
+    
+    function showDetail($product) {
+
+        $smarty = new Smarty();
+        $smarty->assign('product', $product);
+        $smarty->display('templates/showDetail.tpl');
+    }
     function showCategorys($categorys) {
     
         $smarty = new Smarty();        
@@ -53,3 +60,5 @@ class dbView{
         $smarty->display('templates/showCategorys.tpl');
     }
 }
+
+
