@@ -2,7 +2,7 @@
 
 require_once 'libs/smarty/libs/Smarty.class.php';
 
-class dbView{
+class tablesView{
 
     function showProducts($products) {
 

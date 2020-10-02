@@ -19,42 +19,46 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home':
-        $controller = new dbController();
+        $controller = new tablescontroller();
         $controller->showHome();
         break;
     case 'filtrar':
-        $controller = new dbController();
+        $controller = new tablesController();
         $id = $params[1];
         $controller->showByCat($id); //se refiere a la ID de la categoria
         break;
     case 'insertar':
-        $controller = new dbController();
+        $controller = new tablesController();
         $controller->addProduct();
         break;
     case 'details':
-        $controller = new dbController();
+        $controller = new tablesController();
         $id = $params[1];
         $controller->showProductDetail($id);
         break;
     case 'eliminar':
-        $controller = new dbController();
+        $controller = new tablesController();
         $id = $params[1];
         $controller->deleteProduct($id);
         break;
     case 'update':
-        $controller = new dbController();
+        $controller = new tablesController();
         $id = $params[1];
         $controller->updateProduct($id);
         break;
     case 'editar':
-        $controller = new dbController();
+        $controller = new tablesController();
         $id = $params[1];
         $controller->RecordUpdateProduct();
         break;
     case 'verCategorias':
-        $controller = new dbController();
+        $controller = new tablesController();
         $controller->showAllcats();
         break;
+    case 'editarCategorias':
+            $controller = new tablesController();
+            $controller->editCat();
+            break;
     default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');

@@ -20,4 +20,6 @@ class CategoryModel{
       $query->execute();    
       return $category = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
   }
+
+  
 }

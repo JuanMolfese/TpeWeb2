@@ -1,6 +1,6 @@
 <?php
 
-class dbModel{
+class productModel{
 
     private $db;
 
@@ -53,4 +53,6 @@ class dbModel{
         $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=? WHERE id='.$id.' ');
         return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
     }
+
+    
 }

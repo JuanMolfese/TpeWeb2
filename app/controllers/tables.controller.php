@@ -5,7 +5,7 @@ include_once 'app/views/tables.view.php';
 
 
 
-class dbController {
+class tablesController {
     
     private $model;
     private $view;
@@ -14,8 +14,8 @@ class dbController {
     
     function __construct() {
         
-        $this->model = new dbModel();
-        $this->view = new dbView();
+        $this->model = new productModel();
+        $this->view = new tablesView();
         $this->catmodel = new CategoryModel();
     }
 
@@ -110,5 +110,7 @@ class dbController {
         $selected=$this->model->getSelectedProd($id);
         $this->view->showDetail($selected);
     }
+
+    
     
 }
