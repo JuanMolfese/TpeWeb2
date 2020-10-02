@@ -21,6 +21,12 @@ class tablesController {
 
     function showHome(){
         
+        $product = $this->model->getAllOffer();
+        $this->view->showProducts($product);
+    }
+
+    function showAllProd(){
+        
         $product = $this->model->getAll();
         $this->view->showProducts($product);
     }
@@ -110,7 +116,5 @@ class tablesController {
         $selected=$this->model->getSelectedProd($id);
         $this->view->showDetail($selected);
     }
-
-    
-    
+            
 }

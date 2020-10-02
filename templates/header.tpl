@@ -35,22 +35,34 @@
                         <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categorias
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href='filtrar/3'>Celulares</a>
                             <a class="dropdown-item" href='filtrar/1'>Notebooks</a>
                             <a class="dropdown-item" href='filtrar/2'>Tablets</a>
+                            <a class="dropdown-item" href='allProd'>Ver Todo</a>
                         </div>
                     </div>
                     
                 </div>
                 
-                <div class="d-flex flex-md-row flex-column col-md-4 justify-content-md-end p-0">
+                <div class="dropdown text-center col-md-1">
+                    <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Administrar
+                    </button>
+                    <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href='allProd'>Productos</a>
+                        <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
+                    </div>
+                 </div>
+                
+                
+                <div class="d-flex flex-md-row flex-column col-md-3 justify-content-md-end p-0">
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link btn btn-secondary text-white mx-md-3" href="#">Login</a>
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='#'>Registrarse</a>
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='register'>Registrarse</a>
                     </li>
                 </div>
 
