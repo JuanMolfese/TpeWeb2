@@ -1,4 +1,3 @@
-    {include 'header.tpl'}    
     <main class="container">
 
         <div class="modal fade show" id="staticBackdropLive" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">

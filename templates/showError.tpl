@@ -1,4 +1,3 @@
-    {include 'header.tpl'}
 
     <main class="container">
 

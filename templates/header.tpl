@@ -11,9 +11,8 @@
 <body>
 
 <header class="container p-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <!-- <a class="navbar-brand" href="#"> <img src="img/logo_nt2.png" alt="Logo New tech"> </a> -->
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-md-4">
+       
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,48 +21,36 @@
 
             <ul class="navbar-nav col-md-12 p-0">
 
-                <div class="row col-md-8 justify-content-start p-0 ml-3">
-                    <!-- NUEVO  -->
-                    <li class="nav-item">
-                        <a class="nav-link" name='home' href='home'>Home</a>
+                <div class="d-flex flex-md-row flex-column col-md-8 justify-content-start p-0 ml-md-3">
+                    
+                    <div class="text-white d-flex align-items-center">
+                        <h3>New Tech</h3>
+                    </div>
+                    
+                    <li class="nav-item mx-md-4 p-0">
+                        <a class="nav-link btn btn-secondary text-white" name='home' href='home'>Home</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" name='3' href='filtrar/3'>Celulares</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" name='1' href='filtrar/1'>Notebooks</a>
-                    </li>
-                    <li class="nav-item" >
-                        <a class="nav-link" name='2' href='filtrar/2'>Tablets</a>
-                    </li>
+                    <div class="dropdown text-center">
+                        <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categorias
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href='filtrar/3'>Celulares</a>
+                            <a class="dropdown-item" href='filtrar/1'>Notebooks</a>
+                            <a class="dropdown-item" href='filtrar/2'>Tablets</a>
+                        </div>
+                    </div>
+                    
                 </div>
                 
-                <div class="row col-md-4 justify-content-end p-0">
+                <div class="d-flex flex-md-row flex-column col-md-4 justify-content-md-end p-0">
                     
                     <li class="nav-item dropdown">
-                        <!-- NUEVO  -->
-                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#MenuRegistro" aria-controls="MenuRegistro" aria-expanded="false"> Login </a>
-
-                        <div class="form-row collapse dropdown-menu border-0 bg-light " id="MenuRegistro">
-
-                            <div class="col-md-12 mb-3">
-                                <label for="validationCustom10">Usuario</label>
-                                <input type="text" class="form-control" id="validationCustom01" maxlength="12" required>
-
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="validationCustom11">Contraseña</label>
-                                <input type="password" class="form-control" id="validationCustom02" maxlength="6" required>
-
-                            </div>
-                            <button class="btn btn-primary ml-2" type="submit">Ingresar</button>
-                        </div>
-
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href="#">Login</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" id="btn-menu-login" href='registro'>Registrarse</a>
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='#'>Registrarse</a>
                     </li>
                 </div>
 
