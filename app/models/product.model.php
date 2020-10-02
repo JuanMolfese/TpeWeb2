@@ -22,18 +22,26 @@ class dbModel{
         return $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
     }
 
+    function getAllOffer() {
+
+        $query = $this->db->prepare('SELECT * FROM producto WHERE oferta=?');
+        $query->execute([1]);
+        return $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
+    }
+
    function getSelectedCat($id) {
+
        $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
        $query->execute([$id]);
        return $query->fetchAll(PDO::FETCH_OBJ);    
     }
 
    function getSelectedProd($id) {
-        
+
         $query = $this->db-> prepare ('SELECT * FROM producto WHERE id=?');    
         $query->execute([$id]);
         return $product= $query->fetch(PDO::FETCH_OBJ);    
-   }
+    }
 
     function insert($nombre, $descripcion, $precio, $oferta, $categoria) {
 

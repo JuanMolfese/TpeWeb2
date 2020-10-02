@@ -22,6 +22,10 @@ switch ($params[0]) {
         $controller = new dbController();
         $controller->showHome();
         break;
+    case 'allProd':
+        $controller = new dbController();
+        $controller->showAllProd();
+        break;
     case 'filtrar':
         $controller = new dbController();
         $id = $params[1];
@@ -54,6 +58,10 @@ switch ($params[0]) {
     case 'verCategorias':
         $controller = new dbController();
         $controller->showAllcats();
+        break;
+    case 'login':
+        $controller = new authController(); // <= ver con Cris si Crear nuevo controller
+        $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn
         break;
     default:
        header("HTTP/1.0 404 Not Found");

@@ -10,7 +10,7 @@ class dbView{
         $smarty->assign('products', $products);
         $smarty->display('templates/showProducts.tpl');
     }
-
+    
     function showError($origin, $msg){
 
         $smarty = new Smarty();
