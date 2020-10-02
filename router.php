@@ -59,17 +59,10 @@ switch ($params[0]) {
         $controller = new tablesController();
         $controller->showAllcats();
         break;
-<<<<<<< HEAD
-    case 'editarCategorias':
-            $controller = new tablesController();
-            $controller->editCat();
-            break;
-=======
     case 'login':
         $controller = new authController(); // <= ver con Cris si Crear nuevo controller
         $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn
         break;
->>>>>>> 9f06a8dce825b5b47def126a26c45989a041f374
     default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');
