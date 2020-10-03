@@ -74,6 +74,10 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteCategory($id);
         break;
+    case 'insertarCategoria':
+        $controller = new tablesController();
+        $controller->addCategory();
+        break;
     case 'login':
         $controller = new authController(); // <= ver con Cris si Crear nuevo controller
         $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn

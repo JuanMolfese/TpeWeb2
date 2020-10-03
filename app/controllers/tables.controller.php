@@ -155,4 +155,23 @@ class tablesController {
         }
         //header("Location: " . 'verCategorias');
     }
+
+    function addCategory(){
+       
+        $this->view->showAddcatForm();
+        if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
+                (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
+            ) {                             
+                $nombre = $_POST['nombreCat'];
+                $descripcion = $_POST['descripcionCat'];
+                      
+                // inserto la tarea en la DB
+                $success = $this->catmodel->insert($nombre, $descripcion);
+
+                if($success)
+                    $this->view->showConfirm("add","Se ingreso el producto");    
+                else    
+                    $this->view->showError("add","No se pudo ingresar el producto");
+            }    
+    }
 }
