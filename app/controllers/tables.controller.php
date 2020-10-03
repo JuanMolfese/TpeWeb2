@@ -158,7 +158,7 @@ class tablesController {
 
     function addCategory(){
        
-        $this->view->showAddcatForm();
+        $this->view->showAddCatForm();
         if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
                 (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
             ) {                             
