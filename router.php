@@ -52,7 +52,7 @@ switch ($params[0]) {
         break;
     case 'editar':
         $controller = new tablesController();
-        $id = $params[1];
+     //   $id = $params[1];
         $controller->RecordUpdateProduct();
         break;
     case 'verCategorias':
@@ -66,7 +66,7 @@ switch ($params[0]) {
         break;
     case 'editarCat':
         $controller = new tablesController();
-        $id = $params[1];
+     //   $id = $params[1];
         $controller->RecordupdateCat();
         break;
     case 'login':

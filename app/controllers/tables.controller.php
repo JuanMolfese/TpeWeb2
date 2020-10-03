@@ -107,7 +107,7 @@ class tablesController {
                 $categoria = $_POST['categoria'];
                 
                 $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
-                header("Location: " . BASE_URL);
+                header("Location: " . 'filtrar/'.$categoria);
             }
     }
 
@@ -127,16 +127,16 @@ class tablesController {
     
     function RecordUpdateCat(){
         
-        if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
-                (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null))
+        if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
+                (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
             ) {                     
                 $id = $_POST['idCategoria'];
                 $nombre = $_POST['nombreCat'];
                 $descripcion = $_POST['descripcionCat'];
-               
+              
                 
                 $this->catmodel->RecordUpdateCat($id, $nombre, $descripcion);
-                header("Location: " . BASE_URL);
+                header("Location: " . 'verCategorias');
             }
     }
 }
