@@ -32,8 +32,10 @@ class tablesController {
     }
   
     function addProduct(){
-       
-        $this->view->showAddForm();
+        
+        $allCats = $this->catmodel->getAllcategorys();
+        $this->view->showAddForm($allCats);
+
         if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
                 (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
                 (isset($_REQUEST['precio']) && ($_REQUEST['precio'] != null)) &&
@@ -59,6 +61,7 @@ class tablesController {
         $cats = $this->catmodel->getAllcategorys();
         $this->view->showCategorys($cats);
     }
+
     function showByCat($id){
         
         $selected=$this->model->getSelectedCat($id);
@@ -69,7 +72,7 @@ class tablesController {
         else    
         $this->view->showProducts($selected);
     }
-        
+
     function deleteProduct($id){
         
         $catDeletedProd = $this->model->getSelectedProd($id);
@@ -148,10 +151,10 @@ class tablesController {
         if ($success){
             
             $this->view->basepage();
-            $this->view->showConfirm("del","Se elimino el producto");}
+            $this->view->showConfirm("delcat","Se elimino la categoria");}
         else{    
             $this->view->basepage();
-            $this->view->showError("del","La categoria contiene productos asociados");
+            $this->view->showError("delcat","La categoria contiene productos asociados");
         }
         //header("Location: " . 'verCategorias');
     }
@@ -169,9 +172,9 @@ class tablesController {
                 $success = $this->catmodel->insert($nombre, $descripcion);
 
                 if($success)
-                    $this->view->showConfirm("add","Se ingreso el producto");    
+                    $this->view->showConfirm("addcat","Se ingreso la nueva categoria");    
                 else    
-                    $this->view->showError("add","No se pudo ingresar el producto");
+                    $this->view->showError("addcat","No se pudo ingresar la categoria");
             }    
     }
 }
