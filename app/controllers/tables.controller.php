@@ -116,5 +116,27 @@ class tablesController {
         $selected=$this->model->getSelectedProd($id);
         $this->view->showDetail($selected);
     }
-            
+    function updateCat($id){
+        
+            $getCats = new CategoryModel();
+            $selected=$this->catmodel->getSelectedCat($id);
+          //  $allCats = $getCats->getAllcategorys();
+            $this->view->showUpdateCatForm($selected);
+        
+    }      
+    
+    function RecordUpdateCat(){
+        
+        if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
+                (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null))
+            ) {                     
+                $id = $_POST['idCategoria'];
+                $nombre = $_POST['nombreCat'];
+                $descripcion = $_POST['descripcionCat'];
+               
+                
+                $this->catmodel->RecordUpdateCat($id, $nombre, $descripcion);
+                header("Location: " . BASE_URL);
+            }
+    }
 }

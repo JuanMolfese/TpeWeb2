@@ -59,6 +59,16 @@ switch ($params[0]) {
         $controller = new tablesController();
         $controller->showAllcats();
         break;
+    case 'updateCat':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->updateCat($id);
+        break;
+    case 'editarCat':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->RecordupdateCat();
+        break;
     case 'login':
         $controller = new authController(); // <= ver con Cris si Crear nuevo controller
         $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn

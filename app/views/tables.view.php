@@ -59,6 +59,12 @@ class tablesView{
         $smarty->assign('category', $categorys);   
         $smarty->display('templates/showCategorys.tpl');
     }
+    function showUpdateCatform($category){
+
+        $smarty = new Smarty();        
+        $smarty->assign('category', $category);
+        $smarty->display('templates/showUpdateCatform.tpl');    
+    }
 }
 
 
