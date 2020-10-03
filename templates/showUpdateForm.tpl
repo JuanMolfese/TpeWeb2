@@ -22,16 +22,16 @@
                 </div>
 
                 <div class='form-group col-md-4 p-0'>
-                <label for='input_product_id_cat_select'>Cambiar Categoria</label>
-                    <select class='custom-select' name='categoria' id='input_product_id_cat'>
+                    <label for='input_product_id_cat_select'>Cambiar Categoria</label>
+                    <select class='custom-select' name='categoria' id='input_product_id_cat_select'>
                        
-                    {foreach from=$categorys item=category}
-                             <option value='{$category->id}' 
-                                {if ($product->id_categoria == $category->id)}
-                                    {'selected'}
-                                {/if}                             
-                             >{$category->nombre}</option>
-                    {/foreach}
+                        {foreach from=$categorys item=category}
+                                <option value='{$category->id}' 
+                                    {if ($product->id_categoria == $category->id)}
+                                        {'selected'}
+                                    {/if}                             
+                                >{$category->nombre}</option>
+                        {/foreach}
                        
                     </select>
                 </div>

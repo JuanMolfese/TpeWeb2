@@ -33,9 +33,9 @@ class tablesView{
         $smarty->display('templates/basepage.tpl');                 
     }
 
-    function showAddForm(){
-
-        $smarty = new Smarty();        
+    function showAddForm($categorys){
+        $smarty = new Smarty();
+        $smarty->assign('categorys', $categorys);      
         $smarty->display('templates/showAddForm.tpl');      
     }
 
@@ -65,10 +65,10 @@ class tablesView{
         $smarty->assign('category', $category);
         $smarty->display('templates/showUpdateCatform.tpl');    
     }
-    function showAddCatForm(){
+    function showAddcatForm(){
 
         $smarty = new Smarty();        
-        $smarty->display('templates/showAddCatForm.tpl');      
+        $smarty->display('templates/showAddcatForm.tpl');      
     }
 }
 
