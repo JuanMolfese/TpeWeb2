@@ -18,11 +18,14 @@
                     <label for="input_product_description">Descripcion</label>
                     <input name="descripcion" type="text" class="form-control" id="input_product_description" aria-describedby="Ingresar detalles del producto" maxlength="50" required>
                 </div>
-                <div class="form-group col-md-6 p-0 mt-4">
-                    <select class="custom-select" name="categoria" id="input_product_id_cat">
-                        <option selected value="1">Notebooks</option>
-                        <option value="2">Tablet</option>
-                        <option value="3">Celulares</option>
+                <div class='form-group col-md-4 p-0'>
+                    <label for='cat_select'>Categoria</label>
+                    <select class='custom-select' name='categoria' id='cat_select'>
+                       
+                        {foreach from=$categorys item=category}
+                                <option value='{$category->id}' >{$category->nombre}</option>
+                        {/foreach}
+                       
                     </select>
                 </div>
                 <div class="form-group col-md-6 p-0 mt-4 d-flex justify-content-around">
@@ -38,6 +41,7 @@
                 </div>
                 <div class="form-group m-auto col-md-10 d-flex justify-content-around pt-5">
                     <button type="submit" id="btn-cargar" class="btn btn-primary btn-lg">Cargar</button>
+                    <a href="allProd" class='btn btn-secondary btn-lg'>Volver</a>
                 </div>
             </div>
 
