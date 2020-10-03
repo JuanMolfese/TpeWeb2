@@ -11,6 +11,7 @@
                 <th>OFERTA</th>
                 <th>CATEGORIA</th>
                 <th> <a href="insertar" class='btn btn-primary font-italic'>Agregar</a></th>
+            </thead>
         
             {foreach from=$products item=product}
                 <tr>
