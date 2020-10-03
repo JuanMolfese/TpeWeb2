@@ -13,7 +13,7 @@
                 <td>{$cat->id}</td>
                 <td>{$cat->nombre}</td>
                 <td>{$cat->descripcion}</td>
-                <td><a class='btn btn-danger btn-sm' href='eliminar/{$cat->id}'>ELIMINAR</a></td>
+                <td><a class='btn btn-danger btn-sm' href='eliminarCategoria/{$cat->id}'>ELIMINAR</a></td>
                 <td><a class='btn btn-primary btn-sm' href='updateCat/{$cat->id}'>EDITAR</a></td>
                 </tr>
             {/foreach}

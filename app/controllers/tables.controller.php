@@ -75,13 +75,14 @@ class tablesController {
         $catDeletedProd = $this->model->getSelectedProd($id);
         $success=$this->model->remove($id);
         if ($success){
+
             $this->view->basepage();
             $this->view->showConfirm("del","Se elimino el producto");}
         else{    
             $this->view->basepage();
             $this->view->showError("del","No se pudo eliminar el producto");
         }
-       // header("Location: " . BASE_URL ."filtrar/$catDeletedProd->id_categoria");
+       // header("Location: " . BASE_URL ."filtrar/->id_categoria");
     }
 
     function updateProduct($id){
@@ -138,5 +139,20 @@ class tablesController {
                 $this->catmodel->RecordUpdateCat($id, $nombre, $descripcion);
                 header("Location: " . 'verCategorias');
             }
+    }
+    
+    function deleteCategory($id){
+        
+        $catDeletedProd = $this->catmodel->getSelectedCat($id);
+        $success=$this->catmodel->remove($id);
+        if ($success){
+            
+            $this->view->basepage();
+            $this->view->showConfirm("del","Se elimino el producto");}
+        else{    
+            $this->view->basepage();
+            $this->view->showError("del","La categoria contiene productos asociados");
+        }
+        //header("Location: " . 'verCategorias');
     }
 }

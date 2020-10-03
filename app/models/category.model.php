@@ -31,5 +31,10 @@ function RecordUpdatecat($id, $nombre, $descripcion){
   $query = $this->db->prepare('UPDATE categoria SET nombre=?, descripcion=? WHERE id='.$id.' ');
   return $query->execute([$nombre, $descripcion]);
 }
-  
+function remove($id) {  
+         
+  $query = $this->db->prepare('DELETE FROM categoria WHERE id = ?');
+  return $query->execute([$id]);      
+}
+
 }
