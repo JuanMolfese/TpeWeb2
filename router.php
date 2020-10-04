@@ -18,7 +18,7 @@ $params = explode('/', $action);
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
-    case 'home':
+    case 'home': //vuelve a pagina de inicio 
         $controller = new tablesController();
         $controller->showHome();
         break;
