@@ -14,6 +14,7 @@
             <div class="form-group">
                 <label for="Password">Password</label>
                 <input name='password' type="password" class="form-control" id="Password" required>
+                <span id="caps-message">Estan activadas las mayusculas!</span>
             </div>
             <div class='text-center my-5'>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
@@ -25,6 +26,6 @@
     {include 'footer.tpl'}
 
 </main> 
-
+<script src="js/main.js"></script>
 </body>
 </html>
