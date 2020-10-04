@@ -4,7 +4,7 @@
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 include_once 'app/controllers/tables.controller.php';
-//include_once 'app/controllers/category.controller.php';
+include_once 'app/controllers/auth.controller.php';
 
 // lee la acción
 if (!empty($_GET['action'])) {
@@ -18,6 +18,14 @@ $params = explode('/', $action);
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
+    case 'login':
+        $controller = new authController(); // <= ver con Cris si Crear nuevo controller
+        $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn
+        break;
+    case 'verifyUser':
+        $controller = new authController(); 
+        $controller->verifyUser(); 
+        break;
     case 'home':
         $controller = new tablesController();
         $controller->showHome();
@@ -77,10 +85,6 @@ switch ($params[0]) {
     case 'insertarCategoria':
         $controller = new tablesController();
         $controller->addCategory();
-        break;
-    case 'login':
-        $controller = new authController(); // <= ver con Cris si Crear nuevo controller
-        $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn
         break;
     default:
        header("HTTP/1.0 404 Not Found");
