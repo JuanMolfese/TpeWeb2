@@ -8,7 +8,7 @@
     {else if $ruta=='allProd'}
        <h3 class="display-4 text-light">TODOS NUESTROS PRODUCTOS</h3>
     {else if $ruta=='filtrar'}
-      <h3 class="display-4 text-light">{$cat->nombre}</h3>
+      <h3 class="display-4 text-light">{$cat->nombre|upper}</h3>
     {/if}
     </div>
         <table class="table table-striped my-5">
