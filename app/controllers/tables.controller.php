@@ -22,13 +22,13 @@ class tablesController {
     function showHome(){
         
         $product = $this->model->getAllOffer();
-        $this->view->showProducts($product);
+        $this->view->showProducts($product,'home','');
     }
 
     function showAllProd(){
         
         $product = $this->model->getAll();
-        $this->view->showProducts($product);
+        $this->view->showProducts($product,'allProd','');
     }
   
     function addProduct(){
@@ -63,14 +63,16 @@ class tablesController {
     }
 
     function showByCat($id){
+        $thecat=$this->catmodel->getSelectedcat($id);
+        $selected=$this->model->getAllSelectedCat($id);
         
-        $selected=$this->model->getSelectedCat($id);
         if(empty($selected)){
             $this->view->basepage();
             $this->view->showError("cat","No hay productos en esta categoria");
         }
         else    
-        $this->view->showProducts($selected);
+        $this->view->showProducts($selected,'filtrar',$thecat);
+        
     }
 
     function deleteProduct($id){

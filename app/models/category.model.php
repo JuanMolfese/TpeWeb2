@@ -20,7 +20,12 @@ class CategoryModel{
       $query->execute();    
       return $category = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
   }
-  function getSelectedCat($id) {
+  function getSelectedcat ($id) {
+    $query = $this->db-> prepare ('SELECT nombre FROM categoria WHERE id=?');    
+    $query->execute([$id]);
+    return $category= $query->fetch(PDO::FETCH_OBJ);
+  }
+  function getAllSelectedCat($id) {
 
     $query = $this->db-> prepare ('SELECT * FROM categoria WHERE id=?');    
     $query->execute([$id]);

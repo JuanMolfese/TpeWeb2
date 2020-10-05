@@ -4,10 +4,12 @@ require_once 'libs/smarty/libs/Smarty.class.php';
 
 class tablesView{
 
-    function showProducts($products) {
+    function showProducts($products,$ruta,$cat) {
 
         $smarty = new Smarty();
         $smarty->assign('products', $products);
+        $smarty->assign('ruta', $ruta);
+        $smarty ->assign('cat', $cat);
         $smarty->display('templates/showProducts.tpl');
     }
     
