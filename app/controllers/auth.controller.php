@@ -30,7 +30,7 @@ class authController{
         
         $user = $this->model->getByEmail($email);
              
-            if($user && $user->password == $password){
+            if($user && password_verify( $password,$user->password)){
                 $this->view->showConfirm('log','Bienvenido '.$user->email);
             }else{
                 $this->view->showError('log','Acceso Denegado');

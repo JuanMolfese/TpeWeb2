@@ -4,11 +4,11 @@
     
      <div class="d-flex justify-content-center fluid bg-primary rounded-pill">
     {if $ruta=='home'}
-         <h3 class="display-4 text-light">OFERTAS</h3>
+         <h1 class="text-light">OFERTAS</h1>
     {else if $ruta=='allProd'}
-       <h3 class="display-4 text-light">TODOS NUESTROS PRODUCTOS</h3>
+       <h1 class="text-light">TODOS NUESTROS PRODUCTOS</h1>
     {else if $ruta=='filtrar'}
-      <h3 class="display-4 text-light">{$cat->nombre|upper}</h3>
+      <h1 class="text-light">{$cat->nombre|upper}</h1>
     {/if}
     </div>
         <table class="table table-striped my-5">
