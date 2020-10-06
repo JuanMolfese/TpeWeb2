@@ -7,9 +7,12 @@ class authController{
 
     private $view;
     private $model;
+    private $catmodel;
 
     function __construct(){
-        $this->view = new authView();
+        $this->catmodel = new CategoryModel();
+        $category_list = $this->catmodel->getAllcategorys();  //se instacia al modelo de tables.
+        $this->view = new authView($category_list);
         $this->model = new userModel();
     }
 
@@ -24,16 +27,16 @@ class authController{
         $email = $_POST['email'];
         $password = $_POST['password'];
         if(empty($email) || empty($password)){
-            echo'Completar datos';
+            $this->view->showErrorLogin('log','Completar datos');
             die();
         }
         
         $user = $this->model->getByEmail($email);
              
             if($user && password_verify( $password,$user->password)){
-                $this->view->showConfirm('log','Bienvenido '.$user->email);
+                $this->view->showConfirmLogin('log','Bienvenido '.$user->email);
             }else{
-                $this->view->showError('log','Acceso Denegado');
+                $this->view->showErrorLogin('log','Acceso Denegado');
             }
 
     }

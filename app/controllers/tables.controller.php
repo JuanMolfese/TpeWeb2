@@ -10,15 +10,16 @@ class tablesController {
     private $model;
     private $view;
     private $catmodel;
-    
+    private $category_list;
     
     function __construct() {
         
         $this->model = new productModel();
-        $this->view = new tablesView();
         $this->catmodel = new CategoryModel();
+        $category_list = $this->catmodel->getAllcategorys();  
+        $this->view = new tablesView($category_list);
     }
-
+    
     function showHome(){
         
         $product = $this->model->getAllOffer();

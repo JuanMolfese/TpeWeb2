@@ -11,7 +11,7 @@
                 <th>ACCIONES</th>
                 <th> <a href="insertarCategoria" class='btn btn-primary font-italic'> Agregar Categoria </a> </th>
             </thead> 
-            {foreach from=$category item=cat}
+            {foreach from=$categorys item=cat}
                 <tr>
                 <td>{$cat->id}</td>
                 <td>{$cat->nombre}</td>

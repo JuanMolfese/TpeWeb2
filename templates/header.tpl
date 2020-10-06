@@ -40,13 +40,13 @@
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                         
                         <!-- TODO : Lista dinamica de categorias
-                        ******
-                        {*foreach from=$categorys item=category}
+                        ******-->
+                        {foreach from=$categorys item=category}
                             <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
-                        {/foreach*} -->
-                            <a class="dropdown-item" href='filtrar/3'>Celulares</a>
+                        {/foreach} 
+                           <!-- <a class="dropdown-item" href='filtrar/3'>Celulares</a>
                             <a class="dropdown-item" href='filtrar/1'>Notebooks</a>
-                            <a class="dropdown-item" href='filtrar/2'>Tablets</a>  
+                            <a class="dropdown-item" href='filtrar/2'>Tablets</a> --> 
                             <a class="dropdown-item" href='allProd'>Ver Todo</a>
                         </div>
                     </div>

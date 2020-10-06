@@ -19,7 +19,7 @@
                 <th>PRECIO</th>
                 <th>OFERTA</th>
                 <th>CATEGORIA</th>
-                <th> <a href="insertar" class='btn btn-primary font-italic'>Agregar</a></th>
+                <th> <a href="insertar" class='btn btn-primary font-italic'>Agregar Prod.</a></th>
             </thead>
         
             {foreach from=$products item=product}
