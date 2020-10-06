@@ -59,8 +59,8 @@ class tablesController {
     }
 
     function showAllcats () {
-        $cats = $this->catmodel->getAllcategorys();
-        $this->view->showCategorys($cats);
+     //   $cats = $this->catmodel->getAllcategorys();
+    $this->view->showCategorys(/*$cats*/);
     }
 
     function showByCat($id){
@@ -92,10 +92,10 @@ class tablesController {
     }
 
     function updateProduct($id){
-        $getCats = new CategoryModel();
+    //  $getCats = new CategoryModel();
         $selected=$this->model->getSelectedProd($id);
-        $allCats = $getCats->getAllcategorys();
-        $this->view->showUpdateForm($selected, $allCats);
+    //  $allCats = $getCats->getAllcategorys();
+        $this->view->showUpdateForm($selected/*, $allCats*/);
     }
 
     function RecordUpdateProduct(){
@@ -122,11 +122,11 @@ class tablesController {
            
         $selected=$this->model->getSelectedProd($id);
         $this->view->showDetail($selected);
+
     }
     function updateCat($id){
-        
-            $getCats = new CategoryModel();
-            $selected=$this->catmodel->getSelectedCat($id);
+           // $getCats = new CategoryModel();
+            $selected=$this->catmodel->getAllSelectedCat($id);
           //  $allCats = $getCats->getAllcategorys();
             $this->view->showUpdateCatForm($selected);
         

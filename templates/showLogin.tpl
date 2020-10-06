@@ -15,8 +15,9 @@
                 <label for="Password">Password</label>
                 <input name='password' type="password" class="form-control" id="Password" required>
             </div>
-            <span id="caps-message"> <i data-feather="alert-triangle"></i> Las mayusculas estan activadas ! </span>
-            
+            <div>
+                <span class="mt-0" id="caps-message"> <i data-feather="alert-triangle"></i> Las mayusculas estan activadas ! </span>
+            </div>
             <div class='text-center my-5'>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
             </div>

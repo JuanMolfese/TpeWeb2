@@ -38,12 +38,12 @@ class tablesView{
         $this->smarty->display('templates/basepage.tpl');                 
     }
 
-    function showAddForm($categorys){
+    function showAddForm(/*$categorys*/){
       //  $this->smarty->assign('categorys', $categorys);      
         $this->smarty->display('templates/showAddForm.tpl');      
     }
 
-    function showUpdateForm($product, $categorys){
+    function showUpdateForm($product/*, $categorys*/){
 
         $this->smarty->assign('product', $product);
      //   $this->smarty->assign('categorys', $categorys);
@@ -55,14 +55,14 @@ class tablesView{
         $this->smarty->assign('product', $product);
         $this->smarty->display('templates/showDetail.tpl');
     }
-    function showCategorys($categorys) {
+    function showCategorys(/*$categorys*/) {
     
      //   $this->smarty->assign('category', $categorys);   
         $this->smarty->display('templates/showCategorys.tpl');
     }
-    function showUpdateCatform($category){
+    function showUpdateCatform($categorySelect){
 
-     //   $this->smarty->assign('category', $category);
+        $this->smarty->assign('category', $categorySelect);
         $this->smarty->display('templates/showUpdateCatform.tpl');    
     }
     function showAddcatForm(){

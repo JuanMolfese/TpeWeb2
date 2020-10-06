@@ -2,23 +2,23 @@
 
 class CategoryModel{
 
-    private $db;
+  private $db;
 
-    function __construct() {
-    
-       $this->db = $this->connect();
-    }
-
-    private function connect() {
-    
-      return $db = new PDO('mysql:host=localhost;'.'dbname=db_venta_tec;charset=utf8', 'root', '');        
+  function __construct() {
+  
+      $this->db = $this->connect();
   }
 
-    function getAllcategorys() {
+  private function connect() {
+  
+    return $db = new PDO('mysql:host=localhost;'.'dbname=db_venta_tec;charset=utf8', 'root', '');        
+  }
 
-      $query = $this->db->prepare('SELECT * FROM categoria');
-      $query->execute();    
-      return $category = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
+  function getAllcategorys() {
+
+    $query = $this->db->prepare('SELECT * FROM categoria');
+    $query->execute();    
+    return $category = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
   }
   function getSelectedcat ($id) {
     $query = $this->db-> prepare ('SELECT nombre FROM categoria WHERE id=?');    

@@ -1,6 +1,7 @@
 #caps-message {
     color: #FF4754;
-    display: none;
+    display: block;
+    visibility: hidden;
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
