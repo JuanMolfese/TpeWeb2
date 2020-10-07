@@ -22,6 +22,10 @@ switch ($params[0]) {
         $controller = new authController(); // <= ver con Cris si Crear nuevo controller
         $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn
         break;
+    case 'logout':
+        $controller = new authController(); // <= ver con Cris si Crear nuevo controller
+        $controller->logout(); // <= en funcion a lo que decidamos es donde se crearia esta fn
+        break;
     case 'verifyUser':
         $controller = new authController(); 
         $controller->verifyUser(); 

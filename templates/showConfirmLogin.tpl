@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer">
                 {if {$origin} == "log"}
-                    <a href="allProd" class="btn btn-primary"> Cerrar </a>  
+                    <a href="home" class="btn btn-primary"> Cerrar </a>  
                 {/if}
                 
             </div>

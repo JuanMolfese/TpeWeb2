@@ -19,11 +19,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-around p-0" id="navbarNav">
 
-            <ul class="navbar-nav col-md-12 p-0">
+            <ul class="navbar-nav col-auto p-0">
 
-                <div class="d-flex flex-md-row flex-column col-md-8 justify-content-start p-0 ml-md-3">
+                <div class="d-flex flex-md-row flex-column col-auto justify-content-start p-0">
                     
                     <div class="text-white d-flex align-items-center">
                         <h3>New Tech</h3>
@@ -50,10 +50,14 @@
                             <a class="dropdown-item" href='allProd'>Ver Todo</a>
                         </div>
                     </div>
-                    
                 </div>
-                
-                <div class="dropdown text-center col-md-1">
+            </ul> 
+
+            <ul class="navbar-nav col-auto p-0"> 
+            
+                <div class="d-flex flex-md-row flex-column col-auto justify-content-end p-0">
+                <li>
+                 <div class="dropdown text-center col-md-1">
                     <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Administrar
                     </button>
@@ -62,12 +66,17 @@
                         <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
                     </div>
                  </div>
+                 </li>
+                
+               
                 
                 
-                <div class="d-flex flex-md-row flex-column col-md-3 justify-content-md-end p-0">
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'>Login</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='logout'>Logout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='register'>Registrarse</a>
