@@ -66,7 +66,7 @@
                         <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
                     </div>
                  </div>
-                 </li>
+                </li>
                 
                
                 

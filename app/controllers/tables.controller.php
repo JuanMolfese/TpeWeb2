@@ -25,15 +25,16 @@ class tablesController {
         $product = $this->model->getAllOffer();
         $this->view->showProducts($product,'home','');
     }
-
+    
     function showAllProd(){
         
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
-  
+    
     function addProduct(){
         
+        $this->checkLoggedIn();
         $allCats = $this->catmodel->getAllcategorys();
         $this->view->showAddForm($allCats);
 
@@ -60,6 +61,7 @@ class tablesController {
 
     function showAllcats () {
      //   $cats = $this->catmodel->getAllcategorys();
+    $this->checkLoggedIn(); 
     $this->view->showCategorys(/*$cats*/);
     }
 
@@ -77,7 +79,6 @@ class tablesController {
     }
 
     function deleteProduct($id){
-        
         $catDeletedProd = $this->model->getSelectedProd($id);
         $success=$this->model->remove($id);
         if ($success){
@@ -92,6 +93,7 @@ class tablesController {
     }
 
     function updateProduct($id){
+        $this->checkLoggedIn();
     //  $getCats = new CategoryModel();
         $selected=$this->model->getSelectedProd($id);
     //  $allCats = $getCats->getAllcategorys();
@@ -125,6 +127,7 @@ class tablesController {
 
     }
     function updateCat($id){
+      //  ****$this->checkLoggedIn();****
            // $getCats = new CategoryModel();
             $selected=$this->catmodel->getAllSelectedCat($id);
           //  $allCats = $getCats->getAllcategorys();
@@ -148,7 +151,7 @@ class tablesController {
     }
     
     function deleteCategory($id){
-        
+        $this->checkLoggedIn();
         $catDeletedProd = $this->catmodel->getSelectedCat($id);
         $success=$this->catmodel->remove($id);
         if ($success){
@@ -179,5 +182,12 @@ class tablesController {
                 else    
                     $this->view->showError("addcat","No se pudo ingresar la categoria");
             }    
+    }
+    function checkLoggedIn () {
+        session_start ();
+        if (!isset($_SESSION['ID_USER'])) {
+            header('Location: ' . 'login');
+            die();
+        }
     }
 }
