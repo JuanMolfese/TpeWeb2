@@ -9,6 +9,7 @@ class authView{
     function __construct($category_list){
         $this->smarty = new Smarty();
         $this->smarty->assign('categorys', $category_list);
+        $this->smarty->assign('logged', true);
     }
 
   

@@ -9,9 +9,10 @@ class tablesView{
     function __construct($category_list){
         $this->smarty = new Smarty();
         $this->smarty->assign('categorys', $category_list);
+        $this->smarty->assign('logged',  true);
     }
 
-    function showProducts($products,$ruta,$cat) {
+    function showProducts($products,$ruta,$cat=null) {
 
         $this->smarty->assign('products', $products);
         $this->smarty->assign('ruta', $ruta);

@@ -18,7 +18,9 @@
                 <th>DESCRIPCION</th>
                 <th>PRECIO</th>
                 <th>OFERTA</th>
+                {if $ruta!='filtrar'}
                 <th>CATEGORIA</th>
+                {/if}
                 <th> <a href="insertar" class='btn btn-primary font-italic'>Agregar Prod.</a></th>
             </thead>
         
@@ -29,7 +31,9 @@
                 <td>{$product->descripcion}</td>
                 <td>{$product->precio}</td>
                 <td>{$product->oferta}</td>
-                <td>{$product->id_categoria}</td>
+                {if $ruta!='filtrar'}
+                <td>{$product->nombre_categoria}</td>
+                {/if}
                 <td><a class='btn btn-success btn-sm' href='details/{$product->id}'>Detalle</a></td>
                 <td><a class='btn btn-danger btn-sm' href='eliminar/{$product->id}'>Eliminar</a></td>
                 <td><a class='btn btn-secondary btn-sm' href='update/{$product->id}'>Editar</a></td>

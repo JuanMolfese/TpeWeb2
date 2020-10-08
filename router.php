@@ -38,6 +38,10 @@ switch ($params[0]) {
         $controller = new tablesController();
         $controller->showAllProd();
         break;
+    case 'adminProd':
+        $controller = new tablesController();
+        $controller->adminAllProd();
+        break;
     case 'filtrar':
         $controller = new tablesController();
         $id = $params[1];

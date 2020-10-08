@@ -10,7 +10,7 @@ class tablesController {
     private $model;
     private $view;
     private $catmodel;
-    private $category_list;
+    
     
     function __construct() {
         
@@ -28,6 +28,12 @@ class tablesController {
     
     function showAllProd(){
         
+        $product = $this->model->getAll();
+        $this->view->showProducts($product,'allProd','');
+    }
+
+    function adminAllProd(){
+        $this->checkLoggedIn();
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
@@ -79,7 +85,8 @@ class tablesController {
     }
 
     function deleteProduct($id){
-        $catDeletedProd = $this->model->getSelectedProd($id);
+        $this->checkLoggedIn();
+        $this->model->getSelectedProd($id);
         $success=$this->model->remove($id);
         if ($success){
 
@@ -186,8 +193,9 @@ class tablesController {
     function checkLoggedIn () {
         session_start ();
         if (!isset($_SESSION['ID_USER'])) {
-            header('Location: ' . 'login');
+            $this->view->showError("noLogin","No tiene permiso");
             die();
         }
     }
+
 }

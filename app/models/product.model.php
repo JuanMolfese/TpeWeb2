@@ -16,15 +16,18 @@ class productModel{
     }
 
     function getAll() {
-
-        $query = $this->db->prepare('SELECT * FROM producto');
+        
+        $sql='SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
+        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id)';
+        $query = $this->db->prepare($sql);
         $query->execute();    
         return $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
     }
 
     function getAllOffer() {
 
-        $query = $this->db->prepare('SELECT * FROM producto WHERE oferta=?');
+        $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
+        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=?');
         $query->execute([1]);
         return $products = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
     }
@@ -62,6 +65,9 @@ class productModel{
         $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=? WHERE id='.$id.' ');
         return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
     }
-
-    
+   // function joinandShow(){
+     //  'SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
+   //     FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id);'
+        
 }
+    

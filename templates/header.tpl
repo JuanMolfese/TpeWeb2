@@ -62,7 +62,7 @@
                         Administrar
                     </button>
                     <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href='allProd'>Productos</a>
+                        <a class="dropdown-item" href='adminProd'>Productos</a>
                         <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
                     </div>
                  </div>
