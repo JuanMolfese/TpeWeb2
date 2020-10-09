@@ -4,13 +4,16 @@ document.addEventListener('DOMContentLoaded', iniciaPagina);
 function iniciaPagina() {
 
     const capsMessage = document.querySelector('#caps-message');
-    capsMessage.style.display = 'none'
+    capsMessage.style.visibility = 'hidden';
 
-    window.addEventListener('keyup', e => {
+    window.addEventListener('keydown', e => {
         if (e.getModifierState('CapsLock')) {
-            capsMessage.style.display = 'flex';
+            capsMessage.style.visibility = 'visible';
+
+
         } else {
-            capsMessage.style.display = 'none';
+            capsMessage.style.visibility = 'hidden';
+            console.log('hola');
         }
     });
 
