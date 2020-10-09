@@ -13,7 +13,7 @@ function iniciaPagina() {
 
         } else {
             capsMessage.style.visibility = 'hidden';
-            console.log('hola');
+
         }
     });
 
