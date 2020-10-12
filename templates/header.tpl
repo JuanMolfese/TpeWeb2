@@ -39,15 +39,11 @@
                         </button>
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                         
-                        <!-- TODO : Lista dinamica de categorias
-                        ******-->
+                        
                         {foreach from=$categorys item=category}
                             <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
                         {/foreach} 
-                           <!-- <a class="dropdown-item" href='filtrar/3'>Celulares</a>
-                            <a class="dropdown-item" href='filtrar/1'>Notebooks</a>
-                            <a class="dropdown-item" href='filtrar/2'>Tablets</a> --> 
-                            <a class="dropdown-item" href='allProd'>Ver Todo</a>
+                           <a class="dropdown-item" href='allProd'>Ver Todo</a>
                         </div>
                     </div>
                 </div>
@@ -57,27 +53,32 @@
             
                 <div class="d-flex flex-md-row flex-column col-auto justify-content-end p-0">
                 <li>
-                 <div class="dropdown text-center col-md-1">
-                    <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Administrar
-                    </button>
-                    <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href='adminProd'>Productos</a>
-                        <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
+                    <div class="dropdown text-center col-md-1">
+                        {if isset($smarty.session.ID_USER)}
+                            <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Administrar
+                            </button>
+                            <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href='adminProd'>Productos</a>
+                                <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
+                            </div>
+                        {/if}
                     </div>
-                 </div>
                 </li>
                 
                
                 
                 
                     
+                    {if !isset($smarty.session.ID_USER)}
                     <li class="nav-item dropdown">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'>Login</a>
                     </li>
+                    {else}
                     <li class="nav-item dropdown">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='logout'>Logout</a>
                     </li>
+                    {/if}
                     <li class="nav-item">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='register'>Registrarse</a>
                     </li>

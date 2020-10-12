@@ -21,13 +21,13 @@ class tablesController {
     }
     
     function showHome(){
-        
+        session_start();
         $product = $this->model->getAllOffer();
         $this->view->showProducts($product,'home','');
     }
     
     function showAllProd(){
-        
+        session_start();
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
@@ -66,9 +66,8 @@ class tablesController {
     }
 
     function showAllcats () {
-     //   $cats = $this->catmodel->getAllcategorys();
-    $this->checkLoggedIn(); 
-    $this->view->showCategorys(/*$cats*/);
+        $this->checkLoggedIn(); 
+        $this->view->showCategorys(/*$cats*/);
     }
 
     function showByCat($id){
@@ -173,7 +172,7 @@ class tablesController {
     }
 
     function addCategory(){
-       
+        session_start();
         $this->view->showAddCatForm();
         if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
                 (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))

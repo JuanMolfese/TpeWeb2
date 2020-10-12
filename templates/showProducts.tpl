@@ -13,30 +13,42 @@
     </div>
         <table class="table table-striped my-5">
             <thead>
+               {if isset($smarty.session.ID_USER)}
                 <th>ID</th>
+                {/if}
                 <th>NOMBRE</th>
+                {if isset($smarty.session.ID_USER)}
                 <th>DESCRIPCION</th>
+                {/if}
                 <th>PRECIO</th>
                 <th>OFERTA</th>
                 {if $ruta!='filtrar'}
                 <th>CATEGORIA</th>
                 {/if}
+                {if isset($smarty.session.ID_USER)}
                 <th> <a href="insertar" class='btn btn-primary font-italic'>Agregar Prod.</a></th>
+                {/if}
             </thead>
         
             {foreach from=$products item=product}
                 <tr>
+                {if isset($smarty.session.ID_USER)}
                 <td>{$product->id}</td>
+                {/if}
                 <td>{$product->nombre}</td>
+                {if isset($smarty.session.ID_USER)}
                 <td>{$product->descripcion}</td>
+                {/if}
                 <td>{$product->precio}</td>
                 <td>{$product->oferta}</td>
                 {if $ruta!='filtrar'}
                 <td>{$product->nombre_categoria}</td>
                 {/if}
                 <td><a class='btn btn-success btn-sm' href='details/{$product->id}'>Detalle</a></td>
+                {if isset($smarty.session.ID_USER)}
                 <td><a class='btn btn-danger btn-sm' href='eliminar/{$product->id}'>Eliminar</a></td>
                 <td><a class='btn btn-secondary btn-sm' href='update/{$product->id}'>Editar</a></td>
+                {/if}
                 </tr>
             {/foreach}
         </table>
