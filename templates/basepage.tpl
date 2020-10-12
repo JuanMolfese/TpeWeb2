@@ -1,4 +1,4 @@
-{*{include 'header.tpl'}
+{include 'header.tpl'}
 
 <main class="container">
 
@@ -7,4 +7,4 @@
 </main> 
 
 </body>
-</html>*}
+</html>
