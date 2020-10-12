@@ -40,7 +40,11 @@
                 <td>{$product->descripcion}</td>
                 {/if}
                 <td>{$product->precio}</td>
-                <td>{$product->oferta}</td>
+                {if $product->oferta =='1'}
+                <td>Si</td>
+                {else}
+                <td>No</td>
+                {/if}
                 {if $ruta!='filtrar'}
                 <td>{$product->nombre_categoria}</td>
                 {/if}
