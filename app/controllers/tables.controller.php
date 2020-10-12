@@ -71,6 +71,7 @@ class tablesController {
     }
 
     function showByCat($id){
+        session_start();
         $thecat=$this->catmodel->getSelectedcat($id);
         $selected=$this->model->getAllSelectedCat($id);
         
