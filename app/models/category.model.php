@@ -18,29 +18,32 @@ class CategoryModel{
 
     $query = $this->db->prepare('SELECT * FROM categoria');
     $query->execute();    
-    return $category = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
+    return $query->fetchAll(PDO::FETCH_OBJ); // arreglo de productos de la tabla
   }
+
   function getSelectedcat ($id) {
+
     $query = $this->db-> prepare ('SELECT nombre FROM categoria WHERE id=?');    
     $query->execute([$id]);
-    return $category= $query->fetch(PDO::FETCH_OBJ);
+    return $query->fetch(PDO::FETCH_OBJ);
   }
   function getAllSelectedCat($id) {
 
     $query = $this->db-> prepare ('SELECT * FROM categoria WHERE id=?');    
     $query->execute([$id]);
-    return $category= $query->fetch(PDO::FETCH_OBJ);    
-}
-function RecordUpdatecat($id, $nombre, $descripcion){
+    return $query->fetch(PDO::FETCH_OBJ);    
+  }
+  function RecordUpdatecat($id, $nombre, $descripcion){
         
-  $query = $this->db->prepare('UPDATE categoria SET nombre=?, descripcion=? WHERE id='.$id.' ');
-  return $query->execute([$nombre, $descripcion]);
-}
-function remove($id) {  
+    $query = $this->db->prepare('UPDATE categoria SET nombre=?, descripcion=? WHERE id='.$id.' ');
+    return $query->execute([$nombre, $descripcion]);
+  }
+  function remove($id) {  
          
-  $query = $this->db->prepare('DELETE FROM categoria WHERE id = ?');
-  return $query->execute([$id]);      
-}
+    $query = $this->db->prepare('DELETE FROM categoria WHERE id = ?');
+    return $query->execute([$id]);      
+  }
+  
 function insert($nombre, $descripcion) {
 
   $query = $this->db->prepare('INSERT INTO categoria (nombre, descripcion) VALUES (?,?)'); 

@@ -2,7 +2,7 @@
 
     <main class="container">
     
-     <div class="d-flex justify-content-center fluid bg-primary rounded-pill">
+     <div class="d-flex justify-content-center fluid bg-secondary rounded-pill">
     {if $ruta=='home'}
          <h1 class="text-light">OFERTAS</h1>
     {else if $ruta=='allProd'}

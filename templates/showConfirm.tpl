@@ -16,6 +16,8 @@
                                 <a href="insertarCategoria" class="btn btn-primary"> Cerrar </a>
                             {elseif {$origin} == "delcat"}
                                 <a href="verCategorias" class="btn btn-primary"> Cerrar </a>
+                            {elseif {$origin} == "del"}
+                                <a href="allProd" class="btn btn-primary"> Cerrar </a>
                             {else}
                                 <a href="home" class="btn btn-primary"> Cerrar </a>
                         {/if}

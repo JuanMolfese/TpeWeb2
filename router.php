@@ -19,12 +19,12 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'login':
-        $controller = new authController(); // <= ver con Cris si Crear nuevo controller
-        $controller->loginUser(); // <= en funcion a lo que decidamos es donde se crearia esta fn
+        $controller = new authController(); 
+        $controller->loginUser(); 
         break;
     case 'logout':
-        $controller = new authController(); // <= ver con Cris si Crear nuevo controller
-        $controller->logout(); // <= en funcion a lo que decidamos es donde se crearia esta fn
+        $controller = new authController(); 
+        $controller->logout(); 
         break;
     case 'verifyUser':
         $controller = new authController(); 

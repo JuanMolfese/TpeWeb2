@@ -79,9 +79,10 @@
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='logout'>Logout</a>
                     </li>
                     {/if}
+                    {*TO DO
                     <li class="nav-item">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='register'>Registrarse</a>
-                    </li>
+                    </li>*}
                 </div>
 
             </ul>
