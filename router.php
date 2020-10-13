@@ -18,9 +18,6 @@ $params = explode('/', $action);
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
-<<<<<<< HEAD
-    case 'home': //vuelve a pagina de inicio 
-=======
     case 'login':
         $controller = new authController(); 
         $controller->loginUser(); 
@@ -34,7 +31,6 @@ switch ($params[0]) {
         $controller->verifyUser(); 
         break;
     case 'home':
->>>>>>> juan
         $controller = new tablesController();
         $controller->showHome();
         break;
