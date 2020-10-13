@@ -52,24 +52,20 @@
             <ul class="navbar-nav col-auto p-0"> 
             
                 <div class="d-flex flex-md-row flex-column col-auto justify-content-end p-0">
-                <li>
-                    <div class="dropdown text-center col-md-1">
-                        {if isset($smarty.session.ID_USER)}
-                            <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Administrar
-                            </button>
-                            <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href='adminProd'>Productos</a>
-                                <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
-                            </div>
-                        {/if}
-                    </div>
-                </li>
-                
-               
-                
-                
-                    
+                    <li>
+                        <div class="dropdown text-center col-md-1">
+                            {if isset($smarty.session.ID_USER)}
+                                <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administrar
+                                </button>
+                                <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href='adminProd'>Productos</a>
+                                    <a class="dropdown-item" href='verCategorias'>Categorias</a>                        
+                                </div>
+                            {/if}
+                        </div>
+                    </li>
+                                                   
                     {if !isset($smarty.session.ID_USER)}
                     <li class="nav-item dropdown">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'>Login</a>

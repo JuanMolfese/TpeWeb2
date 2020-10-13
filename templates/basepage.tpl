@@ -2,8 +2,6 @@
 
 <main class="container">
 
-  
-
 </main> 
 
 </body>
