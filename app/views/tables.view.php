@@ -4,72 +4,69 @@ require_once 'libs/smarty/libs/Smarty.class.php';
 
 class tablesView{
 
-    function showProducts($products) {
+    private $smarty;
 
-        $smarty = new Smarty();
-        $smarty->assign('products', $products);
-        $smarty->display('templates/showProducts.tpl');
+    function __construct($category_list){
+        $this->smarty = new Smarty();
+        $this->smarty->assign('categorys', $category_list);
+       
+    }
+
+    function showProducts($products,$ruta,$cat=null) {
+
+        $this->smarty->assign('products', $products);
+        $this->smarty->assign('ruta', $ruta);
+        $this->smarty ->assign('cat', $cat);
+        $this->smarty->display('templates/showProducts.tpl');
     }
     
     function showError($origin, $msg){
 
-        $smarty = new Smarty();
-        $smarty->assign('origin', $origin);
-        $smarty->assign('msg', $msg);
-        $smarty->display('templates/showError.tpl');
+        $this->smarty->assign('origin', $origin);
+        $this->smarty->assign('msg', $msg);
+        $this->smarty->display('templates/showError.tpl');
     }
     
     function showConfirm($origin, $msg){
         
-        $smarty = new Smarty();
-        $smarty->assign('origin', $origin);            
-        $smarty->assign('msg', $msg);    
-        $smarty->display('templates/showConfirm.tpl');                 
+        $this->smarty->assign('origin', $origin);            
+        $this->smarty->assign('msg', $msg);    
+        $this->smarty->display('templates/showConfirm.tpl');                 
     }
     
     function basepage(){
         
-        $smarty = new Smarty();        
-        $smarty->display('templates/basepage.tpl');                 
+        $this->smarty->display('templates/basepage.tpl');                 
     }
 
-    function showAddForm($categorys){
-        $smarty = new Smarty();
-        $smarty->assign('categorys', $categorys);      
-        $smarty->display('templates/showAddForm.tpl');      
+    function showAddForm(){
+          
+        $this->smarty->display('templates/showAddForm.tpl');      
     }
 
-    function showUpdateForm($product, $categorys){
+    function showUpdateForm($product){
 
-        $smarty = new Smarty();        
-        $smarty->assign('product', $product);
-        $smarty->assign('categorys', $categorys);
-        $smarty->display('templates/showUpdateForm.tpl');    
+        $this->smarty->assign('product', $product);
+        $this->smarty->display('templates/showUpdateForm.tpl');    
     }
     
     function showDetail($product) {
 
-        $smarty = new Smarty();
-        $smarty->assign('product', $product);
-        $smarty->display('templates/showDetail.tpl');
+        $this->smarty->assign('product', $product);
+        $this->smarty->display('templates/showDetail.tpl');
     }
-    function showCategorys($categorys) {
+    function showCategorys() {
     
-        $smarty = new Smarty();        
-        $smarty->assign('category', $categorys);   
-        $smarty->display('templates/showCategorys.tpl');
+        $this->smarty->display('templates/showCategorys.tpl');
     }
-    function showUpdateCatform($category){
 
-        $smarty = new Smarty();        
-        $smarty->assign('category', $category);
-        $smarty->display('templates/showUpdateCatform.tpl');    
+    function showUpdateCatform($categorySelect){
+
+        $this->smarty->assign('category', $categorySelect);
+        $this->smarty->display('templates/showUpdateCatform.tpl');    
     }
     function showAddcatForm(){
 
-        $smarty = new Smarty();        
-        $smarty->display('templates/showAddcatForm.tpl');      
+        $this->smarty->display('templates/showAddcatForm.tpl');      
     }
 }
-
-

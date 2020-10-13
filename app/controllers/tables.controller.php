@@ -15,24 +15,35 @@ class tablesController {
     function __construct() {
         
         $this->model = new productModel();
-        $this->view = new tablesView();
         $this->catmodel = new CategoryModel();
+        $category_list = $this->catmodel->getAllcategorys();  
+        $this->view = new tablesView($category_list);
     }
-
+    
     function showHome(){
-        
+
+        session_start();
         $product = $this->model->getAllOffer();
-        $this->view->showProducts($product);
+        $this->view->showProducts($product,'home','');
+    }
+    
+    function showAllProd(){
+
+        session_start();
+        $product = $this->model->getAll();
+        $this->view->showProducts($product,'allProd','');
     }
 
-    function showAllProd(){
-        
+    function adminAllProd(){
+
+        $this->checkLoggedIn();
         $product = $this->model->getAll();
-        $this->view->showProducts($product);
+        $this->view->showProducts($product,'allProd','');
     }
-  
+    
     function addProduct(){
         
+        $this->checkLoggedIn();
         $allCats = $this->catmodel->getAllcategorys();
         $this->view->showAddForm($allCats);
 
@@ -58,41 +69,48 @@ class tablesController {
     }
 
     function showAllcats () {
-        $cats = $this->catmodel->getAllcategorys();
-        $this->view->showCategorys($cats);
+
+        $this->checkLoggedIn(); 
+        $this->view->showCategorys();
     }
 
     function showByCat($id){
+
+        session_start();
+        $thecat=$this->catmodel->getSelectedcat($id);
+        $selected=$this->model->getAllSelectedCat($id);
         
-        $selected=$this->model->getSelectedCat($id);
         if(empty($selected)){
             $this->view->basepage();
             $this->view->showError("cat","No hay productos en esta categoria");
         }
         else    
-        $this->view->showProducts($selected);
+        $this->view->showProducts($selected,'filtrar',$thecat);
+        
     }
 
     function deleteProduct($id){
-        
-        $catDeletedProd = $this->model->getSelectedProd($id);
+
+        $this->checkLoggedIn();
+        $this->model->getSelectedProd($id);
         $success=$this->model->remove($id);
         if ($success){
 
             $this->view->basepage();
             $this->view->showConfirm("del","Se elimino el producto");}
+        
         else{    
             $this->view->basepage();
             $this->view->showError("del","No se pudo eliminar el producto");
         }
-       // header("Location: " . BASE_URL ."filtrar/->id_categoria");
+      
     }
 
     function updateProduct($id){
-        $getCats = new CategoryModel();
+
+        $this->checkLoggedIn();
         $selected=$this->model->getSelectedProd($id);
-        $allCats = $getCats->getAllcategorys();
-        $this->view->showUpdateForm($selected, $allCats);
+        $this->view->showUpdateForm($selected);
     }
 
     function RecordUpdateProduct(){
@@ -119,13 +137,13 @@ class tablesController {
            
         $selected=$this->model->getSelectedProd($id);
         $this->view->showDetail($selected);
+
     }
+
     function updateCat($id){
-        
-            $getCats = new CategoryModel();
-            $selected=$this->catmodel->getSelectedCat($id);
-          //  $allCats = $getCats->getAllcategorys();
-            $this->view->showUpdateCatForm($selected);
+     
+        $selected=$this->catmodel->getAllSelectedCat($id);
+        $this->view->showUpdateCatForm($selected);
         
     }      
     
@@ -137,30 +155,31 @@ class tablesController {
                 $id = $_POST['idCategoria'];
                 $nombre = $_POST['nombreCat'];
                 $descripcion = $_POST['descripcionCat'];
-              
-                
                 $this->catmodel->RecordUpdateCat($id, $nombre, $descripcion);
                 header("Location: " . 'verCategorias');
             }
     }
     
     function deleteCategory($id){
-        
-        $catDeletedProd = $this->catmodel->getSelectedCat($id);
+
+        $this->checkLoggedIn();
+        $this->catmodel->getSelectedCat($id);
         $success=$this->catmodel->remove($id);
+       
         if ($success){
-            
             $this->view->basepage();
             $this->view->showConfirm("delcat","Se elimino la categoria");}
+      
         else{    
             $this->view->basepage();
             $this->view->showError("delcat","La categoria contiene productos asociados");
         }
-        //header("Location: " . 'verCategorias');
+        
     }
 
     function addCategory(){
-       
+
+        session_start();
         $this->view->showAddCatForm();
         if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
                 (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
@@ -177,4 +196,13 @@ class tablesController {
                     $this->view->showError("addcat","No se pudo ingresar la categoria");
             }    
     }
+    function checkLoggedIn () {
+
+        session_start ();
+        if (!isset($_SESSION['ID_USER'])) {
+            $this->view->showError("noLogin","No tiene permiso");
+            die();
+        }
+    }
+
 }
