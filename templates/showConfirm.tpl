@@ -10,6 +10,8 @@
                         <p>{$msg}</p>
                     </div>
                     <div class="modal-footer">
+
+                        {*segun accion que lo genera, se redirecciona al cerra el modal*}
                         {if {$origin} == "add"}
                             <a href="insertar" class="btn btn-primary"> Cerrar </a>
                             {elseif {$origin} == "addcat"}

@@ -11,6 +11,7 @@
                     <p>{$msg}</p>
                 </div>
                 <div class="modal-footer">
+                    {*si viene de pagina de login, redirige al home al cerrar modal*}
                     {if {$origin} == "log"}
                         <a href="home" class="btn btn-primary"> Cerrar </a>  
                     {/if}
