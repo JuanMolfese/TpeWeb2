@@ -13,6 +13,7 @@
 <body>
     
 <header class="container p-0">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-md-4">
        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,18 +35,23 @@
                     </li>
 
                     <div class="dropdown text-center">
+
                         <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categorias
                         </button>
+                        
+                        {*Muestra la lista actualizada contra la db de categorias*}
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-                        
-                        
-                        {foreach from=$categorys item=category}
-                            <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
-                        {/foreach} 
-                           <a class="dropdown-item" href='allProd'>Ver Todo</a>
+                                                
+                            {foreach from=$categorys item=category}
+                                <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
+                            {/foreach} 
+                                <a class="dropdown-item" href='allProd'>Ver Todo</a>
+
                         </div>
+
                     </div>
+
                 </div>
             </ul> 
 
@@ -53,6 +59,7 @@
             
                 <div class="d-flex flex-md-row flex-column col-auto justify-content-end p-0">
                     <li>
+                        {*Muestra u oculta dropdown en funcion a si se esta logueado o no*}
                         <div class="dropdown text-center col-md-1">
                             {if isset($smarty.session.ID_USER)}
                                 <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,7 +72,8 @@
                             {/if}
                         </div>
                     </li>
-                                                   
+                    
+                    {*Muestra u oculta botones de login/logout en funcion a si se esta logueado o no*}
                     {if !isset($smarty.session.ID_USER)}
                     <li class="nav-item dropdown">
                         <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'>Login</a>

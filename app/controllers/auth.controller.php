@@ -17,11 +17,13 @@ class authController{
         $this->model = new userModel();
     }
 
+    //Muestra pantalla de login
     function loginUser(){
         
         $this->view->showLogin();
     }
 
+    //Valida info enviada desde el form de login contra la db
     function verifyUser(){
 
         $email = $_POST['email'];
@@ -45,6 +47,7 @@ class authController{
 
     }
     
+    //Cierra la sesion
     function logout() {
       
         session_start();

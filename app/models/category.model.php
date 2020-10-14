@@ -44,7 +44,7 @@ class CategoryModel{
     return $query->execute([$id]);      
   }
   
-function insert($nombre, $descripcion) {
+  function insert($nombre, $descripcion) {
 
   $query = $this->db->prepare('INSERT INTO categoria (nombre, descripcion) VALUES (?,?)'); 
   return $query->execute([$nombre, $descripcion]);

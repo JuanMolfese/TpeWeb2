@@ -6,6 +6,8 @@ class authView{
 
     private $smarty;
  
+    //Genera constructor de la clase: instancia la var smarty para que sea
+    //usada en las func de la clase y recibe la lista de todas las categorias de la db
     function __construct($category_list){
 
         $this->smarty = new Smarty();
@@ -13,12 +15,13 @@ class authView{
         
     }
 
-  
+    //Muestra pantalla de login
     function showLogin() {
 
         $this->smarty->display('templates/showLogin.tpl');
     }
     
+    //Muestra cartel de error de login
     function showErrorLogin($origin = null , $msg){
 
         $this->smarty->assign('origin', $origin);
@@ -26,6 +29,7 @@ class authView{
         $this->smarty->display('templates/showErrorLogin.tpl');
     }
     
+    //Muestra cartel de confirmacion de login
     function showConfirmLogin($origin = null, $msg){
         
         $this->smarty->assign('origin', $origin);            

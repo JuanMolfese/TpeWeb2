@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', iniciaPagina);
 "use strict";
 
+
+//Muestra mensaje si se presiona el mayusculas en el menu de login
 function iniciaPagina() {
 
     const capsMessage = document.querySelector('#caps-message');

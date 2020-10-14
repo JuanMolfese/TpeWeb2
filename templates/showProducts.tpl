@@ -3,6 +3,7 @@
     <main class="container">
     
      <div class="d-flex justify-content-center fluid bg-secondary rounded-pill">
+     {*Segun la condicion se muestra un titulo acorde*}
     {if $ruta=='home'}
          <h1 class="text-light">OFERTAS</h1>
     {else if $ruta=='allProd'}
@@ -11,6 +12,7 @@
       <h1 class="text-light">{$cat->nombre|upper}</h1>
     {/if}
     </div>
+        {*Muestra u oculta titulo de la tabla segun si es admin o no*}
         <table class="table table-striped my-5">
             <thead>
                {if isset($smarty.session.ID_USER)}
@@ -30,6 +32,7 @@
                 {/if}
             </thead>
         
+            {*Muestra informacion de los registros de la tabla segun si es admin o no*}
             {foreach from=$products item=product}
                 <tr>
                 {if isset($smarty.session.ID_USER)}
