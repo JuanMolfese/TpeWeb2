@@ -4,25 +4,36 @@ require_once 'libs/smarty/libs/Smarty.class.php';
 
 class authView{
 
+    private $smarty;
+ 
+    //Genera constructor de la clase: instancia la var smarty para que sea
+    //usada en las func de la clase y recibe la lista de todas las categorias de la db
+    function __construct($category_list){
+
+        $this->smarty = new Smarty();
+        $this->smarty->assign('categorys', $category_list);
+        
+    }
+
+    //Muestra pantalla de login
     function showLogin() {
 
-        $smarty = new Smarty();
-        $smarty->display('templates/showLogin.tpl');
-    }
-
-    function showError($origin, $msg){
-
-        $smarty = new Smarty();
-        $smarty->assign('origin', $origin);
-        $smarty->assign('msg', $msg);
-        $smarty->display('templates/showErrorLogin.tpl');
+        $this->smarty->display('templates/showLogin.tpl');
     }
     
-    function showConfirm($origin, $msg){
+    //Muestra cartel de error de login
+    function showErrorLogin($origin = null , $msg){
+
+        $this->smarty->assign('origin', $origin);
+        $this->smarty->assign('msg', $msg);
+        $this->smarty->display('templates/showErrorLogin.tpl');
+    }
+    
+    //Muestra cartel de confirmacion de login
+    function showConfirmLogin($origin = null, $msg){
         
-        $smarty = new Smarty();
-        $smarty->assign('origin', $origin);            
-        $smarty->assign('msg', $msg);    
-        $smarty->display('templates/showConfirmLogin.tpl');
+        $this->smarty->assign('origin', $origin);            
+        $this->smarty->assign('msg', $msg);    
+        $this->smarty->display('templates/showConfirmLogin.tpl');
     }
 }

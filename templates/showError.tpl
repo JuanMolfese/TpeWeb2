@@ -1,4 +1,6 @@
-
+{if {$origin} == 'noLogin'}
+{include 'header.tpl'}
+{/if}
     <main class="container">
 
         <div class="modal fade show" id="staticBackdropLive" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
@@ -12,12 +14,14 @@
                     </div>
                     <div class="modal-footer">
                     {if {$origin} == "add"}
-                        <a href="insertar" class="btn btn-primary"> Cerrar </a>
-                        {elseif {$origin} == "addcat"}
+                         <a href="insertar" class="btn btn-primary"> Cerrar </a>
+                    {elseif {$origin} == "addcat"}
                             <a href="insertarCategoria" class="btn btn-primary"> Cerrar </a>
-                        {elseif {$origin} == "delcat"}
-                            <a href="verCategorias" class="btn btn-primary"> Cerrar </a>   
-                        {else}
+                    {elseif {$origin} == "delcat"}
+                            <a href="verCategorias" class="btn btn-primary"> Cerrar </a> 
+                    {elseif {$origin} == "noLogin"}
+                            <a href="login" class="btn btn-primary"> Cerrar </a>    
+                    {else}
                             <a href="home" class="btn btn-primary"> Cerrar </a>
                     {/if}
                     </div>
