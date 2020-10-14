@@ -15,6 +15,7 @@ class userModel{
         return $db = new PDO('mysql:host=localhost;'.'dbname=db_venta_tec;charset=utf8', 'root', '');        
     }
 
+    //solicita a base de datos usuario segun email
     function getByEmail($email){
         
         $query = $this->db->prepare ('SELECT * FROM usuario WHERE email = ?');

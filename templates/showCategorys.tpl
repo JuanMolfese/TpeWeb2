@@ -11,6 +11,8 @@
                 <th>ACCIONES</th>
                 <th> <a href="insertarCategoria" class='btn btn-primary font-italic'> Agregar Categoria </a> </th>
             </thead> 
+
+            {*genera fila de tabla con datos de categoria y botones*}
             {foreach from=$categorys item=cat}
                 <tr>
                 <td>{$cat->id}</td>

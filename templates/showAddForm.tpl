@@ -22,6 +22,7 @@
                     <label for='cat_select'>Categoria</label>
                     <select class='custom-select' name='categoria' id='cat_select'>
                        
+                       {*genera select con todas las categorias*}
                         {foreach from=$categorys item=category}
                                 <option value='{$category->id}' >{$category->nombre}</option>
                         {/foreach}

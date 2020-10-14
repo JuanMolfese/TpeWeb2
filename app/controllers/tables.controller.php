@@ -20,32 +20,35 @@ class tablesController {
         $this->view = new tablesView($category_list);
     }
     
-    function showHome(){
+    function showHome(){//muestra en el home todas las ofertas
 
         session_start();
         $product = $this->model->getAllOffer();
         $this->view->showProducts($product,'home','');
     }
     
-    function showAllProd(){
+    function showAllProd(){//muestra listado completo de todos los productos
 
         session_start();
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
-
+    
+   //muestra todos los productos al administrador, para trabajar sobre listado
     function adminAllProd(){
-
+    
         $this->checkLoggedIn();
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
-    
+
+    //verifica login trae tabla de categorias, y muestra formulario para ingreso 
+    //de campos y alta de producto
     function addProduct(){
         
         $this->checkLoggedIn();
         $allCats = $this->catmodel->getAllcategorys();
-        $this->view->showAddForm($allCats);
+        $this->view->showAddForm($allCats); 
 
         if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
                 (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
@@ -68,12 +71,14 @@ class tablesController {
             }    
     }
 
+    //verifica login, y muestra el listado de todas las categorias
     function showAllcats () {
 
         $this->checkLoggedIn(); 
         $this->view->showCategorys();
     }
 
+    //genera listado segun categoria especificada
     function showByCat($id){
 
         session_start();
@@ -89,6 +94,7 @@ class tablesController {
         
     }
 
+    //verifica login, y borra producto segun id indicado
     function deleteProduct($id){
 
         $this->checkLoggedIn();
@@ -106,6 +112,7 @@ class tablesController {
       
     }
 
+    //verifica login, y carga producto segun id en formulario para edicion
     function updateProduct($id){
 
         $this->checkLoggedIn();
@@ -113,6 +120,7 @@ class tablesController {
         $this->view->showUpdateForm($selected);
     }
 
+    //verifica seteo en los inputs, e inserta contenido en la base de datos
     function RecordUpdateProduct(){
         
         if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
@@ -133,6 +141,7 @@ class tablesController {
             }
     }
 
+    //asigna a formulario detalle del producto seleccionado
     function showProductDetail($id){
            
         $selected=$this->model->getSelectedProd($id);
@@ -140,6 +149,7 @@ class tablesController {
 
     }
 
+    //carga en formulario categoria a editar
     function updateCat($id){
      
         $selected=$this->catmodel->getAllSelectedCat($id);
@@ -147,6 +157,7 @@ class tablesController {
         
     }      
     
+    //inserta en base de datos categoria editada
     function RecordUpdateCat(){
         
         if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
@@ -160,6 +171,7 @@ class tablesController {
             }
     }
     
+    //previo cheque de login borra categoria indicada por id
     function deleteCategory($id){
 
         $this->checkLoggedIn();
@@ -177,6 +189,7 @@ class tablesController {
         
     }
 
+    //inserta categoria cargada en formulario
     function addCategory(){
 
         session_start();
@@ -196,6 +209,8 @@ class tablesController {
                     $this->view->showError("addcat","No se pudo ingresar la categoria");
             }    
     }
+
+    //verifica login
     function checkLoggedIn () {
 
         session_start ();
