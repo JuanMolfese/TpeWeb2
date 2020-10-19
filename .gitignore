@@ -1,4 +1,4 @@
 # Lista de ignorados
 /templates_c
 /.vscode
-/libs
+/libs/smarty
