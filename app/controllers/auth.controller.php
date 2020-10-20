@@ -2,12 +2,14 @@
 
 include_once 'app/views/auth.view.php';
 include_once 'app/models/user.model.php';
+include_once 'app/helpers/auth.helper.php';
 
 class authController{
 
     private $view;
     private $model;
     private $catmodel;
+    private $authHelper;
 
     function __construct(){
        
@@ -15,6 +17,7 @@ class authController{
         $category_list = $this->catmodel->getAllcategorys();  //se instancia al modelo de tables.
         $this->view = new authView($category_list);
         $this->model = new userModel();
+        $this->authHelper = new AuthHelper();
     }
 
     //Muestra pantalla de login
@@ -36,9 +39,8 @@ class authController{
         $user = $this->model->getByEmail($email);
              
         if($user && password_verify( $password,$user->password)){
-            session_start();
-            $_SESSION['ID_USER'] = $user->id;
-            $_SESSION['EMAIL_USER'] = $user->email;
+            
+            $this->authHelper->login($user);
             $this->view->showConfirmLogin('log','Bienvenido '.$user->email);
                
         }else{
@@ -47,13 +49,11 @@ class authController{
 
     }
     
-    //Cierra la sesion
     function logout() {
-      
-        session_start();
-        session_destroy();
-        header("Location: " . BASE_URL . 'login');
+        
+        $this->authHelper->logout();
     }
+     
 
     
 }

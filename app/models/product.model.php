@@ -1,20 +1,18 @@
 <?php
 
+include_once 'app/helpers/db.helper.php';
+
 class productModel{
 
     private $db;
 
     //Se genera un constructor para que al instanciar un obj de esta clase, se abra la conexion a la db.
     function __construct() {
-    
-       $this->db = $this->connect();
-    }
-
-    //Abre conexión a la base de datos
-    private function connect() {
-    
-        return $db = new PDO('mysql:host=localhost;'.'dbname=db_venta_tec;charset=utf8', 'root', '');        
-    }
+  
+        $this->dbHelper = new DBHelper();
+        $this->db = $this->dbHelper->connect();
+      
+      }
 
     //Devuelve lista de todos los productos de la db y se le adiciona el nombre de la categoria desde la tabla categoria
     function getAll() {

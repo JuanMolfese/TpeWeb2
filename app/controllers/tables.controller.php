@@ -2,6 +2,7 @@
 include_once 'app/models/product.model.php';
 include_once 'app/models/category.model.php';
 include_once 'app/views/tables.view.php';
+include_once 'app/helpers/auth.helper.php';
 
 
 
@@ -10,6 +11,7 @@ class tablesController {
     private $model;
     private $view;
     private $catmodel;
+    private $authHelper;
     
     
     function __construct() {
@@ -18,18 +20,17 @@ class tablesController {
         $this->catmodel = new CategoryModel();
         $category_list = $this->catmodel->getAllcategorys();  
         $this->view = new tablesView($category_list);
+        $this->authHelper = new AuthHelper();
     }
     
     function showHome(){//muestra en el home todas las ofertas
 
-        session_start();
         $product = $this->model->getAllOffer();
         $this->view->showProducts($product,'home','');
     }
     
     function showAllProd(){//muestra listado completo de todos los productos
 
-        session_start();
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
@@ -37,7 +38,7 @@ class tablesController {
    //muestra todos los productos al administrador, para trabajar sobre listado
     function adminAllProd(){
     
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $product = $this->model->getAll();
         $this->view->showProducts($product,'allProd','');
     }
@@ -46,7 +47,7 @@ class tablesController {
     //de campos y alta de producto
     function addProduct(){
         
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $allCats = $this->catmodel->getAllcategorys();
         $this->view->showAddForm($allCats); 
 
@@ -74,14 +75,13 @@ class tablesController {
     //verifica login, y muestra el listado de todas las categorias
     function showAllcats () {
 
-        $this->checkLoggedIn(); 
+        $this->authHelper->checkLoggedIn();
         $this->view->showCategorys();
     }
 
     //genera listado segun categoria especificada
     function showByCat($id){
 
-        session_start();
         $thecat=$this->catmodel->getSelectedcat($id);
         $selected=$this->model->getAllSelectedCat($id);
         
@@ -97,7 +97,7 @@ class tablesController {
     //verifica login, y borra producto segun id indicado
     function deleteProduct($id){
 
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->getSelectedProd($id);
         $success=$this->model->remove($id);
         if ($success){
@@ -115,7 +115,7 @@ class tablesController {
     //verifica login, y carga producto segun id en formulario para edicion
     function updateProduct($id){
 
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $selected=$this->model->getSelectedProd($id);
         $this->view->showUpdateForm($selected);
     }
@@ -174,7 +174,7 @@ class tablesController {
     //previo cheque de login borra categoria indicada por id
     function deleteCategory($id){
 
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->catmodel->getSelectedCat($id);
         $success=$this->catmodel->remove($id);
        
@@ -192,7 +192,7 @@ class tablesController {
     //inserta categoria cargada en formulario
     function addCategory(){
 
-        session_start();
+        $this->authHelper->checkLoggedIn();
         $this->view->showAddCatForm();
         if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
                 (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
@@ -209,15 +209,5 @@ class tablesController {
                     $this->view->showError("addcat","No se pudo ingresar la categoria");
             }    
     }
-
-    //verifica login
-    function checkLoggedIn () {
-
-        session_start ();
-        if (!isset($_SESSION['ID_USER'])) {
-            $this->view->showError("noLogin","No tiene permiso");
-            die();
-        }
-    }
-
+    
 }

@@ -3,7 +3,7 @@ require_once 'app/models/comment.model.php';
 require_once 'app/api/api.view.php';
 
 
-class ApiProductComments {
+class ApiComments {
 
     private $model;
     private $view;
