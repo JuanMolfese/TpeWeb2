@@ -31,6 +31,7 @@ class authController{
 
         $email = $_POST['email'];
         $password = $_POST['password'];
+        
         if(empty($email) || empty($password)){
             $this->view->showErrorLogin('log','Completar datos');
             die();

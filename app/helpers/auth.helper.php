@@ -17,6 +17,9 @@ class AuthHelper {
             header("Location: " . BASE_URL . "login");
             die();
         }
+        else{
+            return $typeuser = ($_SESSION['ADMIN']);
+        }
     }
 
     //Cierra la sesion
@@ -30,5 +33,6 @@ class AuthHelper {
 
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['EMAIL_USER'] = $user->email;
+        $_SESSION['ADMIN'] = $user->admin;
     }
 }

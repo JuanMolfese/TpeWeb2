@@ -38,45 +38,64 @@ class tablesController {
    //muestra todos los productos al administrador, para trabajar sobre listado
     function adminAllProd(){
     
-        $this->authHelper->checkLoggedIn();
-        $product = $this->model->getAll();
-        $this->view->showProducts($product,'allProd','');
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+            $product = $this->model->getAll();
+            $this->view->showProducts($product,'allProd','');
+        }
+        else{
+            header("Location: " . BASE_URL . "home");
+        }
     }
 
     //verifica login trae tabla de categorias, y muestra formulario para ingreso 
     //de campos y alta de producto
     function addProduct(){
         
-        $this->authHelper->checkLoggedIn();
-        $allCats = $this->catmodel->getAllcategorys();
-        $this->view->showAddForm($allCats); 
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+            $allCats = $this->catmodel->getAllcategorys();
+            $this->view->showAddForm($allCats); 
+        
 
-        if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
-                (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
-                (isset($_REQUEST['precio']) && ($_REQUEST['precio'] != null)) &&
-                (isset($_REQUEST['oferta']) && ($_REQUEST['oferta'] != null)) &&
-                (isset($_REQUEST['categoria']) && ($_REQUEST['categoria'] != null))
-            ) {                             
-                $nombre = $_POST['nombre'];
-                $descripcion = $_POST['descripcion'];
-                $precio = $_POST['precio'];
-                $oferta = $_POST['oferta'];
-                $categoria = $_POST['categoria'];        
-                // inserto la tarea en la DB
-                $success = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
+            if (    (isset($_REQUEST['nombre']) && ($_REQUEST['nombre'] != null)) && 
+                    (isset($_REQUEST['descripcion']) && ($_REQUEST['descripcion'] != null)) && 
+                    (isset($_REQUEST['precio']) && ($_REQUEST['precio'] != null)) &&
+                    (isset($_REQUEST['oferta']) && ($_REQUEST['oferta'] != null)) &&
+                    (isset($_REQUEST['categoria']) && ($_REQUEST['categoria'] != null))
+                ) {                             
+                    $nombre = $_POST['nombre'];
+                    $descripcion = $_POST['descripcion'];
+                    $precio = $_POST['precio'];
+                    $oferta = $_POST['oferta'];
+                    $categoria = $_POST['categoria'];        
+                    // inserto la tarea en la DB
+                    $success = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
 
-                if($success)
-                    $this->view->showConfirm("add","Se ingreso el producto");    
-                else    
-                    $this->view->showError("add","No se pudo ingresar el producto");
+                    if($success){
+                        $this->view->showConfirm("add","Se ingreso el producto");   
+                    } 
+                    else {   
+                        $this->view->showError("add","No se pudo ingresar el producto");
+                    }
             }    
+        }
+        else{
+            header("Location: " . BASE_URL . "home");
+        }
+
     }
 
     //verifica login, y muestra el listado de todas las categorias
     function showAllcats () {
-
-        $this->authHelper->checkLoggedIn();
-        $this->view->showCategorys();
+        
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+             $this->view->showCategorys();
+        }
+        else{
+            header("Location: " . BASE_URL . "home");
+        }
     }
 
     //genera listado segun categoria especificada
@@ -89,35 +108,43 @@ class tablesController {
             $this->view->basepage();
             $this->view->showError("cat","No hay productos en esta categoria");
         }
-        else    
-        $this->view->showProducts($selected,'filtrar',$thecat);
-        
+        else{    
+            $this->view->showProducts($selected,'filtrar',$thecat);
+        }
     }
 
     //verifica login, y borra producto segun id indicado
     function deleteProduct($id){
 
-        $this->authHelper->checkLoggedIn();
-        $this->model->getSelectedProd($id);
-        $success=$this->model->remove($id);
-        if ($success){
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+            $this->model->getSelectedProd($id);
+            $success=$this->model->remove($id);
+            if ($success){
 
-            $this->view->basepage();
-            $this->view->showConfirm("del","Se elimino el producto");}
-        
-        else{    
-            $this->view->basepage();
-            $this->view->showError("del","No se pudo eliminar el producto");
+                $this->view->basepage();
+                $this->view->showConfirm("del","Se elimino el producto");}
+            
+            else{    
+                $this->view->basepage();
+                $this->view->showError("del","No se pudo eliminar el producto");
+            }
         }
-      
+        else{    
+            header("Location: " . BASE_URL . "home");
+        }
     }
 
     //verifica login, y carga producto segun id en formulario para edicion
     function updateProduct($id){
 
-        $this->authHelper->checkLoggedIn();
-        $selected=$this->model->getSelectedProd($id);
-        $this->view->showUpdateForm($selected);
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+            $selected=$this->model->getSelectedProd($id);
+            $this->view->showUpdateForm($selected);
+        }else{
+            header("Location: " . BASE_URL . "home");
+        }
     }
 
     //verifica seteo en los inputs, e inserta contenido en la base de datos
@@ -174,17 +201,21 @@ class tablesController {
     //previo cheque de login borra categoria indicada por id
     function deleteCategory($id){
 
-        $this->authHelper->checkLoggedIn();
-        $this->catmodel->getSelectedCat($id);
-        $success=$this->catmodel->remove($id);
-       
-        if ($success){
-            $this->view->basepage();
-            $this->view->showConfirm("delcat","Se elimino la categoria");}
-      
-        else{    
-            $this->view->basepage();
-            $this->view->showError("delcat","La categoria contiene productos asociados");
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+            $this->catmodel->getSelectedCat($id);
+            $success=$this->catmodel->remove($id);
+        
+            if ($success){
+                $this->view->basepage();
+                $this->view->showConfirm("delcat","Se elimino la categoria");}
+        
+            else{    
+                $this->view->basepage();
+                $this->view->showError("delcat","La categoria contiene productos asociados");
+            }
+        }else{
+            header("Location: " . BASE_URL . "home");
         }
         
     }
@@ -192,22 +223,26 @@ class tablesController {
     //inserta categoria cargada en formulario
     function addCategory(){
 
-        $this->authHelper->checkLoggedIn();
-        $this->view->showAddCatForm();
-        if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
-                (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
-            ) {                             
-                $nombre = $_POST['nombreCat'];
-                $descripcion = $_POST['descripcionCat'];
-                      
-                // inserto la tarea en la DB
-                $success = $this->catmodel->insert($nombre, $descripcion);
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+            $this->view->showAddCatForm();
+            if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
+                    (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))
+                ) {                             
+                    $nombre = $_POST['nombreCat'];
+                    $descripcion = $_POST['descripcionCat'];
+                        
+                    // inserto la tarea en la DB
+                    $success = $this->catmodel->insert($nombre, $descripcion);
 
-                if($success)
-                    $this->view->showConfirm("addcat","Se ingreso la nueva categoria");    
-                else    
-                    $this->view->showError("addcat","No se pudo ingresar la categoria");
-            }    
+                    if($success)
+                        $this->view->showConfirm("addcat","Se ingreso la nueva categoria");    
+                    else    
+                        $this->view->showError("addcat","No se pudo ingresar la categoria");
+            }                
+        }else{
+            header("Location: " . BASE_URL . "home");
+        }
     }
     
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2020 a las 01:08:30
+-- Tiempo de generación: 23-10-2020 a las 00:07:35
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -101,16 +101,17 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `oferta`, `id_c
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `email`, `password`) VALUES
-(1, 'admin@newtech.com.ar', '$2y$12$hw15ntd.6PkFUUnV9enBvOMuGQPYxcJS8BuAx4m/oIPwstIfBYFpe'),
-(2, 'guest@newtech.com.ar', '$2y$12$SQUqevnbu5Jb6IkXNPIjD.h0pQvl/kRcElnTevqxRm2lE7mfR3Wd6');
+INSERT INTO `usuario` (`id`, `email`, `password`, `admin`) VALUES
+(1, 'admin@newtech.com.ar', '$2y$12$hw15ntd.6PkFUUnV9enBvOMuGQPYxcJS8BuAx4m/oIPwstIfBYFpe', 1),
+(2, 'guest@newtech.com.ar', '$2y$12$SQUqevnbu5Jb6IkXNPIjD.h0pQvl/kRcElnTevqxRm2lE7mfR3Wd6', 0);
 
 --
 -- Índices para tablas volcadas
