@@ -56,7 +56,7 @@ class authController{
     }
 
     function addUser (){
-        $this->view->showRegisterform();
+         $this->view->showRegisterform();
          if (    (isset($_REQUEST['email']) && ($_REQUEST['email'] != null)) && 
         (isset($_REQUEST['password']) && ($_REQUEST['password'] != null)) &&
         (isset($_REQUEST['rePassword']) && ($_REQUEST['rePassword'] != null))
@@ -85,24 +85,44 @@ class authController{
     }
 
     function showUsers(){
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
         $allUsers=$this->model->getAll();
         $this->view->showList($allUsers);
+        }
+        else {
+            header("Location: " . BASE_URL . "home");
+
+        }
     }
      
     function deleteUser($id) {
-         $success=$this->model->delete($id);
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
+          $success=$this->model->delete($id);
         
-        if ($success){
-        $this->view->showConfirmLogin('delUser','Se eliminó usuario');
-        }
-        else {
+          if ($success){
+            $this->view->showConfirmLogin('delUser','Se eliminó usuario');
+          }
+          else {
             $this->view->showErrorLogin('delUser','No se pudo borrar usuario');
+          }
+        }
+        else { 
+        header("Location: " . BASE_URL . "home");
         }
     }
 
     function updateUser ($id) {
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser){
         $selected=$this->model->getSelecteduser($id);
-        $this->view->showUpdateUserForm($selected);  
+        $this->view->showUpdateUserForm($selected);
+        }
+        else{
+            header("Location: " . BASE_URL . "home");
+        }
+           
     }
 
     function insertUser(){
