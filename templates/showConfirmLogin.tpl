@@ -12,7 +12,7 @@
                 <div class="modal-body text-center">
                     <p>{$msg}</p>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-center">
                     {*si viene de pagina de login, redirige al home al cerrar modal*}
                     {if {$origin}== 'delUser'}
                          <a href="verUsuarios" class="btn btn-primary"> Cerrar </a>
