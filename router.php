@@ -94,7 +94,31 @@ switch ($params[0]) {
         $controller = new tablesController();
         $controller->addCategory();
         break;
-    default:
+    case 'register':
+        $controller = new AuthController();
+        $controller->addUser();
+        break;
+    case 'verUsuarios':
+        $controller = new AuthController();
+        $controller->showUsers();
+        break;
+    case 'deleteUser':
+        $controller = new AuthController();
+        $id = $params[1];
+        $controller->deleteUser($id);
+        break;
+    case 'updateUser':
+        $controller = new AuthController();
+        $id = $params[1];
+        $controller->updateUser($id);
+        break;
+    case 'recordUser':
+        $controller = new AuthController();
+        $controller->insertUser();
+        break;
+
+
+     default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');
        break;

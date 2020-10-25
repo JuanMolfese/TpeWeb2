@@ -36,4 +36,19 @@ class authView{
         $this->smarty->assign('msg', $msg);    
         $this->smarty->display('templates/showConfirmLogin.tpl');
     }
+
+    function showRegisterform(){
+
+        $this->smarty->display('templates/showRegisterform.tpl');
+    }
+
+    function showList ($users){
+        $this->smarty->assign('users', $users);   
+        $this->smarty->display('templates/showUserslist.tpl');
+    }
+    
+    function showUpdateUserForm($user){
+        $this->smarty->assign('user', $user);
+        $this->smarty->display('templates/showUpdateUserForm.tpl');
+    }
 }

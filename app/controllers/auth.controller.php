@@ -54,7 +54,71 @@ class authController{
         
         $this->authHelper->logout();
     }
+
+    function addUser (){
+        $this->view->showRegisterform();
+         if (    (isset($_REQUEST['email']) && ($_REQUEST['email'] != null)) && 
+        (isset($_REQUEST['password']) && ($_REQUEST['password'] != null)) &&
+        (isset($_REQUEST['rePassword']) && ($_REQUEST['rePassword'] != null))
+    ){ 
+        $newUser=$_POST['email'];
+        $newPass=$_POST['password'];
+        $newRepass=$_POST['rePassword'];
+        
+       
+        if($newPass==$newRepass){
+           
+          $encryptPass= password_hash ($newPass , PASSWORD_DEFAULT );  
+          $success=$this->model->insertnewUser($newUser,$encryptPass);
+        
+         if ($success){
+            $this->view->showConfirmLogin('addUser','Se creó usuario');
+         }
+         else{
+            $this->view->showErrorLogin('addUser','No se pudo crear el usuario');
+         }
+        }
+        else {
+            $this->view->showErrorLogin('addUser','No coinciden contraseñas');
+        }
+     }
+    }
+
+    function showUsers(){
+        $allUsers=$this->model->getAll();
+        $this->view->showList($allUsers);
+    }
      
+    function deleteUser($id) {
+         $success=$this->model->delete($id);
+        
+        if ($success){
+        $this->view->showConfirmLogin('delUser','Se eliminó usuario');
+        }
+        else {
+            $this->view->showErrorLogin('delUser','No se pudo borrar usuario');
+        }
+    }
+
+    function updateUser ($id) {
+        $selected=$this->model->getSelecteduser($id);
+        $this->view->showUpdateUserForm($selected);  
+    }
+
+    function insertUser(){
+        if (    (isset($_REQUEST['user']) && ($_REQUEST['user'] != null)))
+         {                     
+                $id = $_POST['idUser'];
+                $nombre = $_POST['user'];
+                $password = $_POST['passUser'];
+                $admin = $_POST['admin'];
+                $this->model->recordUpdateUser($id, $nombre, $password,$admin);
+                header("Location: " . 'verUsuarios');
+            }
+    }
+
+    
+
 
     
 }
