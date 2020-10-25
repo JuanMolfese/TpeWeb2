@@ -12,18 +12,18 @@
                     <div class="modal-body text-center">
                         <p>{$msg}</p>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer justify-content-center">
                      {*segun accion que lo genera, se redirecciona al cerrar el modal*}
                     {if {$origin} == "add"}
-                         <a href="insertar" class="btn btn-primary"> Cerrar </a>
+                         <a href="insertar" class="btn btn-danger"> Cerrar </a>
                     {elseif {$origin} == "addcat"}
-                            <a href="insertarCategoria" class="btn btn-primary"> Cerrar </a>
+                            <a href="insertarCategoria" class="btn btn-danger"> Cerrar </a>
                     {elseif {$origin} == "delcat"}
-                            <a href="verCategorias" class="btn btn-primary"> Cerrar </a> 
+                            <a href="verCategorias" class="btn btn-danger"> Cerrar </a> 
                     {elseif {$origin} == "noLogin"}
-                            <a href="login" class="btn btn-primary"> Cerrar </a>    
+                            <a href="login" class="btn btn-danger"> Cerrar </a>    
                     {else}
-                            <a href="home" class="btn btn-primary"> Cerrar </a>
+                            <a href="home" class="btn btn-danger"> Cerrar </a>
                     {/if}
                     </div>
                 </div>

@@ -9,8 +9,7 @@
                     <div class="modal-body text-center">
                         <p>{$msg}</p>
                     </div>
-                    <div class="modal-footer">
-
+                    <div class="modal-footer justify-content-center">
                         {*segun accion que lo genera, se redirecciona al cerra el modal*}
                         {if {$origin} == "add"}
                             <a href="insertar" class="btn btn-primary"> Cerrar </a>

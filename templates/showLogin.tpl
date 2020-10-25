@@ -19,7 +19,7 @@
             <div>
                 <span class="mt-0" id="caps-message"> <i data-feather="alert-triangle"></i> Las mayusculas estan activadas ! </span>
             </div>
-            <div class='text-center my-5'>
+            <div class='text-center my-3'>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
             </div>
         </form>

@@ -14,7 +14,7 @@ class ApiComments {
     }
 
     function getAll($params = null) {
-        $comments = $this->model->getAll();
+        $comments = $this->model->getAll($idProd);
         $this->view->response($comments, 200);
     }
 

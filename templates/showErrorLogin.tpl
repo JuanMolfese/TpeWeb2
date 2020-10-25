@@ -12,10 +12,8 @@
                 <div class="modal-body text-center">
                     <p>{$msg}</p>
                 </div>
-                <div class="modal-footer text-center">
-                    
-                        <a href="login" class="btn btn-primary"> Cerrar </a>                   
-                   
+                <div class="modal-footer justify-content-center">
+                    <a href="login" class="btn btn-danger"> Cerrar </a>                   
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                 <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title" id="staticBackdropLiveLabel">New tech</h5>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                     <p>{$msg}</p>
                 </div>
                 <div class="modal-footer">
