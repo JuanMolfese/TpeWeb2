@@ -15,7 +15,11 @@
                 <tr>
                 <td>{$user->id}</td>
                 <td>{$user->email}</td>
-                <td>{$user->admin}</td>
+                {if $user->admin=='1'}
+                <td>SI</td>
+                {else}
+                <td>NO</td>
+                {/if}
                 <td><a class='btn btn-danger btn-sm' href='deleteUser/{$user->id}'>ELIMINAR</a></td>
                 <td><a class='btn btn-secondary btn-sm' href='updateUser/{$user->id}'>EDITAR</a></td>
                 </tr>
