@@ -39,7 +39,7 @@ class tablesController {
     function adminAllProd(){
     
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
             $product = $this->model->getAll();
             $this->view->showProducts($product,'allProd','');
         }
@@ -53,7 +53,7 @@ class tablesController {
     function addProduct(){
         
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
             $allCats = $this->catmodel->getAllcategorys();
             $this->view->showAddForm($allCats); 
         
@@ -90,7 +90,7 @@ class tablesController {
     function showAllcats () {
         
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
              $this->view->showCategorys();
         }
         else{
@@ -117,7 +117,7 @@ class tablesController {
     function deleteProduct($id){
 
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
             $this->model->getSelectedProd($id);
             $success=$this->model->remove($id);
             if ($success){
@@ -139,7 +139,7 @@ class tablesController {
     function updateProduct($id){
 
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
             $selected=$this->model->getSelectedProd($id);
             $this->view->showUpdateForm($selected);
         }else{
@@ -202,7 +202,7 @@ class tablesController {
     function deleteCategory($id){
 
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
             $this->catmodel->getSelectedCat($id);
             $success=$this->catmodel->remove($id);
         
@@ -224,7 +224,7 @@ class tablesController {
     function addCategory(){
 
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
             $this->view->showAddCatForm();
             if (    (isset($_REQUEST['nombreCat']) && ($_REQUEST['nombreCat'] != null)) && 
                     (isset($_REQUEST['descripcionCat']) && ($_REQUEST['descripcionCat'] != null))

@@ -18,7 +18,7 @@ class AuthHelper {
             die();
         }
         else{
-            return $typeuser = ($_SESSION['ADMIN']);
+            return $typeuser = [($_SESSION['ADMIN']),($_SESSION['ID_USER'])];
         }
     }
 

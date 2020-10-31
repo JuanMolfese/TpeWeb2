@@ -92,7 +92,7 @@ class authController{
 
     function showUsers(){
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
         $allUsers=$this->model->getAll();
         $this->view->showList($allUsers);
         }
@@ -104,7 +104,7 @@ class authController{
      
     function deleteUser($id) {
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if (($typeuser[0]) && ($typeuser[1]!=$id)){
           $success=$this->model->delete($id);
         
           if ($success){
@@ -115,13 +115,14 @@ class authController{
           }
         }
         else { 
-        header("Location: " . BASE_URL . "home");
+            $this->view->showErrorLogin('delUser','No se pudo borrar usuario');    
+            /*header("Location: " . BASE_URL . "home");*/
         }
     }
 
     function updateUser ($id) {
         $typeuser = $this->authHelper->checkLoggedIn();
-        if($typeuser){
+        if($typeuser[0]){
         $selected=$this->model->getSelecteduser($id);
         $this->view->showUpdateUserForm($selected);
         }
