@@ -13,7 +13,11 @@
                     <p>{$msg}</p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <a href="login" class="btn btn-danger"> Cerrar </a>                   
+                  {if {$origin} == 'delUser'}
+                    <a href="verUsuarios" class="btn btn-danger"> Cerrar </a>
+                  {else}  
+                    <a href="login" class="btn btn-danger"> Cerrar </a>      
+                  {/if}               
                 </div>
             </div>
         </div>

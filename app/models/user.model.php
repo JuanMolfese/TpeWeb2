@@ -25,6 +25,7 @@ class userModel{
         $query = $this->db->prepare ('INSERT INTO usuario (email, password) VALUES (?,?)');
         return $query->execute ([$newUser,$pass]);
         
+        
     }
 
     function getAll (){
