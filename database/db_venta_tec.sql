@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2020 a las 00:07:35
+-- Tiempo de generación: 31-10-2020 a las 14:07:58
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -38,10 +38,10 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'notebook', 'pc\'s portatiles'),
-(2, 'tablet', 'dispositivo tableta'),
-(3, 'celular', 'smartphones de consumo masivo'),
-(4, 'led', 'Televisores Led');
+(1, 'Notebook', 'pc\'s portatiles'),
+(2, 'Tablet', 'dispositivo tableta'),
+(3, 'Celular', 'smartphones de consumo masivo'),
+(4, 'Led', 'Televisores Led');
 
 -- --------------------------------------------------------
 
@@ -52,16 +52,17 @@ INSERT INTO `categoria` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `comentario` (
   `id` int(11) NOT NULL,
   `comentario` varchar(500) NOT NULL,
-  `usuario` varchar(100) NOT NULL,
-  `id_producto` int(11) NOT NULL
+  `puntaje` int(1) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comentario`
 --
 
-INSERT INTO `comentario` (`id`, `comentario`, `usuario`, `id_producto`) VALUES
-(1, 'Muy buen producto, recomendable', 'guest@newtech.com.ar', 3);
+INSERT INTO `comentario` (`id`, `comentario`, `puntaje`, `id_producto`, `id_usuario`) VALUES
+(1, 'Muy buen producto, recomendable', 3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,6 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `oferta`, `id_categoria`) VALUES
 (3, 'Lenovo Smart 15\'', 'Notebook deluxe', 121000, 0, 1),
-(5, 'HP Pavilion g45', 'Linea Home de HP', 89500, 1, 1),
 (9, 'HP Pavilion g55', 'Linea Office de HP', 102000, 0, 1),
 (12, 'Iphone 10', 'Apple Iphone modelo 2019', 87500, 0, 3),
 (13, 'Samsung T8', 'Triple camara de 68 mpx', 124570, 0, 3),
@@ -111,7 +111,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `email`, `password`, `admin`) VALUES
 (1, 'admin@newtech.com.ar', '$2y$12$hw15ntd.6PkFUUnV9enBvOMuGQPYxcJS8BuAx4m/oIPwstIfBYFpe', 1),
-(2, 'guest@newtech.com.ar', '$2y$12$SQUqevnbu5Jb6IkXNPIjD.h0pQvl/kRcElnTevqxRm2lE7mfR3Wd6', 0);
+(2, 'guest@newtech.com.ar', '$2y$12$SQUqevnbu5Jb6IkXNPIjD.h0pQvl/kRcElnTevqxRm2lE7mfR3Wd6', 0),
+(4, 'juanmolfese@hotmail.com', '$2y$10$zUrNGeR3YzptG88EfoVPhujaEx0JmaZbEUDJy3VHA1KFtIvqRDKni', 0);
 
 --
 -- Índices para tablas volcadas
@@ -129,7 +130,8 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_producto` (`id_producto`);
+  ADD KEY `id_producto` (`id_producto`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `producto`
@@ -152,7 +154,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
@@ -164,13 +166,13 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -180,7 +182,8 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`);
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`),
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 
 --
 -- Filtros para la tabla `producto`

@@ -22,7 +22,9 @@
         </div>
         
         <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
-            <a href='home' class='btn btn-info btn-lg'>Volver</a>
+            <a href='home' class='btn btn-info'>Volver</a>
+            <a href='showComments/{$product->id}' class='btn btn-secondary'>Ver Comentarios</a>
+            <a href='addComment/{$product->id}' class='btn btn-primary'>Agregar Comentario</a>
         </div>
 
     </div>

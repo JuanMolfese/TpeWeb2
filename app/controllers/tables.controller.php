@@ -118,7 +118,7 @@ class tablesController {
 
         $typeuser = $this->authHelper->checkLoggedIn();
         if($typeuser){
-            $this->model->getSelectedProd($id);
+           /*  $this->model->getSelectedProd($id); */
             $success=$this->model->remove($id);
             if ($success){
 
