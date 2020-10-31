@@ -18,10 +18,10 @@
         
         <div class='form-group col-md-12 p-0'>
             <label class="font-weight-bold" for='input_product_description'>Descripcion</label>
-            <input type='text' value="{$product->descripcion}" class='form-control bg-transparent border-0' id='input_product_description' readonly>
+            <input type='text' value="{$product->descripcion}" class='form-control bg-transparent border-0  mb-5' id='input_product_description' readonly>
         </div>
         
-        <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
+        <div class='form-group m-auto col-md-10 d-flex justify-content-around mt-5'>
             <a href='home' class='btn btn-info'>Volver</a>
             <a href='showComments/{$product->id}' class='btn btn-secondary'>Ver Comentarios</a>
             <a href='addComment/{$product->id}' class='btn btn-primary'>Agregar Comentario</a>

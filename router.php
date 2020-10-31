@@ -120,7 +120,12 @@ switch ($params[0]) {
         $controller = new tablesController();
         $id = $params[1];
         $controller->insertComment($id);
-        break;   
+        break;  
+    case 'recordComment':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->recordComment($id);
+        break;
     case 'showComments':
         $controller = new tablesController();
         $id = $params[1];

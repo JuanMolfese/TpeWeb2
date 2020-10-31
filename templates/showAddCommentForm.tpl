@@ -3,7 +3,7 @@
 <main class="container">
 
     <h3 class="mb-4">Crear un comentario</h3>
-    <form id="form-add" action="addComment/{$product_id}" method="POST" autocomplete="off">
+    <form id="form-add" action="recordComment/{$product_id}" method="POST" autocomplete="off">
         
         <div class="row col-12">
             
@@ -51,9 +51,9 @@
 
     </form>
 
+    {include 'footer.tpl'}    
 </main>  
     
-    {include 'footer.tpl'}    
 
 </body>
 </html>
