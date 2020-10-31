@@ -1,6 +1,7 @@
 <?php
 include_once 'app/models/product.model.php';
 include_once 'app/models/category.model.php';
+include_once 'app/models/comment.model.php';
 include_once 'app/views/tables.view.php';
 include_once 'app/helpers/auth.helper.php';
 
@@ -11,6 +12,7 @@ class tablesController {
     private $model;
     private $view;
     private $catmodel;
+    private $commentmodel;
     private $authHelper;
     
     
@@ -18,6 +20,7 @@ class tablesController {
         
         $this->model = new productModel();
         $this->catmodel = new CategoryModel();
+        $this->commentmodel = new CommentsModel();
         $category_list = $this->catmodel->getAllcategorys();  
         $this->view = new tablesView($category_list);
         $this->authHelper = new AuthHelper();
@@ -243,6 +246,42 @@ class tablesController {
         }else{
             header("Location: " . BASE_URL . "home");
         }
+    }
+
+    function insertComment($id_product){
+
+        $user = $this->authHelper->checkLoggedIn();
+        if($user){
+            $this->view->showaddComment($id_product);
+            if (    (isset($_REQUEST['puntaje']) && ($_REQUEST['puntaje'] != null)) && 
+            (isset($_REQUEST['comentario']) && ($_REQUEST['comentario'] != null))
+            ) {                             
+                $puntaje = $_POST['puntaje'];
+                $comentario = $_POST['comentario'];
+                $userID = $_SESSION['ID_USER'];
+                             
+                // inserto comentario en la db
+                $success = $this->commentmodel->insert($puntaje, $comentario,$userID,$id_product);
+                
+                    if(!$success)
+                      $this->view->showError("addcom","No se pudo ingresar el comentario");
+                        
+            }                
+        }else{
+            header("Location: " . BASE_URL . "home");
+        }
+    }
+
+    function listComments($id_product){
+        
+        $user = $this->authHelper->checkLoggedIn();
+        if($user){
+            $list = $this->commentmodel->getAll($id_product);
+            var_dump($list);die();  /* <=======TODO */
+            $this->view->showComments($list);
+           
+        }
+
     }
     
 }

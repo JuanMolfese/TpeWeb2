@@ -115,10 +115,18 @@ switch ($params[0]) {
     case 'recordUser':
         $controller = new AuthController();
         $controller->insertUser();
+        break;   
+    case 'addComment':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->insertComment($id);
+        break;   
+    case 'showComments':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->listComments($id);
         break;
-
-
-     default:
+    default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');
        break;

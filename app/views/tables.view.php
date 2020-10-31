@@ -83,4 +83,17 @@ class tablesView{
 
         $this->smarty->display('templates/showAddcatForm.tpl');      
     }
+
+     //Muestra formulario para agregar un comentario
+     function showaddComment($product_id){
+        $this->smarty->assign('product_id', $product_id);
+        $this->smarty->display('templates/showAddCommentForm.tpl');      
+    }
+
+    //Muestra lista de comentarios
+    function showComments($list) {
+
+        $this->smarty->assign('list', $list);
+        $this->smarty->display('templates/showComments.tpl');
+    }
 }
