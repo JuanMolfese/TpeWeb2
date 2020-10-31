@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2020 a las 00:07:35
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 31-10-2020 a las 14:06:26
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,16 +52,17 @@ INSERT INTO `categoria` (`id`, `nombre`, `descripcion`) VALUES
 CREATE TABLE `comentario` (
   `id` int(11) NOT NULL,
   `comentario` varchar(500) NOT NULL,
-  `usuario` varchar(100) NOT NULL,
-  `id_producto` int(11) NOT NULL
+  `puntaje` int(1) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comentario`
 --
 
-INSERT INTO `comentario` (`id`, `comentario`, `usuario`, `id_producto`) VALUES
-(1, 'Muy buen producto, recomendable', 'guest@newtech.com.ar', 3);
+INSERT INTO `comentario` (`id`, `comentario`, `puntaje`, `id_producto`, `id_usuario`) VALUES
+(1, 'Muy buen producto, recomendable', 0, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -110,8 +111,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `email`, `password`, `admin`) VALUES
-(1, 'admin@newtech.com.ar', '$2y$12$hw15ntd.6PkFUUnV9enBvOMuGQPYxcJS8BuAx4m/oIPwstIfBYFpe', 1),
-(2, 'guest@newtech.com.ar', '$2y$12$SQUqevnbu5Jb6IkXNPIjD.h0pQvl/kRcElnTevqxRm2lE7mfR3Wd6', 0);
+(1, 'admin@newtech.com.ar', '$2y$12$hw15ntd.6PkFUUnV9enBvOMuGQPYxcJS8BuAx4m/oIPwstIfBYFpe', 1);
 
 --
 -- Índices para tablas volcadas
@@ -129,7 +129,8 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_producto` (`id_producto`);
+  ADD KEY `id_producto` (`id_producto`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `producto`
@@ -180,7 +181,8 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`);
+  ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`),
+  ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 
 --
 -- Filtros para la tabla `producto`

@@ -70,9 +70,15 @@ class authController{
            
           $encryptPass= password_hash ($newPass , PASSWORD_DEFAULT );  
           $success=$this->model->insertnewUser($newUser,$encryptPass);
+          
+         
         
          if ($success){
             $this->view->showConfirmLogin('addUser','Se creó usuario');
+            $user = $this->model->getByEmail($newUser);
+            $this->authHelper->login($user);
+
+            
          }
          else{
             $this->view->showErrorLogin('addUser','No se pudo crear el usuario');
