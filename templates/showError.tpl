@@ -1,4 +1,4 @@
-{if {$origin} == 'noLogin'}
+{if {$origin} == 'noLogin' || {$origin} == 'addcom'}
 {include 'header.tpl'}
 {/if}
     <main class="container">

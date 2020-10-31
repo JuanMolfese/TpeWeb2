@@ -286,9 +286,13 @@ class tablesController {
         $user = $this->authHelper->checkLoggedIn();
         if($user){
             $list = $this->commentmodel->getAll($id_product);
-            var_dump($list);die();
-            $this->view->showComments($list);
-           
+            if ($list){
+                /* var_dump($list); die(); */
+                $this->view->showComments($list);           
+            }
+            else{
+                $this->view->showError("addcom","No hay comentarios del producto");   
+            }
         }
 
     }
