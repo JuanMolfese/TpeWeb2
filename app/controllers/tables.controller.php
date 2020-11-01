@@ -282,7 +282,7 @@ class tablesController {
         
         $valor=0;
         $product = $this->model->getSelectedProd($id_product);
-        $list = $this->commentmodel->getAll($id_product);
+        $list = $this->commentmodel->getAllbyProduct($id_product);
         foreach($list as $comment){
             $valor += $comment->puntaje;
         }
