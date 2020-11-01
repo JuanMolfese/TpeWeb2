@@ -4,7 +4,7 @@
        
 <h4> Comentarios del producto </h4>       
 <h3 class="font-weight-bold">{$product->nombre}</h3>
-<h5>Valoracion promedio: {$prom}</h5>
+<h5>Valoracion promedio: {$prom|string_format:"%.2f"}</h5>
 <div class="d-flex columns my-5">
         <div class="ml-5">
             {foreach from=$list item=comment}

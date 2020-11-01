@@ -32,6 +32,14 @@ class CommentsModel{
         
     $query = $this->db->prepare('DELETE FROM comentario WHERE id = ?');
     return $query->execute([$id]);      
-}
+  }
+
+  function get($id){
+    $query = $this->db-> prepare ('SELECT comentario.id, comentario.puntaje ,comentario.comentario,comentario.id_producto, usuario.email 
+                                  FROM comentario INNER JOIN usuario ON (comentario.id_usuario=usuario.id) 
+                                  WHERE comentario.id_producto = ? ');    
+    $query->execute([$id]);
+    return $query->fetch(PDO::FETCH_OBJ); 
+  }
 
 }

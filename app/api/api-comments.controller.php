@@ -13,30 +13,30 @@ class ApiComments {
         $this->view = new APIView();
     }
 
- /*    function getAll($params = null) {
-        $comments = $this->model->getAll($idProd);
+    function getAll($params = null) {
+        $comments = $this->model->getAll($params);
         $this->view->response($comments, 200);
     }
 
     function get($params = null) {
         // $params es un array asociativo con los parámetros de la ruta
-        $idTask = $params[':ID'];
-        $task = $this->model->get($idTask);
+        $idComment = $params[':ID'];
+        $task = $this->model->get($idComment);
         if ($task)
             $this->view->response($task, 200);
         else
-            $this->view->response("La tarea con el id=$idTask no existe", 404);
+            $this->view->response("El comentario con el id=$idComment no existe", 404);
     }
 
     function delete($params = null) {
-        $idTask = $params[':ID'];
-        $success = $this->model->remove($idTask);
+        $idComment = $params[':ID'];
+        $success = $this->model->delete($idComment);
         if ($success) {
-            $this->view->response("La tarea con el id=$idTask se borró exitosamente", 200);
+            $this->view->response("El comentario con id=$idComment se borró exitosamente", 200);
         }
         else { 
-            $this->view->response("La tarea con el id=$idTask no existe", 404);
+            $this->view->response("El comentario con id=$idComment no existe", 404);
         }
-    } */
+    }
 
 }
