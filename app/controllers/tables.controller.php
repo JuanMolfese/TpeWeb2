@@ -281,20 +281,16 @@ class tablesController {
         }
     }
 
-    function listComments($id_product){
+    function listComments($id_product){        
         
-        $user = $this->authHelper->checkLoggedIn();
-        if($user){
-            $list = $this->commentmodel->getAll($id_product);
-            if ($list){
-                /* var_dump($list); die(); */
-                $this->view->showComments($list);           
-            }
-            else{
-                $this->view->showError("addcom","No hay comentarios del producto");   
-            }
+        $list = $this->commentmodel->getAll($id_product);
+        if ($list){
+            /* var_dump($list); die(); */
+            $this->view->showComments($list);           
         }
-
+        else{
+            $this->view->showError("addcom","No hay comentarios del producto");   
+        }
     }
     
 }
