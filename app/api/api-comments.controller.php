@@ -40,6 +40,7 @@ class ApiComments {
 
     function delete($params = null) {
         $idComment = $params[':ID'];
+        
         $success = $this->model->delete($idComment);
         if ($success) {
             $this->view->response("El comentario con id=$idComment se borró exitosamente", 200);
