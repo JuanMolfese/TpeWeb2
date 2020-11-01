@@ -42,4 +42,11 @@ class CommentsModel{
     return $query->fetch(PDO::FETCH_OBJ); 
   }
 
+  function update($puntaje, $comentario, $id_usuario, $id_producto, $idComment){    
+    $sql = "UPDATE comentario SET puntaje = ?, comentario = ?, id_usuario = ?, id_producto = ? WHERE id = ?";
+    $query = $this->db->prepare($sql);
+    $result = $query->execute([$puntaje, $comentario, $id_usuario, $id_producto, $idComment]);
+    return $result;
+  }
+
 }

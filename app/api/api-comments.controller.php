@@ -61,14 +61,40 @@ class ApiComments {
         $checkUser = $this->usermodel->getSelecteduser($id_usuario);
                 
         if($checkUser){
-            $id = $this->model->insert($puntaje, $comentario, $id_usuario, $id_producto);
+            $success = $this->model->insert($puntaje, $comentario, $id_usuario, $id_producto);
             
-                if ($id > 0) {
+                if ($success > 0) {
                     $this->view->response("Se agrego el comentario exitosamente", 200);
                 }
                 else { 
                     $this->view->response("No se pudo generar el comentario", 500);
                 }
+        }else{
+            $this->view->response("El usuario no existe", 404);
+        }
+    }
+
+    function update($params = null) {
+        
+        $idComment = $params[':ID'];
+        
+        $body = $this->getData();
+        
+        $comentario       = $body->comentario;
+        $puntaje          = $body->puntaje;
+        $id_producto      = $body->id_producto;
+        $id_usuario       = $body->id_usuario;
+        
+        $checkUser = $this->usermodel->getSelecteduser($id_usuario);                
+        
+        if($checkUser){
+            $success = $this->model->update($puntaje, $comentario, $id_usuario, $id_producto, $idComment);
+            if ($success) {
+                $this->view->response("Se actualizó el comentario $idComment exitosamente", 200);
+            }
+            else { 
+                $this->view->response("No se pudo actualizar", 500);
+            }
         }else{
             $this->view->response("El usuario no existe", 404);
         }

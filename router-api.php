@@ -10,6 +10,7 @@ $router->addRoute('comment', 'GET', 'ApiComments', 'getAll');
 $router->addRoute('comment/:ID', 'GET', 'ApiComments', 'get');
 $router->addRoute('comment/:ID', 'DELETE', 'ApiComments', 'delete');
 $router->addRoute('comment', 'POST', 'ApiComments', 'insert');
+$router->addRoute('comment/:ID', 'PUT', 'ApiComments', 'update');
 
 
 // rutea
