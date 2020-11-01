@@ -28,12 +28,4 @@ class CommentsModel{
     return $query->fetchAll(PDO::FETCH_OBJ);  
   }
 
-  /* function getValorations($id_product){
-    $query = $this->db-> prepare ('SELECT comentario.id, comentario.puntaje ,comentario.comentario, usuario.email 
-    FROM comentario INNER JOIN usuario ON (comentario.id_usuario=usuario.id) 
-    WHERE comentario.id_producto = ? ');    
-$query->execute([$id_product]);
-return $query->fetchAll(PDO::FETCH_OBJ); 
-  } */
-
 }

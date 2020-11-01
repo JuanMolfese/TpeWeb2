@@ -3,8 +3,9 @@
 <div class="container">
        
 <h4> Comentarios del producto </h4>       
-    <div class="d-flex columns my-5">
-        
+<h3 class="font-weight-bold">{$product_name}</h3>
+<h5>Valoracion promedio: {$prom}</h5>
+<div class="d-flex columns my-5">
         <div class="ml-5">
             {foreach from=$list item=comment}
                 
@@ -17,7 +18,7 @@
                     Usuario: {$comment->email} 
                 </div>
                 <div>
-                    Puntaje: {$comment->puntaje}
+                    Valoracion: {$comment->puntaje}
                 </div>
                 <div>
                     Comentario: {$comment->comentario}

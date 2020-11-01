@@ -13,7 +13,7 @@ class ApiComments {
         $this->view = new APIView();
     }
 
-    function getAll($params = null) {
+ /*    function getAll($params = null) {
         $comments = $this->model->getAll($idProd);
         $this->view->response($comments, 200);
     }
@@ -37,6 +37,6 @@ class ApiComments {
         else { 
             $this->view->response("La tarea con el id=$idTask no existe", 404);
         }
-    }
+    } */
 
 }

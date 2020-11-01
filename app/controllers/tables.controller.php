@@ -253,7 +253,6 @@ class tablesController {
         $user = $this->authHelper->checkLoggedIn();
         if($user){
             $this->view->showaddComment($id_product);
-
         }
     }
 
@@ -261,7 +260,7 @@ class tablesController {
         
         if (    (isset($_REQUEST['puntaje']) && ($_REQUEST['puntaje'] != null)) && 
         (isset($_REQUEST['comentario']) && ($_REQUEST['comentario'] != null))
-        ) {                             
+        ){                             
             $puntaje = $_POST['puntaje'];
             $comentario = $_POST['comentario'];
             $userID = $_SESSION['ID_USER'];
@@ -271,8 +270,7 @@ class tablesController {
             
                 if(!$success){
                   $this->view->showError("addcom","No se pudo ingresar el comentario");
-                }
-                else{
+                }else{
                     header("Location: " . BASE_URL . "details/$id_product");
                 } 
         }                
@@ -283,12 +281,16 @@ class tablesController {
 
     function listComments($id_product){        
         
+        $valor=0;
+        $product = $this->model->getSelectedProd($id_product);
         $list = $this->commentmodel->getAll($id_product);
-        if ($list){
-            /* var_dump($list); die(); */
-            $this->view->showComments($list);           
+        foreach($list as $comment){
+            $valor += $comment->puntaje;
         }
-        else{
+        $prom=$valor/count($list);
+        if ($list){
+            $this->view->showComments($list,$prom,$product->nombre);           
+        }else{
             $this->view->showError("addcom","No hay comentarios del producto");   
         }
     }
