@@ -1,15 +1,19 @@
 <?php
 require_once 'app/models/comment.model.php';
+require_once 'app/models/user.model.php';
 require_once 'app/api/api.view.php';
+
 
 
 class ApiComments {
 
     private $model;
+    private $usermodel;
     private $view;
 
     function __construct() {
         $this->model = new CommentsModel();
+        $this->usermodel = new userModel();
         $this->view = new APIView();
         $this->data = file_get_contents("php://input");
     }
@@ -53,14 +57,20 @@ class ApiComments {
         $puntaje          = $body->puntaje;
         $id_producto      = $body->id_producto;
         $id_usuario       = $body->id_usuario;
-
-        $id = $this->model->insert($puntaje, $comentario, $id_usuario, $id_producto);
-
-        if ($id > 0) {
-            $this->view->response("Se agrego el comentario exitosamente, bajo la identificacion $id", 200);
-        }
-        else { 
-            $this->view->response("No se pudo generar el comentario", 500);
+        
+        $checkUser = $this->usermodel->getSelecteduser($id_usuario);
+                
+        if($checkUser){
+            $id = $this->model->insert($puntaje, $comentario, $id_usuario, $id_producto);
+            
+                if ($id > 0) {
+                    $this->view->response("Se agrego el comentario exitosamente", 200);
+                }
+                else { 
+                    $this->view->response("No se pudo generar el comentario", 500);
+                }
+        }else{
+            $this->view->response("El usuario no existe", 404);
         }
     }
 

@@ -33,7 +33,8 @@
         </div>
 
     </div>
-    <div class="text-center">
+    <div class="text-center mb-5">
         <a href="details/{$comment->id_producto}" class='btn btn-secondary'>Volver</a>
     </div>
+    {include 'footer.tpl'}
 </div>
