@@ -131,6 +131,12 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->listComments($id);
         break;
+    case 'deleteComment':
+        $controller = new tablesController();
+        $id = $params[1];
+        $id_prod = $params[2];
+        $controller->deleteComment($id, $id_prod);
+        break;
     default:
        header("HTTP/1.0 404 Not Found");
        echo('404 Page not found');

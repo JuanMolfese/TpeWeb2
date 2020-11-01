@@ -91,11 +91,11 @@ class tablesView{
     }
 
     //Muestra lista de comentarios
-    function showComments($list, $prom, $product_name) {
+    function showComments($list, $prom, $product) {
 
         $this->smarty->assign('list', $list);
         $this->smarty->assign('prom', $prom);
-        $this->smarty->assign('product_name', $product_name);
+        $this->smarty->assign('product', $product);
         $this->smarty->display('templates/showComments.tpl');
     }
 }

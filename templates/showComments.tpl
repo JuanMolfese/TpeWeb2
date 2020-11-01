@@ -3,7 +3,7 @@
 <div class="container">
        
 <h4> Comentarios del producto </h4>       
-<h3 class="font-weight-bold">{$product_name}</h3>
+<h3 class="font-weight-bold">{$product->nombre}</h3>
 <h5>Valoracion promedio: {$prom}</h5>
 <div class="d-flex columns my-5">
         <div class="ml-5">
@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                    <a class='btn btn-danger btn-sm' href='deleteComment/{$comment->id}'>Eliminar</a>
+                    <a class='btn btn-danger btn-sm' href='deleteComment/{$comment->id}/{$product->id}'>Eliminar</a>
                     {/if}
                 </div>
                 <br>

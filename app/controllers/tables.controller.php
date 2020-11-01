@@ -121,7 +121,6 @@ class tablesController {
 
         $typeuser = $this->authHelper->checkLoggedIn();
         if($typeuser[0]){
-            $this->model->getSelectedProd($id);
             $success=$this->model->remove($id);
             if ($success){
 
@@ -289,10 +288,28 @@ class tablesController {
         }
         $prom=$valor/count($list);
         if ($list){
-            $this->view->showComments($list,$prom,$product->nombre);           
+            $this->view->showComments($list,$prom,$product);           
         }else{
             $this->view->showError("addcom","No hay comentarios del producto");   
         }
+    }
+
+    function deleteComment($id, $id_product){
+        
+        $typeuser = $this->authHelper->checkLoggedIn();
+        
+        if($typeuser[0]==1){
+            
+            $success=$this->commentmodel->delete($id);
+            if ($success){
+                header("Location: " . BASE_URL . "showComments/$id_product");
+            }else{    
+                $this->view->showError("delcom","No se pudo eliminar el comentario");   
+            }
+        }else{    
+            header("Location: " . BASE_URL . "home");
+        }
+
     }
     
 }
