@@ -272,9 +272,8 @@ class tablesController {
                 }else{
                     header("Location: " . BASE_URL . "details/$id_product");
                 } 
-        }                
-        else{
-        header("Location: " . BASE_URL . "home");
+        }else{
+            header("Location: " . BASE_URL . "home");
         }
     }
 
@@ -286,8 +285,8 @@ class tablesController {
         foreach($list as $comment){
             $valor += $comment->puntaje;
         }
-        $prom=$valor/count($list);
-        if ($list){
+        if ($list) {
+            $prom=$valor/count($list);
             $this->view->showComments($list,$prom,$product);           
         }else{
             $this->view->showError("addcom","No hay comentarios del producto");   
@@ -298,8 +297,7 @@ class tablesController {
         
         $typeuser = $this->authHelper->checkLoggedIn();
         
-        if($typeuser[0]==1){
-            
+        if($typeuser[0]){            
             $success=$this->commentmodel->delete($id);
             if ($success){
                 header("Location: " . BASE_URL . "showComments/$id_product");
@@ -309,7 +307,5 @@ class tablesController {
         }else{    
             header("Location: " . BASE_URL . "home");
         }
-
-    }
-    
+    }    
 }
