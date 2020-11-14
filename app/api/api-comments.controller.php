@@ -30,12 +30,12 @@ class ApiComments {
 
     function get($params = null) {
         // $params es un array asociativo con los parámetros de la ruta
-        $idComment = $params[':ID'];
-        $comment = $this->model->get($idComment);
+        $idProduct = $params[':ID'];
+        $comment = $this->model->get($idProduct);
         if ($comment)
             $this->view->response($comment, 200);
         else
-            $this->view->response("El comentario con el id=$idComment no existe", 404);
+            $this->view->response("El comentario con el id=$idProduct no existe", 404);
     }
 
     function delete($params = null) {

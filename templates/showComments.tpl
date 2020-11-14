@@ -2,39 +2,30 @@
 
 <div class="container">
        
-<h4> Comentarios del producto </h4>       
-<h3 class="font-weight-bold">{$product->nombre}</h3>
-<h5>Valoracion promedio: {$prom|string_format:"%.2f"}</h5>
-<div class="d-flex columns my-5">
+
+{* <h3 class="font-weight-bold">{$product->nombre}</h3> *}
+{* <h5>Valoracion promedio: {$prom|string_format:"%.2f"}</h5> *}
+
+{* {include file="vue/commentHeader.vue"} *}
+<input type="hidden" id="id_product" value={$product->id}></input>
+{if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
+    <input type="hidden" id="useradmin" value="1"></input>
+{else}
+    <input type="hidden" id="useradmin" value="0"></input>
+{/if}
+
+    <div class="d-flex columns my-5">
+
         <div class="ml-5">
-            {foreach from=$list item=comment}
-                
-                <div>
-                    {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                    ID: {$comment->id}
-                    {/if}
-                </div>
-                <div>
-                    Usuario: {$comment->email} 
-                </div>
-                <div>
-                    Valoracion: {$comment->puntaje}
-                </div>
-                <div>
-                    Comentario: {$comment->comentario}
-                </div>
-                <div>
-                    {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                    <a class='btn btn-danger btn-sm' href='deleteComment/{$comment->id}/{$product->id}'>Eliminar</a>
-                    {/if}
-                </div>
-                <br>
-            {/foreach}
+            {include file="vue/commentList.vue"}           
         </div>
 
     </div>
+
     <div class="text-center mb-5">
-        <a href="details/{$comment->id_producto}" class='btn btn-secondary'>Volver</a>
+        <a href="details/{$product->id}" class='btn btn-secondary'>Volver</a>
     </div>
-    {include 'footer.tpl'}
+
+    <script src="js/showComment.js"></script>
+    {include 'footer.tpl'}    
 </div>

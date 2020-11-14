@@ -277,20 +277,11 @@ class tablesController {
         }
     }
 
-    function listComments($id_product){        
+function listComments($id_product){        
         
-        $valor=0;
         $product = $this->model->getSelectedProd($id_product);
-        $list = $this->commentmodel->getAllbyProduct($id_product);
-        foreach($list as $comment){
-            $valor += $comment->puntaje;
-        }
-        if ($list) {
-            $prom=$valor/count($list);
-            $this->view->showComments($list,$prom,$product);           
-        }else{
-            $this->view->showError("addcom","No hay comentarios del producto");   
-        }
+        $this->view->showComments($product);           
+       
     }
 
     function deleteComment($id, $id_product){
@@ -307,5 +298,5 @@ class tablesController {
         }else{    
             header("Location: " . BASE_URL . "home");
         }
-    }    
+    }
 }

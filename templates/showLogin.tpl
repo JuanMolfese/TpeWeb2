@@ -28,7 +28,5 @@
 
     {include 'footer.tpl'}
  
-<script> feather.replace() </script>
-<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

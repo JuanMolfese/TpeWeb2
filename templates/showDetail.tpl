@@ -21,16 +21,20 @@
             <input type='text' value="{$product->descripcion}" class='form-control bg-transparent border-0' id='input_product_description' readonly>
         </div>
         
-        <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
-            <a href='home' class='btn btn-info'>Volver</a>
-            <a href='showComments/{$product->id}' class='btn btn-secondary'>Ver Comentarios</a>
-            <a href='addComment/{$product->id}' class='btn btn-primary'>Agregar Comentario</a>
-        </div>
+        
+        <form id="js-form-details" class="col-12">
+            <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
+                <a href='home' class='btn btn-info'>Volver</a>
+                <a href='addComment/{$product->id}' class='btn btn-primary'>Agregar Comentario</a>
+                <a href='showComments/{$product->id}' class='btn btn-secondary'>Ver Comentarios</a>
+            </div>
+        </form>
 
     </div>
 
     {include 'footer.tpl'}
-
+    <script> src="js/comment.js"</script>
+    
 </main> 
 
 </body>

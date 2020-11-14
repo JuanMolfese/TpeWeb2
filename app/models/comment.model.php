@@ -41,9 +41,9 @@ class CommentsModel{
   }
 
   function get($id){
-    $query = $this->db-> prepare ('SELECT * FROM comentario WHERE id = ? ');    
+    $query = $this->db-> prepare ('SELECT comentario.*, producto.nombre FROM comentario INNER JOIN producto ON (comentario.id_producto = producto.id) WHERE producto.id = ? ');    
     $query->execute([$id]);
-    return $query->fetch(PDO::FETCH_OBJ); 
+    return $query->fetchAll(PDO::FETCH_OBJ);
   }
 
   function update($puntaje, $comentario, $id_usuario, $id_producto, $idComment){    
