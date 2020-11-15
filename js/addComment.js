@@ -31,7 +31,7 @@ function initpage() {
             const r = await fetch('api/comment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                data: JSON.stringify(comentario)
+                body: JSON.stringify(comentario)
             });
             const json = await r.json();
         } catch (e) {
