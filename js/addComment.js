@@ -27,11 +27,11 @@ function initpage() {
 
     async function addComment(comentario) {
         try {
-            const r = await fetch("api/comment", {
-                "method": "POST",
-                "headers": { "Content-Type": "application/json" },
-                "data": JSON.stringify(comentario)
-            })
+            const r = await fetch('api/comment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(comentario)
+            });
             const json = await r.json();
         } catch (e) {
             console.log(e);
