@@ -5,7 +5,7 @@ const app = new Vue({
     data: {
         commentsList: [],
         admin: 0,
-        /* commentHeader: 0, */
+        promedio: 0,
     },
 });
 
@@ -13,6 +13,7 @@ const app = new Vue({
 document.addEventListener('DOMContentLoaded', e => {
     const id = document.querySelector("#id_product");
     app.admin = document.querySelector("#useradmin").value;
+    app.promedio = 4;
     getComments(id.value);
 });
 
