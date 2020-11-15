@@ -8,7 +8,7 @@
      <ul v-else class="row list-group mt-5">
          <li v-for="comment in commentsList" class="list-group-item d-flex justify-content-between">
             <div class="font-italic" v-if="admin == 1">Id: {{ comment.id }}</div>
-            <div class="font-italic ml-1">Usuario: {{ comment.email }}</div>
+            <div class="font-italic ml-1">Usuario: <span class="text-primary font-weight-bolder">{{ comment.email }}</span></div>
             <div class="font-italic text-capitalize text-break flex-grow-1 ml-2">Comentario: {{ comment.comentario }}</div>
             <div class="font-italic">Puntaje: {{ comment.puntaje }}</div>
             <button class="btn btn-danger ml-3 " v-if="admin == 1">Eliminar</button>
