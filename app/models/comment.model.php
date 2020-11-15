@@ -21,8 +21,8 @@ class CommentsModel{
   }
 
   function getAllbyProduct($id_product){
-    $query = $this->db-> prepare ('SELECT comentario.id, comentario.puntaje ,comentario.comentario,comentario.id_producto, usuario.email 
-                                  FROM comentario INNER JOIN usuario ON (comentario.id_usuario=usuario.id) 
+    $query = $this->db-> prepare ('SELECT comentario.id, comentario.puntaje ,comentario.comentario,comentario.id_producto, usuario.email, producto.nombre 
+                                  FROM comentario INNER JOIN usuario ON (comentario.id_usuario=usuario.id) INNER JOIN producto ON (comentario.id_producto = producto.id)
                                   WHERE comentario.id_producto = ? ');    
     $query->execute([$id_product]);
     return $query->fetchAll(PDO::FETCH_OBJ);  
@@ -40,11 +40,11 @@ class CommentsModel{
     return $query->execute([$id]);      
   }
 
-  function get($id){
+  /*function get($id){
     $query = $this->db-> prepare ('SELECT comentario.*, producto.nombre FROM comentario INNER JOIN producto ON (comentario.id_producto = producto.id) WHERE producto.id = ? ');    
     $query->execute([$id]);
     return $query->fetchAll(PDO::FETCH_OBJ);
-  }
+  }*/
 
   function update($puntaje, $comentario, $id_usuario, $id_producto, $idComment){    
     $sql = "UPDATE comentario SET puntaje = ?, comentario = ?, id_usuario = ?, id_producto = ? WHERE id = ?";

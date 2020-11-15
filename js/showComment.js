@@ -22,7 +22,9 @@ async function getComments(id) {
         const comments = await r.json();
         console.log(comments);
         app.commentsList = comments;
-        app.promedio = calcProm(comments);
+        if (comments[0].puntaje != null) {
+            app.promedio = calcProm(comments);
+        }
 
     } catch (e) {
         console.log(e);

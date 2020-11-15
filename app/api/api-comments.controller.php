@@ -31,7 +31,8 @@ class ApiComments {
     function get($params = null) {
         // $params es un array asociativo con los parámetros de la ruta
         $idProduct = $params[':ID'];
-        $comment = $this->model->get($idProduct);
+      //  $comment = $this->model->get($idProduct);
+        $comment = $this->model->getAllbyProduct($idProduct);
         if ($comment)
             $this->view->response($comment, 200);
         else
