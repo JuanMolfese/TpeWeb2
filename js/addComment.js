@@ -21,17 +21,18 @@ function initpage() {
         addComment(comentario);
 
         /* ********************* */
-        console.table(comentario);
+
         /* ********************* */
     });
 
     async function addComment(comentario) {
+        console.table(comentario);
         try {
-            const r = await fetch("api/comment", {
-                "method": "POST",
-                "headers": { "Content-Type": "application/json" },
-                "data": JSON.stringify(comentario)
-            })
+            const r = await fetch('api/comment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify(comentario)
+            });
             const json = await r.json();
         } catch (e) {
             console.log(e);
