@@ -12,7 +12,9 @@
             <div class="font-italic ml-1">Usuario: <span class="text-primary font-weight-bolder">{{ comment.email }}</span></div>
             <div class="font-italic text-capitalize text-break flex-grow-1 ml-2">Comentario: {{ comment.comentario }}</div>
             <div class="font-italic">Puntaje: {{ comment.puntaje }}</div>
-            <button class="btn btn-danger ml-3 " v-if="admin == 1">Eliminar</button>
+            <!-- ERROR para cargar el id del comentario -->
+            <button class="btn btn-danger ml-3 " id="btn-delete-comment" v-if="admin == 1" value="comment.id">Eliminar</button>
+            <!-- ERROR para cargar el id del comentario -->
         </li>
     </ul>
 </section>
