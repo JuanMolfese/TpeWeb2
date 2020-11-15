@@ -2,6 +2,7 @@
 require_once 'app/models/comment.model.php';
 require_once 'app/models/user.model.php';
 require_once 'app/api/api.view.php';
+include_once 'app/helpers/auth.helper.php';
 
 
 
@@ -10,12 +11,14 @@ class ApiComments {
     private $model;
     private $usermodel;
     private $view;
+    private $authHelper;
 
     function __construct() {
         $this->model = new CommentsModel();
         $this->usermodel = new userModel();
         $this->view = new APIView();
         $this->data = file_get_contents("php://input");
+        $this->authHelper = new AuthHelper();
     }
 
     // Lee la variable asociada a la entrada estandar y la convierte en JSON
@@ -40,14 +43,21 @@ class ApiComments {
 
     function delete($params = null) {
         $idComment = $params[':ID'];
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser[0]){
         
-        $success = $this->model->delete($idComment);
-        if ($success) {
-            $this->view->response("El comentario con id=$idComment se borró exitosamente", 200);
+            $success = $this->model->delete($idComment);
+            if ($success) {
+                $this->view->response("El comentario con id=$idComment se borró exitosamente", 200);
+            }
+            else { 
+                $this->view->response("El comentario con id=$idComment no existe", 404);
+            }
+        }    
+        else {
+            $this->view->response("No cuenta con los permisos", 404);
         }
-        else { 
-            $this->view->response("El comentario con id=$idComment no existe", 404);
-        }
+
     }
 
     function insert($params = null) {

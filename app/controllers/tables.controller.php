@@ -298,7 +298,7 @@ class tablesController {
         
         $typeuser = $this->authHelper->checkLoggedIn();
         
-        if($typeuser[0]==1){
+        if($typeuser[0]){
             
             $success=$this->commentmodel->delete($id);
             if ($success){
