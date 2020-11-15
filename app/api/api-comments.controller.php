@@ -10,6 +10,7 @@ class ApiComments {
     private $model;
     private $usermodel;
     private $view;
+    private $data;
 
     function __construct() {
         $this->model = new CommentsModel();

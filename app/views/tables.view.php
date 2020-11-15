@@ -80,7 +80,6 @@ class tablesView{
 
     //Muestra formulario para agregar una nueva categoria
     function showAddcatForm(){
-
         $this->smarty->display('templates/showAddcatForm.tpl');      
     }
 

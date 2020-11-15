@@ -3,6 +3,7 @@
 <main class="container">
 
     <h3 class="mb-4">Crear un comentario</h3>
+    
     <form id="form-add-comment" autocomplete="off">
         
         <div class="row col-12">
@@ -22,32 +23,34 @@
 
                 </div>                  
 
-                <input type='number' id="id_product" value="{$product_id}" hidden> {* Para pasar a JS el id de producto *}
+                {* Espacio para tomar valores que seran usandos en js *}
+                
+                {if isset($smarty.session.ID_USER)}
+                    <input type="hidden" id="user_id" value="{$smarty.session.ID_USER}"></input>                
+                    <input type='number' id="id_product" value="{$product_id}" hidden></input>
+                    <input type='number' id="id_user" value="{$smarty.session.ID_USER}" hidden></input>
+                {/if}
+
+                {* **************************************************** *}
 
                 <div class="form-group col-9 p-0 mt-2 ml-5">
                     <label for="input_product_comment">Comentario</label>
-                    <textarea name="comentario" type="text" class="form-control" id="input_product_comment" maxlength="250" rows="3" required></textarea>
+                    <textarea name="comentario" type="text" class="form-control" id="input-product-comment" maxlength="250" rows="3" required></textarea>
                 </div>
-
             </div>
         
-            <div class="form-group m-auto col-md-10 d-flex justify-content-around py-5">
-                {* <button type="submit" id="btn-cargar" class="btn btn-primary btn-lg">Cargar</button> *}
+            <div class="form-group m-auto col-md-10 d-flex justify-content-around py-5">                
                 <button id="btn-add-comment" type="submit" class="btn btn-primary btn-lg">Cargar</button>
                 <a href="details/{$product_id}" class='btn btn-secondary btn-lg'>Volver</a>
             </div>
 
         </div> 
-
-    </form>
-
-    <h4 id="contenedor_agregar_comentario"></h4>
+    </form>    
     
     <script src="js/addComment.js"></script>
     {include 'footer.tpl'}    
 
-</main>  
-    
+</main>      
 
 </body>
 </html>
