@@ -55,8 +55,10 @@
     </form>
 
     <h4 id="contenedor_agregar_comentario"></h4>
-
+    
+    <script src="js/addComment.js"></script>
     {include 'footer.tpl'}    
+
 </main>  
     
 
