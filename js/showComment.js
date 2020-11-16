@@ -11,6 +11,27 @@ function initpage() {
             admin: 0,
             promedio: 0,
         },
+        methods: {
+            deleteComment: async function(comment_id, product_id) {
+
+
+                try {
+                    const r = await fetch(`api/comment/${comment_id}`, {
+                        method: 'DELETE'
+                    });
+                    const json = await r.json();
+                    if (r.ok) {
+                        getComments(product_id);
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+
+
+            }
+
+        }
+
     });
 
     const id = document.querySelector("#id_product");
@@ -33,6 +54,14 @@ function initpage() {
             console.log(e);
         }
     }
+    /* let buttonDelete = document.querySelectorAll("btn-delete-comment");
+     console.table(buttonDelete);
+     buttonDelete.forEach(e => {
+         e.addEventListener("click", event => {
+             event.preventDefault();
+             deleteComment(event.value);
+         });
+     });*/
 
     function calcProm(array) {
         let sum = 0;
@@ -46,23 +75,4 @@ function initpage() {
     }
 
 
-    let buttonDelete = document.querySelectorAll("btn-delete-comment");
-    console.table(buttonDelete);
-    buttonDelete.forEach(e => {
-        e.addEventListener("click", event => {
-            event.preventDefault();
-            deleteComment(event.value);
-        });
-    });
-
-    async function deleteComment(comment_id) {
-        try {
-            const r = await fetch(`api/comment/${comment_id}`, {
-                method: 'DELETE'
-            });
-            const json = await r.json();
-        } catch (e) {
-            console.log(e);
-        }
-    }
 }
