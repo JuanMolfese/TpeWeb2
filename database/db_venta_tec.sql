@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2020 a las 21:15:25
+-- Tiempo de generación: 17-11-2020 a las 22:07:02
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -96,21 +96,22 @@ CREATE TABLE `producto` (
   `descripcion` varchar(50) NOT NULL,
   `precio` int(11) NOT NULL,
   `oferta` tinyint(1) NOT NULL DEFAULT 0,
-  `id_categoria` int(11) NOT NULL
+  `id_categoria` int(11) NOT NULL,
+  `imagen` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `oferta`, `id_categoria`) VALUES
-(3, 'Lenovo Smart 15\'', 'Notebook deluxe', 121000, 0, 1),
-(9, 'HP Pavilion g55', 'Linea Office de HP', 102000, 0, 1),
-(12, 'Iphone 10', 'Apple Iphone modelo 2019', 87500, 0, 3),
-(13, 'Samsung T8', 'Triple camara de 68 mpx', 124570, 0, 3),
-(23, 'Dell Inspiron', 'Toda una inspiracion', 145720, 0, 1),
-(27, 'LG 50\'', 'Modelo para fanas del cine', 45200, 1, 4),
-(28, 'I Phone x', 'Careli', 1244560, 1, 3);
+INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `oferta`, `id_categoria`, `imagen`) VALUES
+(3, 'Lenovo Smart 15\'', 'Notebook deluxe', 121000, 0, 1, NULL),
+(9, 'HP Pavilion g55', 'Linea Office de HP', 102000, 0, 1, NULL),
+(12, 'Iphone 10', 'Apple Iphone modelo 2019', 87500, 0, 3, NULL),
+(13, 'Samsung T8', 'Triple camara de 68 mpx', 124570, 0, 3, NULL),
+(23, 'Dell Inspiron', 'Toda una inspiracion', 145720, 0, 1, NULL),
+(27, 'LG 50\'', 'Modelo para fanas del cine', 45200, 1, 4, NULL),
+(28, 'I Phone x', 'Careli', 1244560, 1, 3, NULL);
 
 -- --------------------------------------------------------
 
