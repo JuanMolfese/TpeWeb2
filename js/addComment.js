@@ -20,13 +20,11 @@ function initpage() {
         }
         addComment(comentario);
 
-        /* ********************* */
-
-        /* ********************* */
     });
 
     async function addComment(comentario) {
         console.table(comentario);
+        let id = comentario.id_producto;
         try {
             const r = await fetch('api/comment', {
                 method: 'POST',
@@ -37,6 +35,8 @@ function initpage() {
         } catch (e) {
             console.log(e);
         }
+        setTimeout(function() { window.location.href = `showComments/${id}`; }, 200);
+
     }
 
 }

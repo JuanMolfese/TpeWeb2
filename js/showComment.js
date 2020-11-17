@@ -54,14 +54,6 @@ function initpage() {
             console.log(e);
         }
     }
-    /* let buttonDelete = document.querySelectorAll("btn-delete-comment");
-     console.table(buttonDelete);
-     buttonDelete.forEach(e => {
-         e.addEventListener("click", event => {
-             event.preventDefault();
-             deleteComment(event.value);
-         });
-     });*/
 
     function calcProm(array) {
         let sum = 0;
