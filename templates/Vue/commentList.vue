@@ -13,7 +13,9 @@
             <div class="font-italic text-capitalize text-break flex-grow-1 ml-2">Comentario: {{ comment.comentario }}</div>
             <div class="font-italic">Puntaje: {{ comment.puntaje }}</div>
             <!-- ERROR para cargar el id del comentario -->
-            <button class="btn btn-danger ml-3 " id="btn-delete-comment" v-if="admin == 1" value="comment.id">Eliminar</button>
+            <button class="btn btn-danger ml-3 " id="btn-delete-comment" v-if="admin == 1" v-on:click="deleteComment(comment.id, commentsList[0].id_producto)">Eliminar</button>
+
+
             <!-- ERROR para cargar el id del comentario -->
         </li>
     </ul>

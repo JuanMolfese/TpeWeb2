@@ -21,11 +21,12 @@ function initpage() {
         addComment(comentario);
 
         /* ********************* */
-        console.table(comentario);
+
         /* ********************* */
     });
 
     async function addComment(comentario) {
+        console.table(comentario);
         try {
             const r = await fetch('api/comment', {
                 method: 'POST',
