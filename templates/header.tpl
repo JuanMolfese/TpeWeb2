@@ -48,7 +48,11 @@
                             {foreach from=$categorys item=category}
                                 <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
                             {/foreach} 
+                            {if ($smarty.session.ADMIN)}
+                                <a class="dropdown-item" href='adminProd'>Ver Todo</a>
+                            {else}   
                                 <a class="dropdown-item" href='allProd'>Ver Todo</a>
+                            {/if}     
 
                         </div>
 
