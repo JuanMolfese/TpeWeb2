@@ -70,10 +70,15 @@ class productModel{
     }
 
     //Actualiza datos de un producto en la tabla productos
-    function RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria){
+    function RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria, $imagen = null){
         
-        $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=? WHERE id='.$id.' ');
-        return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
+        if($imagen){
+            $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=?, imagen=? WHERE id='.$id.' ');
+            return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria, $imagen]);
+        }else{
+            $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=? WHERE id='.$id.' ');
+            return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
+        }
     }
    
         
