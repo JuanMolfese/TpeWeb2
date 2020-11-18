@@ -3,7 +3,7 @@
     <main class="container">
 
         <h3 class='mb-4'>Actualizar producto</h3>
-        <form id='form-add' action='editar' method='POST'>
+        <form id='form-add' action='editar' method='POST' enctype="multipart/form-data">
             <div class='d-flex row'>
 
                 <div class='form-group pt-6 col-md-7 p-0'>
@@ -36,7 +36,7 @@
                     </select>
                 </div>
 
-                <div class='form-group col-md-3 p-0 mt-4 ml-5 d-flex justify-content-around'>
+                <div class='form-group col-md-3 p-0 mt-4 ml-2 d-flex justify-content-around'>
                     <label class='d-flex align-items-center mb-0' for='input_product_oferta'>Esta en oferta ?</label>
                     <div class='form-check form-check-inline' id='input_product_oferta'>
                         <input class='form-check-input' type='radio' name='oferta' id='inlineRadio1' value='0' checked>
@@ -47,6 +47,12 @@
                         <label class='form-check-label' for='inlineRadio2'>Si</label>
                     </div>
                 </div>
+
+                <div class="form-group ml-5 p-0">
+                    <label for="add_image_product">Actualizar imagen del producto</label>
+                    <input type="file" name="imagen_prod" class="form-control-file" id="add_image_product">
+                </div>
+
                 <input type='hidden' value={$product->id} name='idProducto'>
 
                 <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>

@@ -73,7 +73,7 @@ class tablesController {
                     $oferta = $_POST['oferta'];
                     $categoria = $_POST['categoria'];        
                     
-                    // inserto la tarea en la DB
+                    
                 if($_FILES['imagen_prod']['type'] == "image/jpg" || $_FILES['imagen_prod']['type'] == "image/jpeg" || $_FILES['imagen_prod']['type'] == "image/png"){
                     
                     $image = $this->uniqueSaveName($_FILES['imagen_prod']['name'],$_FILES['imagen_prod']['tmp_name']);
@@ -191,8 +191,19 @@ class tablesController {
                 $oferta = $_POST['oferta'];
                 $categoria = $_POST['categoria'];
                 
-                $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
-                header("Location: " . 'filtrar/'.$categoria);
+
+                if($_FILES['imagen_prod']['type'] == "image/jpg" || $_FILES['imagen_prod']['type'] == "image/jpeg" || $_FILES['imagen_prod']['type'] == "image/png"){
+                    
+                    $image = $this->uniqueSaveName($_FILES['imagen_prod']['name'],$_FILES['imagen_prod']['tmp_name']);
+                    
+                    $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria, $image);
+                    header("Location: " . 'filtrar/'.$categoria);
+
+
+                }else{
+                    $this->model->RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria);
+                    header("Location: " . 'filtrar/'.$categoria);
+                }
             }
     }
 
