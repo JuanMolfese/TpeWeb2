@@ -38,7 +38,7 @@
                             <p>id: {$product->id}</p>
                         {/if}
 
-                        <p class="card-text text-break text-capitalize">{$product->descripcion}</p>
+                        <p class="card-text text-break">{$product->descripcion}</p>
                         <p class="card-text font-weight-bold">$ {$product->precio}</p>
                         
                         {if $product->oferta =='1'}
