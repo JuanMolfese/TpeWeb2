@@ -51,11 +51,15 @@ class productModel{
     }
 
     //Inserta un nuevo producto en la tabla producto
-    function insert($nombre, $descripcion, $precio, $oferta, $categoria) {
+    function insert($nombre, $descripcion, $precio, $oferta, $categoria, $imagen = null) {
 
-        $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria) VALUES (?,?,?,?,?)'); 
-        return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
-        
+        if($imagen){
+            $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria, imagen) VALUES (?,?,?,?,?,?)'); 
+            return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria, $imagen]);
+        }else{
+            $query = $this->db->prepare('INSERT INTO producto (nombre, descripcion, precio, oferta, id_categoria) VALUES (?,?,?,?,?)'); 
+            return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria]);
+        }
     }
 
     //Elimina un producto de la tabla segun id

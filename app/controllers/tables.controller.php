@@ -72,7 +72,22 @@ class tablesController {
                     $precio = $_POST['precio'];
                     $oferta = $_POST['oferta'];
                     $categoria = $_POST['categoria'];        
+                    
                     // inserto la tarea en la DB
+                if($_FILES['imagen_prod']['type'] == "image/jpg" || $_FILES['imagen_prod']['type'] == "image/jpeg" || $_FILES['imagen_prod']['type'] == "image/png"){
+                    
+                    $image = $this->uniqueSaveName($_FILES['imagen_prod']['name'],$_FILES['imagen_prod']['tmp_name']);
+
+                    $success = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria, $image);
+
+                    if($success){
+                        $this->view->showConfirm("add","Se ingreso el producto");   
+                    } 
+                    else {   
+                        $this->view->showError("add","No se pudo ingresar el producto");
+                    }
+                }else{
+
                     $success = $this->model->insert($nombre, $descripcion, $precio, $oferta, $categoria);
 
                     if($success){
@@ -81,12 +96,23 @@ class tablesController {
                     else {   
                         $this->view->showError("add","No se pudo ingresar el producto");
                     }
+                }
             }    
         }
         else{
             header("Location: " . BASE_URL . "home");
         }
 
+    }
+
+    function uniqueSaveName($imgName, $tempName) {
+        
+        $filePath = "images/" . uniqid("", true) . "." 
+            . strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
+
+        move_uploaded_file($tempName, $filePath);
+
+        return $filePath;
     }
 
     //verifica login, y muestra el listado de todas las categorias

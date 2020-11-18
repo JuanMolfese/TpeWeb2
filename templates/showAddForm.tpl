@@ -3,7 +3,7 @@
     <main class="container">
 
         <h3 class="mb-4">Cargar un nuevo producto</h3>
-        <form id="form-add" action="insertar" method="POST" autocomplete="off">
+        <form id="form-add" action="insertar" method="POST" autocomplete="off" enctype="multipart/form-data">
             <div class="d-flex row">
 
                 <div class="form-group pt-6 col-md-7 p-0">
@@ -40,6 +40,12 @@
                         <label class="form-check-label" for="inlineRadio2">Si</label>
                     </div>
                 </div>
+
+                <div class="form-group mt-4">
+                    <label for="add_image_product">Agregar imagen del producto</label>
+                    <input type="file" name="imagen_prod" class="form-control-file" id="add_image_product">
+                </div>
+
                 <div class="form-group m-auto col-md-10 d-flex justify-content-around pt-5">
                     <button type="submit" id="btn-cargar" class="btn btn-primary btn-lg">Cargar</button>
                     <a href="allProd" class='btn btn-secondary btn-lg'>Volver</a>
