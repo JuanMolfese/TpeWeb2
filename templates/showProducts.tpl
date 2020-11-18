@@ -24,12 +24,12 @@
 
         <div class="row">
 
-            <div class="col-3">
+            <div class="col-3 bg-white">
                 <img class="card-img img-fluid" src="{$product->imagen}">
             </div>
 
             <div class="col-9">
-                <div class="d-flex columns col-12">
+                <div class="d-flex columns col-12 align-items-center">
                     <div class="card-body col-10">
 
                         <h5 class="card-title text-capitalize"> {$product->nombre}</h5>
@@ -52,11 +52,11 @@
 
                     <div class="card-body col-2 text-center">
 
-                        <a class='btn btn-secondary btn-sm mb-4' href='details/{$product->id}'>Detalle</a>
+                        <a class='btn btn-secondary btn mb-4' href='details/{$product->id}'>Detalle</a>
 
                         {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                            <a class='btn btn-danger btn-sm mb-4' href='eliminar/{$product->id}'>Eliminar</a>
-                            <a class='btn btn-secondary btn-sm mb-4' href='update/{$product->id}'>Editar</a>
+                            <a class='btn btn-danger btn mb-4' href='eliminar/{$product->id}'>Eliminar</a>
+                            <a class='btn btn-secondary btn mb-4' href='update/{$product->id}'>Editar</a>
                         {/if}
 
                     </div>
