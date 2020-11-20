@@ -30,7 +30,7 @@
 
             <div class="col-9">
                 <div class="d-flex columns col-12 align-items-center">
-                    <div class="card-body col-10">
+                    <div class="card-body col-9">
 
                         <h5 class="card-title text-capitalize"> {$product->nombre}</h5>
 
@@ -50,13 +50,13 @@
 
                     </div>
 
-                    <div class="card-body col-2 text-center">
+                    <div class="card-body col-3 text-center mx-auto">
 
-                        <a class='btn btn-secondary btn mb-4' href='details/{$product->id}'>Detalle</a>
+                        <a class='btn btn-secondary mb-4' href='details/{$product->id}'>Detalle</a>
 
                         {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                            <a class='btn btn-danger btn mb-4' href='eliminar/{$product->id}'>Eliminar</a>
-                            <a class='btn btn-secondary btn mb-4' href='update/{$product->id}'>Editar</a>
+                            <a class='btn btn-danger mb-4' href='eliminar/{$product->id}'>Eliminar</a>
+                            <a class='btn btn-secondary mb-4' href='update/{$product->id}'>Editar</a>
                         {/if}
 
                     </div>

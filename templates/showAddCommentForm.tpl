@@ -4,10 +4,13 @@
 
     <h3 class="mb-4">Crear un comentario</h3>
     
-    <form id="form-add-comment" autocomplete="off">
+    <div id="js-respuesta-addComment"></div>
+
+    <form id="form-add-comment" autocomplete="off" class="m-auto col-md-12 d-flex justify-content-center py-5">
         
-        <div class="row col-12">
+        <div class="row col-12 px-0">
             
+
             <div class="d-flex columns col-12">
 
                 <div class="form-group pt-6 col-2 p-0 mt-2">
@@ -30,6 +33,7 @@
                     <input type='number' id="id_product" value="{$product_id}" hidden></input>
                     <input type='number' id="id_user" value="{$smarty.session.ID_USER}" hidden></input>
                 {/if}
+                {* <div data-user-id="smarty.id_user" data-id-product="$product->id"></div> *}
 
                 {* **************************************************** *}
 
@@ -38,15 +42,18 @@
                     <textarea name="comentario" type="text" class="form-control" id="input-product-comment" maxlength="250" rows="3" required></textarea>
                 </div>
             </div>
-        
-            <div class="form-group m-auto col-md-10 d-flex justify-content-around py-5">                
-                <button id="btn-add-comment" type="submit" class="btn btn-primary btn-lg">Cargar</button>
-                <a href="details/{$product_id}" class='btn btn-secondary btn-lg'>Volver</a>
+            
+            <div class="form-group m-auto col-md-12 d-flex justify-content-center py-5">                
+                <button id="btn-add-comment" type="submit" class="btn btn-primary">Cargar</button>
             </div>
-
+                
         </div> 
     </form>    
-    
+        <div class="form-group m-auto col-md-12 d-flex justify-content-center pb-5">
+            <a href="details/{$product_id}" class='btn btn-secondary'>Volver</a>
+        </div>
+
+    <div id="js-btn-back"></div>
     <script src="js/addComment.js"></script>
     {include 'footer.tpl'}    
 

@@ -23,8 +23,9 @@ function initpage() {
     });
 
     async function addComment(comentario) {
-        console.table(comentario);
-        let id = comentario.id_producto;
+
+        let id = comentario.id_producto; /* <==== ???? */
+
         try {
             const r = await fetch('api/comment', {
                 method: 'POST',
@@ -32,11 +33,18 @@ function initpage() {
                 body: JSON.stringify(comentario)
             });
             const json = await r.json();
+            confirmAddComment();
+
         } catch (e) {
             console.log(e);
         }
-        setTimeout(function() { window.location.href = `showComments/${id}`; }, 200);
 
+    }
+
+    function confirmAddComment() {
+
+        document.getElementById("js-respuesta-addComment").innerHTML = "Su comentario ha sido ingresado";
+        document.getElementById("form-add-comment").style.visibility = "hidden";
     }
 
 }
