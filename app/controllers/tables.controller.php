@@ -26,9 +26,9 @@ class tablesController {
         $this->authHelper = new AuthHelper();
     }
     
-    function showHome(){//muestra en el home todas las ofertas
-
-        $product = $this->model->getAllOffer();
+    function showHome($start){//muestra en el home todas las ofertas
+        
+        $product = $this->model->getAllOffer($start);
         $this->view->showProducts($product,'home','');
     }
     

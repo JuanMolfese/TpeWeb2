@@ -32,7 +32,7 @@ switch ($params[0]) {
         break;
     case 'home':
         $controller = new tablesController();
-        $controller->showHome();
+        $controller->showHome(0);
         break;
     case 'allProd':
         $controller = new tablesController();
