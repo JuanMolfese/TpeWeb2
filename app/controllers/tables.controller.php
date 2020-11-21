@@ -27,43 +27,43 @@ class tablesController {
     }
     
     
-    function showHome($start){//muestra en el home todas las ofertas
+    function showHome($start,$end){//muestra en el home todas las ofertas
         
-        $product = $this->model->getAllOffer($start);
+        $product = $this->model->getAllOffer($start,$end);
         if(empty($product)){
             $this->view->basepage();
             $this->view->showError("cat","No hay más productos");
         }
         else{    
            
-            $this->view->showProducts($product,'home','',$start);
+            $this->view->showProducts($product,'home','',$start,$end);
         }
     }
     
-    function showAllProd($start){//muestra listado completo de todos los productos
+    function showAllProd($start,$end){//muestra listado completo de todos los productos
 
-        $product = $this->model->getAll($start);
+        $product = $this->model->getAll($start,$end);
         if(empty($product)){
             $this->view->basepage();
             $this->view->showError("cat","No hay más productos");
         }
         else{    
-        $this->view->showProducts($product,'allProd','',$start);
+        $this->view->showProducts($product,'allProd','',$start,$end);
         }
     }
     
    //muestra todos los productos al administrador, para trabajar sobre listado
-    function adminAllProd($start){
+    function adminAllProd($start,$end){
     
         $typeuser = $this->authHelper->checkLoggedIn();
         if($typeuser[0]){
-            $product = $this->model->getAll($start);
+            $product = $this->model->getAll($start,$end);
             if(empty($product)){
                 $this->view->basepage();
                 $this->view->showError("cat","No hay más productos");
             }
             else{    
-            $this->view->showProducts($product,'adminProd','',$start);
+            $this->view->showProducts($product,'adminProd','',$start,$end);
             }
         }
         else{
@@ -148,17 +148,17 @@ class tablesController {
     }
 
     //genera listado segun categoria especificada
-    function showByCat($id,$start){
+    function showByCat($id,$start,$end){
 
         $thecat=$this->catmodel->getSelectedcat($id);
-        $selected=$this->model->getAllSelectedCat($id,$start);
+        $selected=$this->model->getAllSelectedCat($id,$start,$end);
         
         if(empty($selected)){
             $this->view->basepage();
             $this->view->showError("cat","No hay productos en esta categoria");
         }
         else{    
-            $this->view->showProducts($selected,'filtrar',$thecat,$start);
+            $this->view->showProducts($selected,'filtrar',$thecat,$start,$end);
         }
     }
 

@@ -71,21 +71,19 @@
    <ul class="pagination justify-content-center">
    {if $ruta =='filtrar'} 
       {if $start>0} 
-        <li class="page-item"><a class="page-link" href="{$ruta}/{$product->id_categoria}/{$start-3}">Anterior</a></li> 
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$product->id_categoria}/{$start-$end}">Anterior</a></li> 
      {/if}      
-        <li class="page-item"><a class="page-link">{floor(($start/2)+1)}</a></li>
-    
-        <li class="page-item"><a class="page-link" href="{$ruta}/{$product->id_categoria}/{$start+3}">Siguiente</a></li>
+           
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$product->id_categoria}/{$start+$end}">Siguiente</a></li>
    
   
   {else}
     {if $start>0} 
         
-        <li class="page-item"><a class="page-link" href="{$ruta}/{$start-3}">Anterior</a></li> 
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$start-$end}">Anterior</a></li> 
     {/if}      
-        <li class="page-item"><a class="page-link">{floor(($start/2)+1)}</a></li>
-        <li class="page-item"><a class="page-link" href="{$ruta}/{$start+3}">Siguiente</a></li>
-    {/if}    
+       <li class="page-item"><a class="page-link" href="{$ruta}/{$start+$end}">Siguiente</a></li>
+   {/if}    
   </ul>
 </nav>
      

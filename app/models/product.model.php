@@ -15,10 +15,10 @@ class productModel{
       }
 
     //Devuelve lista de todos los productos de la db y se le adiciona el nombre de la categoria desde la tabla categoria
-    function getAll($start) {
+    function getAll($start,$end) {
         
         $sql='SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
-        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id )LIMIT '.$start.',3';
+        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id )LIMIT '.$start.','.$end.'';
         $query = $this->db->prepare($sql);
         $query->execute();    
         
@@ -27,9 +27,9 @@ class productModel{
     
     
      //Devuelve lista de todos los productos que estan en OFERTA de la db y se le adiciona el nombre de la categoria desde la tabla categoria
-    function getAllOffer($start){
+    function getAllOffer($start,$end){
        
-        $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=? LIMIT '.$start.',3');
+        $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=? LIMIT '.$start.','.$end.'');
         $query->execute([1]);
         
         
@@ -41,9 +41,9 @@ class productModel{
     
 
     //Devuelve lista de productos de una determinada categoria
-    function getAllSelectedCat($id,$start) {
+    function getAllSelectedCat($id,$start,$end) {
 
-       $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=? LIMIT '.$start.',3');
+       $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=? LIMIT '.$start.','.$end.'');
        $query->execute([$id]);
        return $query->fetchAll(PDO::FETCH_OBJ);
            
