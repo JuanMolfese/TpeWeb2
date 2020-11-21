@@ -67,20 +67,18 @@
     </div>    
     {/foreach}
     
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            
-            <li class="page-item"><a class="page-link" href="#">{$products.length}</a></li>
-           
-            <li class="page-item">
-             <a class="page-link" href="#">Siguiente</a>
-            </li>
-          </ul>
-        </nav>
-   
+    <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {if $start<=0} 
+        <li class="page-item"><a class="page-link" aria-disabled="true" href="#">Previous</a></li>
+    {else} 
+        <li class="page-item"><a class="page-link" href="home/{$start-3}">Anterior</a></li> 
+    {/if}      
+        <li class="page-item"><a class="page-link">{floor(($start/2)+1)}</a></li>
+        <li class="page-item"><a class="page-link" href="home/{$start+3}">Siguiente</a></li>
+  </ul>
+</nav>
+     
 
     {include 'footer.tpl'}
 

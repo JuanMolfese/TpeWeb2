@@ -26,10 +26,11 @@ class tablesController {
         $this->authHelper = new AuthHelper();
     }
     
+    
     function showHome($start){//muestra en el home todas las ofertas
         
         $product = $this->model->getAllOffer($start);
-        $this->view->showProducts($product,'home','');
+        $this->view->showProducts($product,'home','',$start);
     }
     
     function showAllProd(){//muestra listado completo de todos los productos

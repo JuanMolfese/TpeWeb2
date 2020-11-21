@@ -24,13 +24,14 @@ class productModel{
         
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-
+    
     
      //Devuelve lista de todos los productos que estan en OFERTA de la db y se le adiciona el nombre de la categoria desde la tabla categoria
     function getAllOffer($start){
        
         $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=? LIMIT '.$start.',3');
         $query->execute([1]);
+        
         
         return $query->fetchAll(PDO::FETCH_OBJ); 
         
