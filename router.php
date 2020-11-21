@@ -15,6 +15,8 @@ if (!empty($_GET['action'])) {
 
 // parsea la accion Ej: suma/1/2 --> ['suma', 1, 2]
 $params = explode('/', $action);
+//indica cantidad de elementos a mostrar por pagina
+$end=3;
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
@@ -37,7 +39,7 @@ switch ($params[0]) {
         else {
          $start=$params[1];
         }
-        $controller->showHome($start);
+        $controller->showHome($start,$end);
         break;
     case 'allProd':
         $controller = new tablesController();
@@ -46,7 +48,7 @@ switch ($params[0]) {
       else {
        $start=$params[1];
       }
-         $controller->showAllProd($start);
+         $controller->showAllProd($start,$end);
         break;
     case 'adminProd':
         $controller = new tablesController();
@@ -55,7 +57,7 @@ switch ($params[0]) {
       else {
        $start=$params[1];
       }
-        $controller->adminAllProd($start);
+        $controller->adminAllProd($start,$end);
         break;
     case 'filtrar':
         $controller = new tablesController();
@@ -65,7 +67,7 @@ switch ($params[0]) {
       else {
        $start=$params[2];
       }
-        $controller->showByCat($id,$start); //se refiere a la ID de la categoria
+        $controller->showByCat($id,$start,$end); //se refiere a la ID de la categoria
         break;
     case 'insertar':
         $controller = new tablesController();
