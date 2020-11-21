@@ -55,8 +55,8 @@
                         <a class='btn btn-secondary mb-4' href='details/{$product->id}'>Detalle</a>
 
                         {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                            <a class='btn btn-danger mb-4' href='eliminar/{$product->id}'>Eliminar</a>
-                            <a class='btn btn-secondary mb-4' href='update/{$product->id}'>Editar</a>
+                            <a class='btn btn-danger mb-4' href='eliminar/{$product->id_categoria}'>Eliminar</a>
+                            <a class='btn btn-secondary mb-4' href='update/{$product->id_categoria}'>Editar</a>
                         {/if}
 
                     </div>
@@ -68,14 +68,24 @@
     {/foreach}
     
     <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    {if $start<=0} 
-        <li class="page-item"><a class="page-link" aria-disabled="true" href="#">Previous</a></li>
-    {else} 
-        <li class="page-item"><a class="page-link" href="home/{$start-3}">Anterior</a></li> 
+   <ul class="pagination justify-content-center">
+   {if $ruta =='filtrar'} 
+      {if $start>0} 
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$product->id_categoria}/{$start-3}">Anterior</a></li> 
+     {/if}      
+        <li class="page-item"><a class="page-link">{floor(($start/2)+1)}</a></li>
+    
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$product->id_categoria}/{$start+3}">Siguiente</a></li>
+   
+  
+  {else}
+    {if $start>0} 
+        
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$start-3}">Anterior</a></li> 
     {/if}      
         <li class="page-item"><a class="page-link">{floor(($start/2)+1)}</a></li>
-        <li class="page-item"><a class="page-link" href="home/{$start+3}">Siguiente</a></li>
+        <li class="page-item"><a class="page-link" href="{$ruta}/{$start+3}">Siguiente</a></li>
+    {/if}    
   </ul>
 </nav>
      

@@ -32,25 +32,40 @@ switch ($params[0]) {
         break;
     case 'home':
         $controller = new tablesController();
-        if ($params[1]==null)
-            $start=0;
+        if (count($params)<=1)
+          $start=0;
         else {
-        $start=$params[1];
+         $start=$params[1];
         }
         $controller->showHome($start);
         break;
     case 'allProd':
         $controller = new tablesController();
-        $controller->showAllProd();
+        if (count($params)<=1)
+        $start=0;
+      else {
+       $start=$params[1];
+      }
+         $controller->showAllProd($start);
         break;
     case 'adminProd':
         $controller = new tablesController();
-        $controller->adminAllProd();
+        if (count($params)<=1)
+        $start=0;
+      else {
+       $start=$params[1];
+      }
+        $controller->adminAllProd($start);
         break;
     case 'filtrar':
         $controller = new tablesController();
         $id = $params[1];
-        $controller->showByCat($id); //se refiere a la ID de la categoria
+        if (count($params)<=2)
+        $start=0;
+      else {
+       $start=$params[2];
+      }
+        $controller->showByCat($id,$start); //se refiere a la ID de la categoria
         break;
     case 'insertar':
         $controller = new tablesController();
