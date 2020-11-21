@@ -26,25 +26,45 @@ class tablesController {
         $this->authHelper = new AuthHelper();
     }
     
-    function showHome(){//muestra en el home todas las ofertas
-
-        $product = $this->model->getAllOffer();
-        $this->view->showProducts($product,'home','');
+    
+    function showHome($start){//muestra en el home todas las ofertas
+        
+        $product = $this->model->getAllOffer($start);
+        if(empty($product)){
+            $this->view->basepage();
+            $this->view->showError("cat","No hay más productos");
+        }
+        else{    
+           
+            $this->view->showProducts($product,'home','',$start);
+        }
     }
     
-    function showAllProd(){//muestra listado completo de todos los productos
+    function showAllProd($start){//muestra listado completo de todos los productos
 
-        $product = $this->model->getAll();
-        $this->view->showProducts($product,'allProd','');
+        $product = $this->model->getAll($start);
+        if(empty($product)){
+            $this->view->basepage();
+            $this->view->showError("cat","No hay más productos");
+        }
+        else{    
+        $this->view->showProducts($product,'allProd','',$start);
+        }
     }
     
    //muestra todos los productos al administrador, para trabajar sobre listado
-    function adminAllProd(){
+    function adminAllProd($start){
     
         $typeuser = $this->authHelper->checkLoggedIn();
         if($typeuser[0]){
-            $product = $this->model->getAll();
-            $this->view->showProducts($product,'allProd','');
+            $product = $this->model->getAll($start);
+            if(empty($product)){
+                $this->view->basepage();
+                $this->view->showError("cat","No hay más productos");
+            }
+            else{    
+            $this->view->showProducts($product,'adminProd','',$start);
+            }
         }
         else{
             header("Location: " . BASE_URL . "home");
@@ -128,17 +148,17 @@ class tablesController {
     }
 
     //genera listado segun categoria especificada
-    function showByCat($id){
+    function showByCat($id,$start){
 
         $thecat=$this->catmodel->getSelectedcat($id);
-        $selected=$this->model->getAllSelectedCat($id);
+        $selected=$this->model->getAllSelectedCat($id,$start);
         
         if(empty($selected)){
             $this->view->basepage();
             $this->view->showError("cat","No hay productos en esta categoria");
         }
         else{    
-            $this->view->showProducts($selected,'filtrar',$thecat);
+            $this->view->showProducts($selected,'filtrar',$thecat,$start);
         }
     }
 

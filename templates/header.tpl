@@ -17,7 +17,7 @@
     
 <header class="container">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-1 py-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-2 py-3">
        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,12 @@
                             {foreach from=$categorys item=category}
                                 <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
                             {/foreach} 
+                            
+                            {if isset($smarty.session.ADMIN)}
+                                <a class="dropdown-item" href='adminProd'>Ver Todo</a>
+                            {else}   
                                 <a class="dropdown-item" href='allProd'>Ver Todo</a>
+                            {/if}     
 
                         </div>
 

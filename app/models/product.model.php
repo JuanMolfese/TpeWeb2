@@ -15,28 +15,35 @@ class productModel{
       }
 
     //Devuelve lista de todos los productos de la db y se le adiciona el nombre de la categoria desde la tabla categoria
-    function getAll() {
+    function getAll($start) {
         
         $sql='SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
-        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id)';
+        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id )LIMIT '.$start.',3';
         $query = $this->db->prepare($sql);
         $query->execute();    
+        
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-
+    
+    
      //Devuelve lista de todos los productos que estan en OFERTA de la db y se le adiciona el nombre de la categoria desde la tabla categoria
-    function getAllOffer() {
-
-        $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
-        FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=?');
+    function getAllOffer($start){
+       
+        $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=? LIMIT '.$start.',3');
         $query->execute([1]);
+        
+        
         return $query->fetchAll(PDO::FETCH_OBJ); 
+        
     }
 
-    //Devuelve lista de productos de una determinada categoria
-    function getAllSelectedCat($id) {
 
-       $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=?');
+    
+
+    //Devuelve lista de productos de una determinada categoria
+    function getAllSelectedCat($id,$start) {
+
+       $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=? LIMIT '.$start.',3');
        $query->execute([$id]);
        return $query->fetchAll(PDO::FETCH_OBJ);
            

@@ -15,11 +15,13 @@ class tablesView{
     }
 
     //Muestra lista de productos, recibe: lista de prod, info de donde es llamado y su categoria
-    function showProducts($products,$ruta,$cat=null) {
+    function showProducts($products,$ruta,$cat=null,$start) {
 
         $this->smarty->assign('products', $products);
         $this->smarty->assign('ruta', $ruta);
         $this->smarty ->assign('cat', $cat);
+        $this->smarty ->assign('start', $start);
+
         $this->smarty->display('templates/showProducts.tpl');
     }
     
