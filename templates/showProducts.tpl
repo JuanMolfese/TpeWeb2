@@ -2,25 +2,25 @@
 
 <main class="container">
     
-    <div class="d-flex justify-content-center fluid bg-secondary rounded-pill">
+    <div class="d-flex justify-content-center fluid bg-secondary">
      {*Segun la condicion se muestra un titulo acorde*}
     {if $ruta=='home'}
          <h3 class="text-light">Ofertas</h3>
     {else if $ruta=='allProd'}
        <h3 class="text-light">Todos nuestros productos</h3>
     {else if $ruta=='filtrar'}
-      <h3 class="text-light">{$cat->nombre|upper}</h3>
+      <h3 class="text-light">{$cat->nombre}</h3>
     {/if}
     </div>
 
     {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
     <div class="m-3 d-flex justify-content-end">
-        <a href="insertar" class='btn btn-primary font-italic'>Agregar Producto</a>
+        <a href="insertar" class='btn btn-primary font-italic'><i class='fas fa-plus'></i> Agregar Producto</a>
     </div>
     {/if}
         
     {foreach from=$products item=product}
-    <div class="card col-12 bg-light m-2">
+    <div class="card col-12 bg-light my-2">
 
         <div class="row">
 
@@ -52,11 +52,11 @@
 
                     <div class="card-body col-3 text-center mx-auto">
 
-                        <a class='btn btn-secondary mb-4' href='details/{$product->id}'>Detalle</a>
+                        <a class='btn btn-secondary mb-4' href='details/{$product->id}'><i class='fas fa-glasses'></i> Detalle</a>
 
                         {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
-                            <a class='btn btn-danger mb-4' href='eliminar/{$product->id}'>Eliminar</a>
-                            <a class='btn btn-secondary mb-4' href='update/{$product->id}'>Editar</a>
+                            <a class='btn btn-danger mb-4' href='eliminar/{$product->id}'><i class='far fa-trash-alt'></i> Eliminar</a>
+                            <a class='btn btn-secondary mb-4' href='update/{$product->id}'><i class='far fa-edit'></i> Editar</a>
                         {/if}
 
                     </div>

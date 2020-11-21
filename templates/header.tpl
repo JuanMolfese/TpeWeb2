@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tech</title>
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--Get your code at fontawesome.com-->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     
 </head>
 <body>
     
-<header class="container p-0">
+<header class="container">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-md-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-1 py-3">
        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,7 +34,7 @@
                     </div>
                     
                     <li class="nav-item mx-md-4 p-0">
-                        <a class="nav-link btn btn-secondary text-white" name='home' href='home'>Home</a>
+                        <a class="nav-link btn btn-secondary text-white" name='home' href='home'> <i class='fas fa-home'></i> Home</a>
                     </li>
 
                     <div class="dropdown text-center">
@@ -65,8 +66,7 @@
                         <div class="dropdown text-center col-md-1">
                             {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
                                 <button class="btn btn-secondary dropdown-toggle p-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Administrar
-                                </button>
+                                <i class='fas fa-cogs'></i> Administrar </button>
                                 <div class="dropdown-menu  text-center" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href='adminProd'>Productos</a>
                                     <a class="dropdown-item" href='verCategorias'>Categorias</a>
@@ -79,7 +79,7 @@
                     {*Muestra u oculta botones de login/logout en funcion a si se esta logueado o no*}
                     {if !isset($smarty.session.ID_USER)}
                     <li class="nav-item dropdown">
-                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'>Login</a>
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='login'><i class='fas fa-user-alt'></i> Login</a>
                     </li>
                     {else}
                     <li class="nav-item dropdown">
@@ -88,7 +88,7 @@
                     {/if}
                     {if !isset($smarty.session.ID_USER)}
                     <li class="nav-item">
-                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='register'>Registrarse</a>
+                        <a class="nav-link btn btn-secondary text-white mx-md-3" href='register'><i class='fas fa-user-plus'></i> Registrarse</a>
                     </li>
                     {else}
                     <li class="d-flex align-items-center"> <span class="text-white font-weight-bold">{$smarty.session.EMAIL_USER}</span> </li>

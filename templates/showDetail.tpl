@@ -24,9 +24,9 @@
         
         <form id="js-form-details" class="col-12">
             <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
-                <a href='home' class='btn btn-info'>Volver</a>
-                <a href='addComment/{$product->id}' class='btn btn-primary'>Agregar Comentario</a>
-                <a href='showComments/{$product->id}' class='btn btn-secondary'>Ver Comentarios</a>
+                <a href='home' class='btn btn-info'><i class='fas fa-reply'></i> Volver</a>
+                <a href='addComment/{$product->id}' class='btn btn-primary'><i class='fas fa-plus'></i> Agregar Comentario</a>
+                <a href='showComments/{$product->id}' class='btn btn-secondary'><i class='far fa-comments'></i> Ver Comentarios</a>
             </div>
         </form>
 

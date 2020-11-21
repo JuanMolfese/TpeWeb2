@@ -15,7 +15,7 @@
     </div>
 
     <div class="text-center mb-5">
-        <a href="details/{$product->id}" class='btn btn-secondary'>Volver</a>
+        <a href="details/{$product->id}" class='btn btn-secondary'><i class='fas fa-reply'></i> Volver</a>
     </div>
 
     <script src="js/showComment.js"></script>

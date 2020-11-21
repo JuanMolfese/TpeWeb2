@@ -44,13 +44,13 @@
             </div>
             
             <div class="form-group m-auto col-md-12 d-flex justify-content-center py-5">                
-                <button id="btn-add-comment" type="submit" class="btn btn-primary">Cargar</button>
+                <button id="btn-add-comment" type="submit" class="btn btn-primary"><i class='fas fa-plus'></i> Cargar</button>
             </div>
                 
         </div> 
     </form>    
         <div class="form-group m-auto col-md-12 d-flex justify-content-center pb-5">
-            <a href="details/{$product_id}" class='btn btn-secondary'>Volver</a>
+            <a href="details/{$product_id}" class='btn btn-secondary'><i class='fas fa-reply'></i> Volver</a>
         </div>
 
     <div id="js-btn-back"></div>
