@@ -2,9 +2,9 @@
 
 <main class="container">
 
-    <h3 class="mb-4">Crear un comentario</h3>
+    <h3 class="my-4 ml-4">Crear un comentario</h3>
     
-    <div id="js-respuesta-addComment"></div>
+    <div class="my-4 ml-4" id="js-respuesta-addComment"></div>
 
     <form id="form-add-comment" autocomplete="off" class="m-auto col-md-12 d-flex justify-content-center py-5">
         

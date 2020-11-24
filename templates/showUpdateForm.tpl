@@ -1,10 +1,10 @@
     {include 'header.tpl'}
 
     <main class="container">
-
-        <h3 class='mb-4'>Actualizar producto</h3>
+        
+        <h3 class='my-4 ml-4'>Actualizar producto</h3>
         <form id='form-add' action='editar' method='POST' enctype="multipart/form-data">
-            <div class='d-flex row'>
+            <div class='row col-12 m-auto'>
 
                 <div class='form-group pt-6 col-md-7 p-0'>
                     <label for='input_product_name'>Nombre del producto</label>

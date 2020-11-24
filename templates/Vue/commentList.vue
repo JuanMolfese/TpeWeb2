@@ -1,7 +1,7 @@
 {literal}
 <section id="app" class="col-12">
     <div class="row">
-        <h4> Comentarios del producto </h4>
+        <h4 class="ml-2"> Comentarios del producto </h4>
         <h4 class="font-weight-bold ml-2">{{commentsList[0].nombre}}</h4>
     </div>
     <h5 v-if="commentsList[0].puntaje != null">Puntuacion promedio: {{promedio}}</h5>

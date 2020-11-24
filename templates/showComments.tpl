@@ -10,7 +10,7 @@
         <input type="hidden" id="useradmin" value="0"></input>
     {/if}
 
-    <div class="d-flex ml-5 columns my-5">        
+    <div class="d-flex columns my-1">        
         {include file="vue/commentList.vue"}           
     </div>
 

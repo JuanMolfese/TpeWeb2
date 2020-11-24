@@ -2,7 +2,7 @@
 
 <main class="container">
 
-    <h4 class='mb-4 text-secondary'>Detalle de {$product->nombre}</h4>
+    <h4 class='my-4 ml-4 text-secondary'>Detalle de {$product->nombre}</h4>
     
     <div class='d-flex row mx-5'>
 
@@ -21,19 +21,16 @@
             <input type='text' value="{$product->descripcion}" class='form-control bg-transparent border-0' id='input_product_description' readonly>
         </div>
         
+        <div class='form-group m-auto col-md-10 d-flex justify-content-around'>
+            <a href='home' class='btn btn-info my-5'><i class='fas fa-reply'></i> Volver</a>
+            <a href='addComment/{$product->id}' class='btn btn-primary my-5'><i class='fas fa-plus'></i> Agregar Comentario</a>
+            <a href='showComments/{$product->id}' class='btn btn-secondary my-5'><i class='far fa-comments'></i> Ver Comentarios</a>
+        </div>
         
-        <form id="js-form-details" class="col-12">
-            <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
-                <a href='home' class='btn btn-info'><i class='fas fa-reply'></i> Volver</a>
-                <a href='addComment/{$product->id}' class='btn btn-primary'><i class='fas fa-plus'></i> Agregar Comentario</a>
-                <a href='showComments/{$product->id}' class='btn btn-secondary'><i class='far fa-comments'></i> Ver Comentarios</a>
-            </div>
-        </form>
 
     </div>
 
-    {include 'footer.tpl'}
-    <script> src="js/comment.js"</script>
+    {include 'footer.tpl'}    
     
 </main> 
 
