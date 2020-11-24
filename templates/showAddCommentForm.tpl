@@ -4,7 +4,7 @@
 
     <h3 class="my-4 ml-4">Crear un comentario</h3>
     
-    <div class="my-4 ml-4" id="js-respuesta-addComment"></div>
+    <div class="my-4 ml-4 font-weight-bold" id="js-respuesta-addComment"></div>
 
     <form id="form-add-comment" autocomplete="off" class="m-auto col-md-12 d-flex justify-content-center py-5">
         

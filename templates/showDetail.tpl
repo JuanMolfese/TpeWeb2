@@ -22,9 +22,9 @@
         </div>
         
         <div class='form-group m-auto col-md-10 d-flex justify-content-around'>
-            <a href='home' class='btn btn-info my-5'><i class='fas fa-reply'></i> Volver</a>
+            <a href='home' class='btn btn-secondary my-5'><i class='fas fa-reply'></i> Volver</a>
             <a href='addComment/{$product->id}' class='btn btn-primary my-5'><i class='fas fa-plus'></i> Agregar Comentario</a>
-            <a href='showComments/{$product->id}' class='btn btn-secondary my-5'><i class='far fa-comments'></i> Ver Comentarios</a>
+            <a href='showComments/{$product->id}' class='btn btn-info my-5'><i class='far fa-comments'></i> Ver Comentarios</a>
         </div>
         
 
