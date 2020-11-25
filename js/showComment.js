@@ -14,7 +14,6 @@ function initpage() {
         methods: {
             deleteComment: async function(comment_id, product_id) {
 
-
                 try {
                     const r = await fetch(`api/comment/${comment_id}`, {
                         method: 'DELETE'
@@ -26,10 +25,7 @@ function initpage() {
                 } catch (e) {
                     console.log(e);
                 }
-
-
             }
-
         }
 
     });
@@ -37,7 +33,6 @@ function initpage() {
     const id = document.querySelector("#id_product");
     app.admin = document.querySelector("#useradmin").value;
     getComments(id.value);
-
 
     async function getComments(id) {
 
@@ -65,6 +60,5 @@ function initpage() {
         let promedio = parseFloat(sum / array.length);
         return promedio.toFixed(2); //retorno promedio formateado con dos decimales
     }
-
 
 }

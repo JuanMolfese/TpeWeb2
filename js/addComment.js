@@ -24,8 +24,6 @@ function initpage() {
 
     async function addComment(comentario) {
 
-        let id = comentario.id_producto; /* <==== ???? */
-
         try {
             const r = await fetch('api/comment', {
                 method: 'POST',

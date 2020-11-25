@@ -2,9 +2,9 @@
 
     <main class="container">
 
-        <h3 class="mb-4">Cargar un nuevo producto</h3>
+        <h3 class="my-4 ml-4">Cargar un nuevo producto</h3>
         <form id="form-add" action="insertar" method="POST" autocomplete="off" enctype="multipart/form-data">
-            <div class="d-flex row">
+            <div class="row col-12 m-auto">
 
                 <div class="form-group pt-6 col-md-7 p-0">
                     <label for="input_product_name">Nombre del producto</label>

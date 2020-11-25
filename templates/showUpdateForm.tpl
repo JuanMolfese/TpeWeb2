@@ -56,7 +56,7 @@
                 <input type='hidden' value={$product->id} name='idProducto'>
 
                 <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
-                    <button type='submit' id='btn-guardar' class='btn btn-info btn-lg'>Guardar</button>
+                    <button type='submit' id='btn-guardar' class='btn btn-info my-5'>Guardar</button>
                 </div>
 
             </div>

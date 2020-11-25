@@ -1,5 +1,3 @@
-{include 'header.tpl'}
-
 <div class="container">       
 
     <input type="hidden" id="id_product" value={$product->id}></input>
@@ -14,11 +12,6 @@
         {include file="vue/commentList.vue"}           
     </div>
 
-    <div class="text-center mb-5">
-        <a href="details/{$product->id}" class='btn btn-secondary mt-5'><i class='fas fa-reply'></i> Volver</a>
-    </div>
-
     <script src="js/showComment.js"></script>
-    {include 'footer.tpl'}    
 
 </div>
