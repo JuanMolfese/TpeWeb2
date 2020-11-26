@@ -29,9 +29,9 @@
                 {* Espacio para tomar valores que seran usandos en js *}
                 
                 {if isset($smarty.session.ID_USER)}
-                    <input type="hidden" id="user_id" value="{$smarty.session.ID_USER}"></input>                
-                    <input type='number' id="id_product" value="{$product_id}" hidden></input>
-                    <input type='number' id="id_user" value="{$smarty.session.ID_USER}" hidden></input>
+                    <input type="hidden" id="user_id" value="{$smarty.session.ID_USER}">        
+                    <input type='number' id="id_product" value="{$product_id}" hidden>
+                    <input type='number' id="id_user" value="{$smarty.session.ID_USER}" hidden>
                 {/if}
                 {* <div data-user-id="smarty.id_user" data-id-product="$product->id"></div> *}
 
