@@ -29,14 +29,11 @@
                 {* Espacio para tomar valores que seran usandos en js *}
                 
                 {if isset($smarty.session.ID_USER)}
-                    <input type="hidden" id="user_id" value="{$smarty.session.ID_USER}">        
+                    <input type="hidden" id="user_id" value="{$smarty.session.ID_USER}">            
                     <input type='number' id="id_product" value="{$product_id}" hidden>
                     <input type='number' id="id_user" value="{$smarty.session.ID_USER}" hidden>
                 {/if}
-                {* <div data-user-id="smarty.id_user" data-id-product="$product->id"></div> *}
-
-                {* **************************************************** *}
-
+               
                 <div class="form-group col-9 p-0 mt-2 ml-5">
                     <label for="input_product_comment">Comentario</label>
                     <textarea name="comentario" type="text" class="form-control" id="input-product-comment" maxlength="250" rows="3" required></textarea>

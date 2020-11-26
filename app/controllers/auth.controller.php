@@ -59,30 +59,25 @@ class authController{
          $this->view->showRegisterform();
          if (    (isset($_REQUEST['email']) && ($_REQUEST['email'] != null)) && 
         (isset($_REQUEST['password']) && ($_REQUEST['password'] != null)) &&
-        (isset($_REQUEST['rePassword']) && ($_REQUEST['rePassword'] != null))
-    ){ 
+        (isset($_REQUEST['rePassword']) && ($_REQUEST['rePassword'] != null))){ 
+       
         $newUser=$_POST['email'];
         $newPass=$_POST['password'];
         $newRepass=$_POST['rePassword'];
-        
-       
+               
         if($newPass==$newRepass){
            
           $encryptPass= password_hash ($newPass , PASSWORD_DEFAULT );  
           $success=$this->model->insertnewUser($newUser,$encryptPass);
-          
-         
-        
-         if ($success){
-            $this->view->showConfirmLogin('addUser','Se creó usuario');
-            $user = $this->model->getByEmail($newUser);
-            $this->authHelper->login($user);
-
-            
-         }
-         else{
-            $this->view->showErrorLogin('addUser','No se pudo crear el usuario');
-         }
+           
+            if ($success){
+                $this->view->showConfirmLogin('addUser','Se creó usuario');
+                $user = $this->model->getByEmail($newUser);
+                $this->authHelper->login($user);
+            }
+            else{
+                $this->view->showErrorLogin('addUser','No se pudo crear el usuario');
+            }
         }
         else {
             $this->view->showErrorLogin('addUser','No coinciden contraseñas');
@@ -107,16 +102,16 @@ class authController{
         if (($typeuser[0]) && ($typeuser[1]!=$id)){
           $success=$this->model->delete($id);
         
-          if ($success){
+            if ($success){
             $this->view->showConfirmLogin('delUser','Se eliminó usuario');
-          }
-          else {
-            $this->view->showErrorLogin('delUser','No se pudo borrar usuario');
-          }
+            }
+            else {
+                $this->view->showErrorLogin('delUser','No se pudo borrar usuario');
+            }
         }
         else { 
-            $this->view->showErrorLogin('delUser','No se pudo borrar usuario');    
-            /*header("Location: " . BASE_URL . "home");*/
+            $this->view->showErrorLogin('delUser','No puede borrarse a si mismo');    
+            
         }
     }
 
@@ -131,17 +126,16 @@ class authController{
         }
            
     }
-
+    //Inserta en db usuario editado en funcion updateuser
     function insertUser(){
-        if (    (isset($_REQUEST['user']) && ($_REQUEST['user'] != null)))
-         {                     
+        if (    (isset($_REQUEST['user']) && ($_REQUEST['user'] != null))) {                     
                 $id = $_POST['idUser'];
                 $nombre = $_POST['user'];
                 $password = $_POST['passUser'];
                 $admin = $_POST['admin'];
                 $this->model->recordUpdateUser($id, $nombre, $password,$admin);
                 header("Location: " . 'verUsuarios');
-            }
+        }
     }
 
     
