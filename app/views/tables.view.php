@@ -8,7 +8,7 @@ class tablesView{
 
     //Genera constructor de la clase: instancia la var smarty para que sea
     //usada en las func de la clase y recibe la lista de todas las categorias de la db
-    function __construct($category_list){
+    function __construct($category_list=null){
         $this->smarty = new Smarty();
         $this->smarty->assign('categorys', $category_list);
        

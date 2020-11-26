@@ -5,7 +5,7 @@
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 include_once 'app/controllers/tables.controller.php';
 include_once 'app/controllers/auth.controller.php';
-
+include_once 'app/controllers/comments.controller.php';
 // lee la acción
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -139,22 +139,22 @@ switch ($params[0]) {
         $controller->insertUser();
         break;   
     case 'addComment':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $controller->insertComment($id);
         break;  
     case 'recordComment':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $controller->recordComment($id);
         break;
     case 'showComments':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $controller->listComments($id);
         break;
     case 'deleteComment':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $id_prod = $params[2];
         $controller->deleteComment($id, $id_prod);
