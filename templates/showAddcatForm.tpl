@@ -2,12 +2,12 @@
 
     <main class="container">
 
-        <h3 class='mb-4'>Agregar categoria</h3>
+        <h3 class='my-4 ml-4'>Agregar categoria</h3>
         
         <form id='form-add' action='insertarCategoria' method='POST'>
-            <div class='d-flex row m-auto'>
+            <div class='row col-12 m-auto'>
 
-                <div class='form-group pt-6 col-md-2 p-0'>
+                <div class='form-group pt-6 col-md-2 p-0 ml-1'>
                     <label for='input_product_name'>Categoria</label>
                     <input name='nombreCat' type='text' class='form-control' id='input_category_name' maxlength='30' required>
                 </div>

@@ -8,6 +8,7 @@ class CategoryModel{
 
   private $db;
 
+  
   function __construct() {
   
     $this->dbHelper = new DBHelper();
@@ -15,6 +16,7 @@ class CategoryModel{
   
   }
 
+ 
   //solicita a la base de datos todos los elementos de tabla categoria y los asigna a un objeto
   function getAllcategorys() {
 
@@ -23,6 +25,7 @@ class CategoryModel{
     return $query->fetchAll(PDO::FETCH_OBJ); 
   }
 
+  
   //solicita a base de datos una categoria especifica, y la asigna a un objeto
   function getSelectedcat ($id) {
 
@@ -31,6 +34,7 @@ class CategoryModel{
     return $query->fetch(PDO::FETCH_OBJ);
   }
 
+  
   //solicita a la base de datos el elemento de la tabla categoria segun id
   function getAllSelectedCat($id) {
 
@@ -39,6 +43,7 @@ class CategoryModel{
     return $query->fetch(PDO::FETCH_OBJ);    
   }
 
+  
   //inserta a base de datos categoria editada
   function RecordUpdatecat($id, $nombre, $descripcion){
         
@@ -46,6 +51,7 @@ class CategoryModel{
     return $query->execute([$nombre, $descripcion]);
   }
 
+ 
   //borra categoria especificada segun id
   function remove($id) {  
          
@@ -53,6 +59,7 @@ class CategoryModel{
     return $query->execute([$id]);      
   }
   
+ 
   //graba nueva categoria
   function insert($nombre, $descripcion) {
 

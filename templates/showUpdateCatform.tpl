@@ -2,9 +2,9 @@
 
     <main class="container">
 
-        <h3 class='mb-4'>Actualizar categoria</h3>
+        <h3 class='my-4 ml-4'>Actualizar categoria</h3>
         <form id='form-add' action='editarCat' method='POST'>
-            <div class='d-flex row'>
+            <div class='row col-12 m-auto'>
 
                 <div class='form-group pt-6 col-md-7 p-0'>
                     <label for='input_product_name'>Categoria</label>
@@ -19,7 +19,7 @@
                 <input type='hidden' value={$category->id} name='idCategoria'>
 
                 <div class='form-group m-auto col-md-10 d-flex justify-content-around pt-5'>
-                    <button type='submit' id='btn-guardar' class='btn btn-info btn-lg'>Guardar</button>
+                    <button type='submit' id='btn-guardar' class='btn btn-info'>Guardar</button>
                 </div>
 
             </div>

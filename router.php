@@ -5,7 +5,7 @@
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 include_once 'app/controllers/tables.controller.php';
 include_once 'app/controllers/auth.controller.php';
-
+include_once 'app/controllers/comments.controller.php';
 // lee la acción
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -15,6 +15,8 @@ if (!empty($_GET['action'])) {
 
 // parsea la accion Ej: suma/1/2 --> ['suma', 1, 2]
 $params = explode('/', $action);
+//indica cantidad de elementos a mostrar por pagina
+$end=3;
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
@@ -32,20 +34,40 @@ switch ($params[0]) {
         break;
     case 'home':
         $controller = new tablesController();
-        $controller->showHome();
+        if (count($params)<=1)
+          $start=0;
+        else {
+         $start=$params[1];
+        }
+        $controller->showHome($start,$end);
         break;
     case 'allProd':
         $controller = new tablesController();
-        $controller->showAllProd();
+        if (count($params)<=1)
+          $start=0;
+        else {
+         $start=$params[1];
+        }
+         $controller->showAllProd($start,$end);
         break;
     case 'adminProd':
         $controller = new tablesController();
-        $controller->adminAllProd();
+        if (count($params)<=1)
+          $start=0;
+        else {
+         $start=$params[1];
+        }
+        $controller->adminAllProd($start,$end);
         break;
     case 'filtrar':
         $controller = new tablesController();
         $id = $params[1];
-        $controller->showByCat($id); //se refiere a la ID de la categoria
+        if (count($params)<=2)
+        $start=0;
+      else {
+       $start=$params[2];
+      }
+        $controller->showByCat($id,$start,$end); //se refiere a la ID de la categoria
         break;
     case 'insertar':
         $controller = new tablesController();
@@ -60,6 +82,11 @@ switch ($params[0]) {
         $controller = new tablesController();
         $id = $params[1];
         $controller->deleteProduct($id);
+        break;
+    case 'eliminarImg':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->deleteImg($id);
         break;
     case 'update':
         $controller = new tablesController();
@@ -117,22 +144,22 @@ switch ($params[0]) {
         $controller->insertUser();
         break;   
     case 'addComment':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $controller->insertComment($id);
         break;  
     case 'recordComment':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $controller->recordComment($id);
         break;
     case 'showComments':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $controller->listComments($id);
         break;
     case 'deleteComment':
-        $controller = new tablesController();
+        $controller = new CommentController();
         $id = $params[1];
         $id_prod = $params[2];
         $controller->deleteComment($id, $id_prod);
