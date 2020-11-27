@@ -6,6 +6,7 @@ class productModel{
 
     private $db;
 
+   
     //Se genera un constructor para que al instanciar un obj de esta clase, se abra la conexion a la db.
     function __construct() {
   
@@ -14,14 +15,14 @@ class productModel{
       
       }
 
-    //Devuelve lista de todos los productos de la db y se le adiciona el nombre de la categoria desde la tabla categoria
+  
+      //Devuelve lista de todos los productos de la db y se le adiciona el nombre de la categoria desde la tabla categoria
     function getAll($start,$end) {
         
         $sql='SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria 
         FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id )LIMIT '.$start.','.$end.'';
         $query = $this->db->prepare($sql);
         $query->execute();    
-        
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
     
@@ -31,14 +32,10 @@ class productModel{
        
         $query = $this->db->prepare('SELECT producto.*, categoria.nombre AS nombre_categoria, categoria.descripcion AS descripcion_categoria FROM producto INNER JOIN categoria ON (producto.id_categoria=categoria.id) WHERE oferta=? LIMIT '.$start.','.$end.'');
         $query->execute([1]);
-        
-        
         return $query->fetchAll(PDO::FETCH_OBJ); 
         
     }
 
-
-    
 
     //Devuelve lista de productos de una determinada categoria
     function getAllSelectedCat($id,$start,$end) {
@@ -46,9 +43,9 @@ class productModel{
        $query = $this->db-> prepare ('SELECT * FROM producto WHERE id_categoria=? LIMIT '.$start.','.$end.'');
        $query->execute([$id]);
        return $query->fetchAll(PDO::FETCH_OBJ);
-           
     }
 
+   
     //Devuelve un producto segun id
     function getSelectedProd($id) {
 
@@ -57,6 +54,7 @@ class productModel{
         return $query->fetch(PDO::FETCH_OBJ);    
     }
 
+  
     //Inserta un nuevo producto en la tabla producto
     function insert($nombre, $descripcion, $precio, $oferta, $categoria, $imagen = null) {
 
@@ -69,6 +67,7 @@ class productModel{
         }
     }
 
+  
     //Elimina un producto de la tabla segun id
     function remove($id) {  
         
@@ -76,6 +75,7 @@ class productModel{
         return $query->execute([$id]);      
     }
 
+   
     //Actualiza datos de un producto en la tabla productos
     function RecordUpdateProduct($id, $nombre, $descripcion, $precio, $oferta, $categoria, $imagen = null){
         

@@ -22,6 +22,7 @@ function initpage() {
 
     });
 
+
     async function addComment(comentario) {
 
         try {

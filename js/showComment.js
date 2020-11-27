@@ -34,12 +34,12 @@ function initpage() {
     app.admin = document.querySelector("#useradmin").value;
     getComments(id.value);
 
+
     async function getComments(id) {
 
         try {
             const r = await fetch(`api/comment/${id}`);
             const comments = await r.json();
-            console.log(comments);
             app.commentsList = comments;
             if (comments[0].puntaje != null) {
                 app.promedio = calcProm(comments);
@@ -49,6 +49,7 @@ function initpage() {
             console.log(e);
         }
     }
+
 
     function calcProm(array) {
         let sum = 0;

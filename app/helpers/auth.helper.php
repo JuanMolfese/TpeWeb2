@@ -10,6 +10,7 @@ class AuthHelper {
         }
     }
 
+  
     //verifica login
     function checkLoggedIn () {
         
@@ -22,6 +23,7 @@ class AuthHelper {
         }
     }
 
+  
     //Cierra la sesion
     function logout() {
       
@@ -29,6 +31,7 @@ class AuthHelper {
         header("Location: " . BASE_URL . 'login');
     }
 
+  
     function login($user){
 
         $_SESSION['ID_USER'] = $user->id;

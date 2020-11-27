@@ -44,19 +44,19 @@ switch ($params[0]) {
     case 'allProd':
         $controller = new tablesController();
         if (count($params)<=1)
-        $start=0;
-      else {
-       $start=$params[1];
-      }
+          $start=0;
+        else {
+         $start=$params[1];
+        }
          $controller->showAllProd($start,$end);
         break;
     case 'adminProd':
         $controller = new tablesController();
         if (count($params)<=1)
-        $start=0;
-      else {
-       $start=$params[1];
-      }
+          $start=0;
+        else {
+         $start=$params[1];
+        }
         $controller->adminAllProd($start,$end);
         break;
     case 'filtrar':

@@ -49,7 +49,7 @@
                                 <a class="dropdown-item" href='filtrar/{$category->id}'>{$category->nombre}</a>
                             {/foreach} 
                             
-                            {if isset($smarty.session.ADMIN)}
+                            {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
                                 <a class="dropdown-item" href='adminProd'>Ver Todo</a>
                             {else}   
                                 <a class="dropdown-item" href='allProd'>Ver Todo</a>

@@ -1,10 +1,13 @@
 {literal}
 <section id="app" class="col-12">
+
     <div class="row">
         <h4 class="ml-2"> Comentarios</h4>
     </div>
+
     <h5 v-if="commentsList[0].puntaje != null">Puntuacion promedio: {{promedio}}</h5>
     <h4 v-if="commentsList[0].comentario == null" class="text-danger">No hay comentarios</h4>
+
     <ul v-else class="row list-group mt-5">
         <li v-for="comment in commentsList" class="list-group-item d-flex justify-content-between">
             <div class="font-italic" v-if="admin == 1">Id: {{ comment.id }}</div>
@@ -14,5 +17,6 @@
             <button class="btn btn-danger ml-3 " id="btn-delete-comment" v-if="admin == 1" v-on:click="deleteComment(comment.id, commentsList[0].id_producto)">Eliminar</button>
         </li>
     </ul>
+
 </section>
 {/literal}

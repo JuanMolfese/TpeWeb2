@@ -12,6 +12,7 @@ class ApiComments {
     private $view;
     private $data;
 
+  
     function __construct() {
         $this->model = new CommentsModel();
         $this->usermodel = new userModel();
@@ -24,22 +25,19 @@ class ApiComments {
         return json_decode($this->data); 
     } 
 
-    function getAll($params = null) {
-        $comments = $this->model->getAll($params);
-        $this->view->response($comments, 200);
-    }
-
+    
     function get($params = null) {
         // $params es un array asociativo con los parámetros de la ruta
         $idProduct = $params[':ID'];
-      
+        
         $comment = $this->model->getAllbyProduct($idProduct);
         if ($comment)
-            $this->view->response($comment, 200);
+        $this->view->response($comment, 200);
         else
-            $this->view->response("El comentario con el id=$idProduct no existe", 404);
+        $this->view->response("El comentario con el id=$idProduct no existe", 404);
     }
-
+    
+   
     function delete($params = null) {
         
         $idComment = $params[':ID'];
@@ -51,9 +49,10 @@ class ApiComments {
             $this->view->response("El comentario con id=$idComment no existe", 404);
         }
     }
-
-    function insert($params = null) {
-
+    
+   
+    function insert() {
+        
         $body = $this->getData();
         
         $comentario       = $body->comentario;
@@ -66,8 +65,8 @@ class ApiComments {
         if($checkUser){
             $success = $this->model->insert($puntaje, $comentario, $id_usuario, $id_producto);
             
-                if ($success > 0) {
-                    $this->view->response("Se agrego el comentario exitosamente", 200);
+            if ($success) {
+                $this->view->response("Se agrego el comentario exitosamente", 200);
                 }
                 else { 
                     $this->view->response("No se pudo generar el comentario", 500);
@@ -76,7 +75,14 @@ class ApiComments {
             $this->view->response("El usuario no existe", 404);
         }
     }
+    
 
+    function getAll($params = null) {
+        $comments = $this->model->getAll($params);
+        $this->view->response($comments, 200);
+    }
+  
+  
     function update($params = null) {
         
         $idComment = $params[':ID'];
