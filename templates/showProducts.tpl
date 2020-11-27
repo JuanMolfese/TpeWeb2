@@ -57,6 +57,7 @@
                         {if isset($smarty.session.ID_USER)&&($smarty.session.ADMIN)}
                             <a class='btn btn-danger mb-4' href='eliminar/{$product->id}'><i class='far fa-trash-alt'></i> Eliminar</a>
                             <a class='btn btn-secondary mb-4' href='update/{$product->id}'><i class='far fa-edit'></i> Editar</a>
+                             <a class='btn btn-danger mb-4' href='eliminarImg/{$product->id}'><i class='far fa-trash-alt'></i> Imagen</a>
                         {/if}
 
                     </div>

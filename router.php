@@ -83,6 +83,11 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteProduct($id);
         break;
+    case 'eliminarImg':
+        $controller = new tablesController();
+        $id = $params[1];
+        $controller->deleteImg($id);
+        break;
     case 'update':
         $controller = new tablesController();
         $id = $params[1];

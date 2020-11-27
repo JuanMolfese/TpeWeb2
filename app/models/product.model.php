@@ -88,5 +88,12 @@ class productModel{
         }
     }
    
+    function removeImg($id, $nombre, $descripcion, $precio, $oferta, $categoria, $imagen) {  
+        
+        $query = $this->db->prepare('UPDATE producto SET nombre=?, descripcion=?, precio=?,oferta=?,id_categoria=?, imagen=? WHERE id='.$id.' ');
+        return $query->execute([$nombre, $descripcion, $precio, $oferta, $categoria, null]);      
+    }
+
+
         
 }

@@ -190,6 +190,30 @@ class tablesController {
         }
     }
 
+
+    function deleteImg($id){
+       
+
+        $typeuser = $this->authHelper->checkLoggedIn();
+        if($typeuser[0]){
+            $product=$this->model->getSelectedProd($id);
+            $success=$this->model->removeImg($product->id, $product->nombre, $product->descripcion, $product->precio, $product->oferta, $product->id_categoria, $product->imagen);
+            if ($success){
+
+                $this->view->basepage();
+                $this->view->showConfirm("del","Se elimino la imagen");}
+            
+            else{    
+                $this->view->basepage();
+                $this->view->showError("del","No se pudo eliminar la imagen");
+            }
+        }
+        else{    
+            header("Location: " . BASE_URL . "home");
+        }
+
+    }
+
    
     //verifica login, y carga producto segun id en formulario para edicion
     function updateProduct($id){

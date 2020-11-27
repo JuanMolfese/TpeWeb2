@@ -51,6 +51,8 @@
                 <div class="form-group ml-5 p-0">
                     <label for="add_image_product">Actualizar imagen del producto</label>
                     <input type="file" name="imagen_prod" class="form-control-file" id="add_image_product">
+                   
+
                 </div>
 
                 <input type='hidden' value={$product->id} name='idProducto'>
